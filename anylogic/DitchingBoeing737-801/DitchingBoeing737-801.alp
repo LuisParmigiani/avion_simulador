@@ -215,6 +215,21 @@ NaceDer.inject( 93 );]]></StartupCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788030516975</Id>
+					<Name><![CDATA[tAmerizaje]]></Name>
+					<X>200</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[-1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1788009756465</Id>
 					<Name><![CDATA[pesoCongestion]]></Name>
@@ -232,6 +247,30 @@ NaceDer.inject( 93 );]]></StartupCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1788009756463</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1788030325619</Id>
+					<Name><![CDATA[totalPax]]></Name>
+					<X>590</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[186]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1788030325617</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -546,8 +585,8 @@ NaceDer.inject( 93 );]]></StartupCode>
 					<Action><![CDATA[int quietos = 0;
 for ( Pasajero q : activos ) if ( q.getSpeed() < 0.05 ) quietos++;
 int sentandose = Sentado.size() + SentadoDer.size();
-traceln( "t=%.0f  sentandose=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL=%d",
-         time(), sentandose, activos.size(), quietos, evacuados,
+traceln( "evac=%.0fs  sentados=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL=%d",
+         time() - tAmerizaje, sentandose, activos.size(), quietos, evacuados,
          sentandose + activos.size() + evacuados );]]></Action>
 				</Event>
 				<Event>
@@ -590,6 +629,43 @@ traceln( "t=%.0f  sentandose=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL=%
     }
     if ( Camina.contains( q ) ) Camina.cancel( q );
 }]]></Action>
+				</Event>
+				<Event>
+					<Id>1788030406665</Id>
+					<Name><![CDATA[amerizaje]]></Name>
+					<X>330</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<Id>1788030406663</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1788076800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[if ( tAmerizaje >= 0 ) return;
+if ( Sentado.size() + SentadoDer.size() < totalPax ) return;
+tAmerizaje = time();
+for ( Pasajero q : new java.util.ArrayList<Pasajero>( Sentado.getPeds() ) ) Sentado.activate( q );
+for ( Pasajero q : new java.util.ArrayList<Pasajero>( SentadoDer.getPeds() ) ) SentadoDer.activate( q );
+traceln( ">>> AMERIZAJE en t=" + tAmerizaje );]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -1113,7 +1189,9 @@ return n;]]></Body>
 							<Value Class="CodeValue">
 								<Code><![CDATA[enCamino[ ped.salidaIdx ]--;
 activos.remove( ped );
-evacuados++;]]></Code>
+evacuados++;
+if ( evacuados == totalPax )
+    traceln( ">>> EVACUACION COMPLETA en " + ( time() - tAmerizaje ) + " s" );]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -1173,9 +1251,6 @@ evacuados++;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[attractor]]></Name>
@@ -1204,6 +1279,9 @@ evacuados++;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delayStartsWhen]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.DELAY_STARTS_SINCE_MANUAL_CALL]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
@@ -1508,9 +1586,6 @@ activos.add( ped );]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[self.ATTRACTOR_CHOICE_FREE]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[attractor]]></Name>
@@ -1539,6 +1614,9 @@ activos.add( ped );]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delayStartsWhen]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.DELAY_STARTS_SINCE_MANUAL_CALL]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
@@ -8419,7 +8497,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155896</Id>
 					<Name><![CDATA[attractor]]></Name>
-					<X>373.5</X><Y>362.156</Y>
+					<X>373.5</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8431,7 +8509,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155899</Id>
 					<Name><![CDATA[attractor1]]></Name>
-					<X>391</X><Y>362.156</Y>
+					<X>391</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8443,7 +8521,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155902</Id>
 					<Name><![CDATA[attractor2]]></Name>
-					<X>408.5</X><Y>362.156</Y>
+					<X>408.5</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8455,7 +8533,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155905</Id>
 					<Name><![CDATA[attractor3]]></Name>
-					<X>372.5</X><Y>396.313</Y>
+					<X>372.5</X><Y>408.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8467,7 +8545,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155908</Id>
 					<Name><![CDATA[attractor4]]></Name>
-					<X>390</X><Y>396.313</Y>
+					<X>390</X><Y>408.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8479,7 +8557,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155911</Id>
 					<Name><![CDATA[attractor5]]></Name>
-					<X>407.5</X><Y>396.313</Y>
+					<X>407.5</X><Y>408.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8491,7 +8569,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155914</Id>
 					<Name><![CDATA[attractor6]]></Name>
-					<X>372.5</X><Y>429.469</Y>
+					<X>372.5</X><Y>442.933</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8503,7 +8581,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155917</Id>
 					<Name><![CDATA[attractor7]]></Name>
-					<X>390</X><Y>429.469</Y>
+					<X>390</X><Y>442.933</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8515,7 +8593,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155920</Id>
 					<Name><![CDATA[attractor8]]></Name>
-					<X>407.5</X><Y>429.469</Y>
+					<X>407.5</X><Y>442.933</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8527,7 +8605,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155923</Id>
 					<Name><![CDATA[attractor9]]></Name>
-					<X>372.5</X><Y>462.625</Y>
+					<X>372.5</X><Y>477.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8539,7 +8617,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155926</Id>
 					<Name><![CDATA[attractor10]]></Name>
-					<X>390</X><Y>462.625</Y>
+					<X>390</X><Y>477.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8551,7 +8629,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155929</Id>
 					<Name><![CDATA[attractor11]]></Name>
-					<X>407.5</X><Y>462.625</Y>
+					<X>407.5</X><Y>477.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8563,7 +8641,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155932</Id>
 					<Name><![CDATA[attractor12]]></Name>
-					<X>374.5</X><Y>499.781</Y>
+					<X>374.5</X><Y>510.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8575,7 +8653,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155935</Id>
 					<Name><![CDATA[attractor13]]></Name>
-					<X>392</X><Y>499.781</Y>
+					<X>392</X><Y>510.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8587,7 +8665,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155938</Id>
 					<Name><![CDATA[attractor14]]></Name>
-					<X>409.5</X><Y>499.781</Y>
+					<X>409.5</X><Y>510.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8599,7 +8677,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155941</Id>
 					<Name><![CDATA[attractor15]]></Name>
-					<X>372.5</X><Y>538.938</Y>
+					<X>372.5</X><Y>543.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8611,7 +8689,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155944</Id>
 					<Name><![CDATA[attractor16]]></Name>
-					<X>390</X><Y>538.938</Y>
+					<X>390</X><Y>543.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8623,7 +8701,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155947</Id>
 					<Name><![CDATA[attractor17]]></Name>
-					<X>407.5</X><Y>538.938</Y>
+					<X>407.5</X><Y>543.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8635,7 +8713,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155950</Id>
 					<Name><![CDATA[attractor18]]></Name>
-					<X>374.5</X><Y>570.094</Y>
+					<X>374.5</X><Y>578.033</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8647,7 +8725,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155953</Id>
 					<Name><![CDATA[attractor19]]></Name>
-					<X>392</X><Y>570.094</Y>
+					<X>392</X><Y>578.033</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8659,7 +8737,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155956</Id>
 					<Name><![CDATA[attractor20]]></Name>
-					<X>408.5</X><Y>569.094</Y>
+					<X>408.5</X><Y>578.033</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8671,7 +8749,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155959</Id>
 					<Name><![CDATA[attractor21]]></Name>
-					<X>374.5</X><Y>598.25</Y>
+					<X>374.5</X><Y>612.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8683,7 +8761,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155962</Id>
 					<Name><![CDATA[attractor22]]></Name>
-					<X>392</X><Y>598.25</Y>
+					<X>392</X><Y>612.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8695,7 +8773,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155965</Id>
 					<Name><![CDATA[attractor23]]></Name>
-					<X>409.5</X><Y>598.25</Y>
+					<X>409.5</X><Y>612.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8707,7 +8785,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155968</Id>
 					<Name><![CDATA[attractor24]]></Name>
-					<X>374.5</X><Y>635.406</Y>
+					<X>374.5</X><Y>645.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8719,7 +8797,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155971</Id>
 					<Name><![CDATA[attractor25]]></Name>
-					<X>392</X><Y>635.406</Y>
+					<X>392</X><Y>645.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8731,7 +8809,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155974</Id>
 					<Name><![CDATA[attractor26]]></Name>
-					<X>409.5</X><Y>635.406</Y>
+					<X>409.5</X><Y>645.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8743,7 +8821,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155977</Id>
 					<Name><![CDATA[attractor27]]></Name>
-					<X>373.5</X><Y>668.563</Y>
+					<X>373.5</X><Y>679.133</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8755,7 +8833,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155980</Id>
 					<Name><![CDATA[attractor28]]></Name>
-					<X>391</X><Y>668.563</Y>
+					<X>391</X><Y>679.133</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8767,7 +8845,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155983</Id>
 					<Name><![CDATA[attractor29]]></Name>
-					<X>408.5</X><Y>668.563</Y>
+					<X>408.5</X><Y>679.133</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8779,7 +8857,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155986</Id>
 					<Name><![CDATA[attractor30]]></Name>
-					<X>373.5</X><Y>701.719</Y>
+					<X>373.5</X><Y>712.983</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8791,7 +8869,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155989</Id>
 					<Name><![CDATA[attractor31]]></Name>
-					<X>391</X><Y>701.719</Y>
+					<X>391</X><Y>712.983</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8803,7 +8881,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155992</Id>
 					<Name><![CDATA[attractor32]]></Name>
-					<X>408.5</X><Y>701.719</Y>
+					<X>408.5</X><Y>712.983</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8815,7 +8893,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155995</Id>
 					<Name><![CDATA[attractor33]]></Name>
-					<X>373.5</X><Y>734.875</Y>
+					<X>373.5</X><Y>746.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8827,7 +8905,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787155998</Id>
 					<Name><![CDATA[attractor34]]></Name>
-					<X>391</X><Y>734.875</Y>
+					<X>391</X><Y>746.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8839,7 +8917,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156001</Id>
 					<Name><![CDATA[attractor35]]></Name>
-					<X>408.5</X><Y>734.875</Y>
+					<X>408.5</X><Y>746.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8851,7 +8929,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156004</Id>
 					<Name><![CDATA[attractor36]]></Name>
-					<X>373.5</X><Y>770.031</Y>
+					<X>373.5</X><Y>781.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8863,7 +8941,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156007</Id>
 					<Name><![CDATA[attractor37]]></Name>
-					<X>391</X><Y>770.031</Y>
+					<X>391</X><Y>781.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8875,7 +8953,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156010</Id>
 					<Name><![CDATA[attractor38]]></Name>
-					<X>408.5</X><Y>770.031</Y>
+					<X>408.5</X><Y>781.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8887,7 +8965,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156013</Id>
 					<Name><![CDATA[attractor39]]></Name>
-					<X>373.5</X><Y>806.188</Y>
+					<X>373.5</X><Y>815.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8899,7 +8977,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156016</Id>
 					<Name><![CDATA[attractor40]]></Name>
-					<X>391</X><Y>806.188</Y>
+					<X>391</X><Y>815.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8911,7 +8989,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156019</Id>
 					<Name><![CDATA[attractor41]]></Name>
-					<X>408.5</X><Y>806.188</Y>
+					<X>408.5</X><Y>815.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8923,7 +9001,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156022</Id>
 					<Name><![CDATA[attractor42]]></Name>
-					<X>372.5</X><Y>843.344</Y>
+					<X>372.5</X><Y>854.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8935,7 +9013,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156025</Id>
 					<Name><![CDATA[attractor43]]></Name>
-					<X>390</X><Y>843.344</Y>
+					<X>390</X><Y>854.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8947,7 +9025,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156028</Id>
 					<Name><![CDATA[attractor44]]></Name>
-					<X>407.5</X><Y>843.344</Y>
+					<X>407.5</X><Y>854.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8959,7 +9037,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156031</Id>
 					<Name><![CDATA[attractor45]]></Name>
-					<X>372</X><Y>879</Y>
+					<X>372</X><Y>892.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8971,7 +9049,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156034</Id>
 					<Name><![CDATA[attractor46]]></Name>
-					<X>389.5</X><Y>879</Y>
+					<X>389.5</X><Y>892.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8983,7 +9061,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156037</Id>
 					<Name><![CDATA[attractor47]]></Name>
-					<X>407</X><Y>879</Y>
+					<X>407</X><Y>892.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8995,7 +9073,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156040</Id>
 					<Name><![CDATA[attractor48]]></Name>
-					<X>374.5</X><Y>918.656</Y>
+					<X>374.5</X><Y>926.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9007,7 +9085,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156043</Id>
 					<Name><![CDATA[attractor49]]></Name>
-					<X>392</X><Y>918.656</Y>
+					<X>392</X><Y>926.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9019,7 +9097,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156046</Id>
 					<Name><![CDATA[attractor50]]></Name>
-					<X>409.5</X><Y>918.656</Y>
+					<X>409.5</X><Y>926.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9031,7 +9109,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156049</Id>
 					<Name><![CDATA[attractor51]]></Name>
-					<X>372.5</X><Y>949.813</Y>
+					<X>372.5</X><Y>960.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9043,7 +9121,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156052</Id>
 					<Name><![CDATA[attractor52]]></Name>
-					<X>390</X><Y>949.813</Y>
+					<X>390</X><Y>960.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9055,7 +9133,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156055</Id>
 					<Name><![CDATA[attractor53]]></Name>
-					<X>407.5</X><Y>949.813</Y>
+					<X>407.5</X><Y>960.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9067,7 +9145,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156058</Id>
 					<Name><![CDATA[attractor54]]></Name>
-					<X>374.5</X><Y>981.969</Y>
+					<X>374.5</X><Y>994.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9079,7 +9157,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156061</Id>
 					<Name><![CDATA[attractor55]]></Name>
-					<X>392</X><Y>981.969</Y>
+					<X>392</X><Y>994.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9091,7 +9169,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156064</Id>
 					<Name><![CDATA[attractor56]]></Name>
-					<X>409.5</X><Y>981.969</Y>
+					<X>409.5</X><Y>994.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9103,7 +9181,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156067</Id>
 					<Name><![CDATA[attractor57]]></Name>
-					<X>374.5</X><Y>1015.125</Y>
+					<X>374.5</X><Y>1027.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9115,7 +9193,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156070</Id>
 					<Name><![CDATA[attractor58]]></Name>
-					<X>392</X><Y>1015.125</Y>
+					<X>392</X><Y>1027.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9127,7 +9205,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156073</Id>
 					<Name><![CDATA[attractor59]]></Name>
-					<X>409.5</X><Y>1015.125</Y>
+					<X>409.5</X><Y>1027.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9139,7 +9217,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156076</Id>
 					<Name><![CDATA[attractor60]]></Name>
-					<X>375.5</X><Y>1051.281</Y>
+					<X>375.5</X><Y>1061.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9151,7 +9229,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156079</Id>
 					<Name><![CDATA[attractor61]]></Name>
-					<X>393</X><Y>1051.281</Y>
+					<X>393</X><Y>1061.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9163,7 +9241,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156082</Id>
 					<Name><![CDATA[attractor62]]></Name>
-					<X>410.5</X><Y>1051.281</Y>
+					<X>410.5</X><Y>1061.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9175,7 +9253,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156085</Id>
 					<Name><![CDATA[attractor63]]></Name>
-					<X>375.5</X><Y>1084.438</Y>
+					<X>375.5</X><Y>1095.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9187,7 +9265,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156088</Id>
 					<Name><![CDATA[attractor64]]></Name>
-					<X>393</X><Y>1084.438</Y>
+					<X>393</X><Y>1095.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9199,7 +9277,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156091</Id>
 					<Name><![CDATA[attractor65]]></Name>
-					<X>410.5</X><Y>1084.438</Y>
+					<X>410.5</X><Y>1095.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9211,7 +9289,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156094</Id>
 					<Name><![CDATA[attractor66]]></Name>
-					<X>375.5</X><Y>1117.594</Y>
+					<X>375.5</X><Y>1128.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9223,7 +9301,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156097</Id>
 					<Name><![CDATA[attractor67]]></Name>
-					<X>393</X><Y>1117.594</Y>
+					<X>393</X><Y>1128.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9235,7 +9313,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156100</Id>
 					<Name><![CDATA[attractor68]]></Name>
-					<X>410.5</X><Y>1117.594</Y>
+					<X>410.5</X><Y>1128.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9247,7 +9325,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156103</Id>
 					<Name><![CDATA[attractor69]]></Name>
-					<X>375.5</X><Y>1150.75</Y>
+					<X>375.5</X><Y>1160.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9259,7 +9337,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156106</Id>
 					<Name><![CDATA[attractor70]]></Name>
-					<X>393</X><Y>1150.75</Y>
+					<X>393</X><Y>1160.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9271,7 +9349,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156109</Id>
 					<Name><![CDATA[attractor71]]></Name>
-					<X>410.5</X><Y>1150.75</Y>
+					<X>410.5</X><Y>1160.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9283,7 +9361,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156112</Id>
 					<Name><![CDATA[attractor72]]></Name>
-					<X>375.5</X><Y>1183.906</Y>
+					<X>375.5</X><Y>1194.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9295,7 +9373,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156115</Id>
 					<Name><![CDATA[attractor73]]></Name>
-					<X>393</X><Y>1183.906</Y>
+					<X>393</X><Y>1194.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9307,7 +9385,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156118</Id>
 					<Name><![CDATA[attractor74]]></Name>
-					<X>410.5</X><Y>1183.906</Y>
+					<X>410.5</X><Y>1194.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9319,7 +9397,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156121</Id>
 					<Name><![CDATA[attractor75]]></Name>
-					<X>375.5</X><Y>1217.063</Y>
+					<X>375.5</X><Y>1227.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9331,7 +9409,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156124</Id>
 					<Name><![CDATA[attractor76]]></Name>
-					<X>393</X><Y>1217.063</Y>
+					<X>393</X><Y>1227.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9343,7 +9421,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156127</Id>
 					<Name><![CDATA[attractor77]]></Name>
-					<X>410.5</X><Y>1217.063</Y>
+					<X>410.5</X><Y>1227.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9355,7 +9433,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156130</Id>
 					<Name><![CDATA[attractor78]]></Name>
-					<X>373.5</X><Y>1251.219</Y>
+					<X>373.5</X><Y>1261.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9367,7 +9445,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156133</Id>
 					<Name><![CDATA[attractor79]]></Name>
-					<X>391</X><Y>1251.219</Y>
+					<X>391</X><Y>1261.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9379,7 +9457,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156136</Id>
 					<Name><![CDATA[attractor80]]></Name>
-					<X>408.5</X><Y>1251.219</Y>
+					<X>408.5</X><Y>1261.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9391,7 +9469,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156139</Id>
 					<Name><![CDATA[attractor81]]></Name>
-					<X>373.5</X><Y>1284.375</Y>
+					<X>373.5</X><Y>1294.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9403,7 +9481,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156142</Id>
 					<Name><![CDATA[attractor82]]></Name>
-					<X>391</X><Y>1284.375</Y>
+					<X>391</X><Y>1294.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9415,7 +9493,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156145</Id>
 					<Name><![CDATA[attractor83]]></Name>
-					<X>408.5</X><Y>1284.375</Y>
+					<X>408.5</X><Y>1294.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9427,7 +9505,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156148</Id>
 					<Name><![CDATA[attractor84]]></Name>
-					<X>373.5</X><Y>1317.531</Y>
+					<X>373.5</X><Y>1328.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9439,7 +9517,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156151</Id>
 					<Name><![CDATA[attractor85]]></Name>
-					<X>391</X><Y>1317.531</Y>
+					<X>391</X><Y>1328.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9451,7 +9529,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156154</Id>
 					<Name><![CDATA[attractor86]]></Name>
-					<X>408.5</X><Y>1317.531</Y>
+					<X>408.5</X><Y>1328.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9463,7 +9541,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156157</Id>
 					<Name><![CDATA[attractor87]]></Name>
-					<X>374.5</X><Y>1353.688</Y>
+					<X>374.5</X><Y>1361.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9475,7 +9553,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156160</Id>
 					<Name><![CDATA[attractor88]]></Name>
-					<X>392</X><Y>1353.688</Y>
+					<X>392</X><Y>1361.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9487,7 +9565,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156163</Id>
 					<Name><![CDATA[attractor89]]></Name>
-					<X>409.5</X><Y>1353.688</Y>
+					<X>409.5</X><Y>1361.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9499,7 +9577,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156166</Id>
 					<Name><![CDATA[attractor90]]></Name>
-					<X>374.5</X><Y>1386.844</Y>
+					<X>374.5</X><Y>1393.255</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9511,7 +9589,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156169</Id>
 					<Name><![CDATA[attractor91]]></Name>
-					<X>392</X><Y>1386.844</Y>
+					<X>392</X><Y>1393.255</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9523,7 +9601,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787787156172</Id>
 					<Name><![CDATA[attractor92]]></Name>
-					<X>409.5</X><Y>1386.844</Y>
+					<X>409.5</X><Y>1393.255</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9661,7 +9739,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687260</Id>
 					<Name><![CDATA[attractor93]]></Name>
-					<X>500.5</X><Y>1387.844</Y>
+					<X>500.5</X><Y>1393.755</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9673,7 +9751,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687263</Id>
 					<Name><![CDATA[attractor94]]></Name>
-					<X>483</X><Y>1387.844</Y>
+					<X>483</X><Y>1393.755</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9685,7 +9763,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687266</Id>
 					<Name><![CDATA[attractor95]]></Name>
-					<X>465.5</X><Y>1387.844</Y>
+					<X>465.5</X><Y>1393.755</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9697,7 +9775,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687269</Id>
 					<Name><![CDATA[attractor96]]></Name>
-					<X>500.5</X><Y>1349.687</Y>
+					<X>500.5</X><Y>1361.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9709,7 +9787,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687272</Id>
 					<Name><![CDATA[attractor97]]></Name>
-					<X>483</X><Y>1349.687</Y>
+					<X>483</X><Y>1361.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9721,7 +9799,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687275</Id>
 					<Name><![CDATA[attractor98]]></Name>
-					<X>465.5</X><Y>1349.687</Y>
+					<X>465.5</X><Y>1361.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9733,7 +9811,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687278</Id>
 					<Name><![CDATA[attractor99]]></Name>
-					<X>500.5</X><Y>1316.531</Y>
+					<X>500.5</X><Y>1328.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9745,7 +9823,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687281</Id>
 					<Name><![CDATA[attractor100]]></Name>
-					<X>483</X><Y>1316.531</Y>
+					<X>483</X><Y>1328.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9757,7 +9835,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687284</Id>
 					<Name><![CDATA[attractor101]]></Name>
-					<X>465.5</X><Y>1316.531</Y>
+					<X>465.5</X><Y>1328.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9769,7 +9847,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687287</Id>
 					<Name><![CDATA[attractor102]]></Name>
-					<X>500.5</X><Y>1283.375</Y>
+					<X>500.5</X><Y>1294.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9781,7 +9859,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687290</Id>
 					<Name><![CDATA[attractor103]]></Name>
-					<X>483</X><Y>1283.375</Y>
+					<X>483</X><Y>1294.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9793,7 +9871,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687293</Id>
 					<Name><![CDATA[attractor104]]></Name>
-					<X>465.5</X><Y>1283.375</Y>
+					<X>465.5</X><Y>1294.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9805,7 +9883,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687296</Id>
 					<Name><![CDATA[attractor105]]></Name>
-					<X>499.5</X><Y>1250.219</Y>
+					<X>499.5</X><Y>1261.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9817,7 +9895,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687299</Id>
 					<Name><![CDATA[attractor106]]></Name>
-					<X>482</X><Y>1250.219</Y>
+					<X>482</X><Y>1261.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9829,7 +9907,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687302</Id>
 					<Name><![CDATA[attractor107]]></Name>
-					<X>464.5</X><Y>1250.219</Y>
+					<X>464.5</X><Y>1261.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9841,7 +9919,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687305</Id>
 					<Name><![CDATA[attractor108]]></Name>
-					<X>501.5</X><Y>1215.062</Y>
+					<X>501.5</X><Y>1227.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9853,7 +9931,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687308</Id>
 					<Name><![CDATA[attractor109]]></Name>
-					<X>484</X><Y>1215.062</Y>
+					<X>484</X><Y>1227.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9865,7 +9943,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687311</Id>
 					<Name><![CDATA[attractor110]]></Name>
-					<X>466.5</X><Y>1215.062</Y>
+					<X>466.5</X><Y>1227.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9877,7 +9955,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687314</Id>
 					<Name><![CDATA[attractor111]]></Name>
-					<X>499.5</X><Y>1183.906</Y>
+					<X>499.5</X><Y>1194.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9889,7 +9967,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687317</Id>
 					<Name><![CDATA[attractor112]]></Name>
-					<X>482</X><Y>1183.906</Y>
+					<X>482</X><Y>1194.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9901,7 +9979,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687320</Id>
 					<Name><![CDATA[attractor113]]></Name>
-					<X>465.5</X><Y>1184.906</Y>
+					<X>465.5</X><Y>1194.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9913,7 +9991,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687323</Id>
 					<Name><![CDATA[attractor114]]></Name>
-					<X>499.5</X><Y>1151.75</Y>
+					<X>499.5</X><Y>1160.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9925,7 +10003,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687326</Id>
 					<Name><![CDATA[attractor115]]></Name>
-					<X>482</X><Y>1151.75</Y>
+					<X>482</X><Y>1160.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9937,7 +10015,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687329</Id>
 					<Name><![CDATA[attractor116]]></Name>
-					<X>464.5</X><Y>1151.75</Y>
+					<X>464.5</X><Y>1160.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9949,7 +10027,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687332</Id>
 					<Name><![CDATA[attractor117]]></Name>
-					<X>499.5</X><Y>1114.594</Y>
+					<X>499.5</X><Y>1128.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9961,7 +10039,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687335</Id>
 					<Name><![CDATA[attractor118]]></Name>
-					<X>482</X><Y>1114.594</Y>
+					<X>482</X><Y>1128.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9973,7 +10051,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687338</Id>
 					<Name><![CDATA[attractor119]]></Name>
-					<X>464.5</X><Y>1114.594</Y>
+					<X>464.5</X><Y>1128.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9985,7 +10063,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687341</Id>
 					<Name><![CDATA[attractor120]]></Name>
-					<X>500.5</X><Y>1081.437</Y>
+					<X>500.5</X><Y>1095.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9997,7 +10075,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687344</Id>
 					<Name><![CDATA[attractor121]]></Name>
-					<X>483</X><Y>1081.437</Y>
+					<X>483</X><Y>1095.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10009,7 +10087,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687347</Id>
 					<Name><![CDATA[attractor122]]></Name>
-					<X>465.5</X><Y>1081.437</Y>
+					<X>465.5</X><Y>1095.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10021,7 +10099,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687350</Id>
 					<Name><![CDATA[attractor123]]></Name>
-					<X>500.5</X><Y>1048.281</Y>
+					<X>500.5</X><Y>1061.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10033,7 +10111,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687353</Id>
 					<Name><![CDATA[attractor124]]></Name>
-					<X>483</X><Y>1048.281</Y>
+					<X>483</X><Y>1061.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10045,7 +10123,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687356</Id>
 					<Name><![CDATA[attractor125]]></Name>
-					<X>465.5</X><Y>1048.281</Y>
+					<X>465.5</X><Y>1061.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10057,7 +10135,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687359</Id>
 					<Name><![CDATA[attractor126]]></Name>
-					<X>500.5</X><Y>1015.125</Y>
+					<X>500.5</X><Y>1027.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10069,7 +10147,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687362</Id>
 					<Name><![CDATA[attractor127]]></Name>
-					<X>483</X><Y>1015.125</Y>
+					<X>483</X><Y>1027.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10081,7 +10159,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687365</Id>
 					<Name><![CDATA[attractor128]]></Name>
-					<X>465.5</X><Y>1015.125</Y>
+					<X>465.5</X><Y>1027.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10093,7 +10171,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687368</Id>
 					<Name><![CDATA[attractor129]]></Name>
-					<X>498.5</X><Y>981.969</Y>
+					<X>498.5</X><Y>994.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10105,7 +10183,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687371</Id>
 					<Name><![CDATA[attractor130]]></Name>
-					<X>481</X><Y>981.969</Y>
+					<X>481</X><Y>994.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10117,7 +10195,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687374</Id>
 					<Name><![CDATA[attractor131]]></Name>
-					<X>463.5</X><Y>981.969</Y>
+					<X>463.5</X><Y>994.083</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10129,7 +10207,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687377</Id>
 					<Name><![CDATA[attractor132]]></Name>
-					<X>500.5</X><Y>948.812</Y>
+					<X>500.5</X><Y>960.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10141,7 +10219,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687380</Id>
 					<Name><![CDATA[attractor133]]></Name>
-					<X>483</X><Y>948.812</Y>
+					<X>483</X><Y>960.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10153,7 +10231,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687383</Id>
 					<Name><![CDATA[attractor134]]></Name>
-					<X>465.5</X><Y>948.812</Y>
+					<X>465.5</X><Y>960.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10165,7 +10243,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687386</Id>
 					<Name><![CDATA[attractor135]]></Name>
-					<X>499.5</X><Y>917.656</Y>
+					<X>499.5</X><Y>926.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10177,7 +10255,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687389</Id>
 					<Name><![CDATA[attractor136]]></Name>
-					<X>482</X><Y>917.656</Y>
+					<X>482</X><Y>926.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10189,7 +10267,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687392</Id>
 					<Name><![CDATA[attractor137]]></Name>
-					<X>464.5</X><Y>917.656</Y>
+					<X>464.5</X><Y>926.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10201,7 +10279,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687395</Id>
 					<Name><![CDATA[attractor138]]></Name>
-					<X>500</X><Y>882</Y>
+					<X>500</X><Y>892.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10213,7 +10291,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687398</Id>
 					<Name><![CDATA[attractor139]]></Name>
-					<X>482.5</X><Y>882</Y>
+					<X>482.5</X><Y>892.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10225,7 +10303,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687401</Id>
 					<Name><![CDATA[attractor140]]></Name>
-					<X>465</X><Y>882</Y>
+					<X>465</X><Y>892.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10237,7 +10315,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687404</Id>
 					<Name><![CDATA[attractor141]]></Name>
-					<X>497.5</X><Y>842.344</Y>
+					<X>497.5</X><Y>853.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10249,7 +10327,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687407</Id>
 					<Name><![CDATA[attractor142]]></Name>
-					<X>480</X><Y>842.344</Y>
+					<X>480</X><Y>853.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10261,7 +10339,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687410</Id>
 					<Name><![CDATA[attractor143]]></Name>
-					<X>462.5</X><Y>842.344</Y>
+					<X>462.5</X><Y>853.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10273,7 +10351,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687413</Id>
 					<Name><![CDATA[attractor144]]></Name>
-					<X>498.5</X><Y>805.187</Y>
+					<X>498.5</X><Y>814.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10285,7 +10363,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687416</Id>
 					<Name><![CDATA[attractor145]]></Name>
-					<X>481</X><Y>805.187</Y>
+					<X>481</X><Y>814.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10297,7 +10375,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687419</Id>
 					<Name><![CDATA[attractor146]]></Name>
-					<X>463.5</X><Y>805.187</Y>
+					<X>463.5</X><Y>814.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10309,7 +10387,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687422</Id>
 					<Name><![CDATA[attractor147]]></Name>
-					<X>499.5</X><Y>768.031</Y>
+					<X>499.5</X><Y>780.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10321,7 +10399,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687425</Id>
 					<Name><![CDATA[attractor148]]></Name>
-					<X>482</X><Y>768.031</Y>
+					<X>482</X><Y>780.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10333,7 +10411,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687428</Id>
 					<Name><![CDATA[attractor149]]></Name>
-					<X>464.5</X><Y>768.031</Y>
+					<X>464.5</X><Y>780.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10345,7 +10423,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687431</Id>
 					<Name><![CDATA[attractor150]]></Name>
-					<X>499.5</X><Y>734.875</Y>
+					<X>499.5</X><Y>746.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10357,7 +10435,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687434</Id>
 					<Name><![CDATA[attractor151]]></Name>
-					<X>482</X><Y>734.875</Y>
+					<X>482</X><Y>746.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10369,7 +10447,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687437</Id>
 					<Name><![CDATA[attractor152]]></Name>
-					<X>464.5</X><Y>734.875</Y>
+					<X>464.5</X><Y>746.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10381,7 +10459,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687440</Id>
 					<Name><![CDATA[attractor153]]></Name>
-					<X>498.5</X><Y>698.719</Y>
+					<X>498.5</X><Y>712.983</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10393,7 +10471,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687443</Id>
 					<Name><![CDATA[attractor154]]></Name>
-					<X>481</X><Y>698.719</Y>
+					<X>481</X><Y>712.983</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10405,7 +10483,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687446</Id>
 					<Name><![CDATA[attractor155]]></Name>
-					<X>463.5</X><Y>698.719</Y>
+					<X>463.5</X><Y>712.983</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10417,7 +10495,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687449</Id>
 					<Name><![CDATA[attractor156]]></Name>
-					<X>498.5</X><Y>665.5619999999999</Y>
+					<X>498.5</X><Y>679.133</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10429,7 +10507,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687452</Id>
 					<Name><![CDATA[attractor157]]></Name>
-					<X>481</X><Y>665.5619999999999</Y>
+					<X>481</X><Y>679.133</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10441,7 +10519,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687455</Id>
 					<Name><![CDATA[attractor158]]></Name>
-					<X>463.5</X><Y>665.5619999999999</Y>
+					<X>463.5</X><Y>679.133</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10453,7 +10531,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687458</Id>
 					<Name><![CDATA[attractor159]]></Name>
-					<X>498.5</X><Y>632.406</Y>
+					<X>498.5</X><Y>645.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10465,7 +10543,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687461</Id>
 					<Name><![CDATA[attractor160]]></Name>
-					<X>481</X><Y>632.406</Y>
+					<X>481</X><Y>645.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10477,7 +10555,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687464</Id>
 					<Name><![CDATA[attractor161]]></Name>
-					<X>463.5</X><Y>632.406</Y>
+					<X>463.5</X><Y>645.833</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10489,7 +10567,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687467</Id>
 					<Name><![CDATA[attractor162]]></Name>
-					<X>498.5</X><Y>599.25</Y>
+					<X>498.5</X><Y>612.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10501,7 +10579,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687470</Id>
 					<Name><![CDATA[attractor163]]></Name>
-					<X>481</X><Y>599.25</Y>
+					<X>481</X><Y>612.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10513,7 +10591,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687473</Id>
 					<Name><![CDATA[attractor164]]></Name>
-					<X>463.5</X><Y>599.25</Y>
+					<X>463.5</X><Y>612.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10525,7 +10603,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687476</Id>
 					<Name><![CDATA[attractor165]]></Name>
-					<X>498.5</X><Y>566.094</Y>
+					<X>498.5</X><Y>578.033</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10537,7 +10615,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687479</Id>
 					<Name><![CDATA[attractor166]]></Name>
-					<X>481</X><Y>566.094</Y>
+					<X>481</X><Y>578.033</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10549,7 +10627,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687482</Id>
 					<Name><![CDATA[attractor167]]></Name>
-					<X>463.5</X><Y>566.094</Y>
+					<X>463.5</X><Y>578.033</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10561,7 +10639,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687485</Id>
 					<Name><![CDATA[attractor168]]></Name>
-					<X>498.5</X><Y>532.9369999999999</Y>
+					<X>498.5</X><Y>543.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10573,7 +10651,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687488</Id>
 					<Name><![CDATA[attractor169]]></Name>
-					<X>481</X><Y>532.9369999999999</Y>
+					<X>481</X><Y>543.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10585,7 +10663,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687491</Id>
 					<Name><![CDATA[attractor170]]></Name>
-					<X>463.5</X><Y>532.9369999999999</Y>
+					<X>463.5</X><Y>543.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10597,7 +10675,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687494</Id>
 					<Name><![CDATA[attractor171]]></Name>
-					<X>500.5</X><Y>498.78099999999995</Y>
+					<X>500.5</X><Y>510.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10609,7 +10687,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687497</Id>
 					<Name><![CDATA[attractor172]]></Name>
-					<X>483</X><Y>498.78099999999995</Y>
+					<X>483</X><Y>510.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10621,7 +10699,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687500</Id>
 					<Name><![CDATA[attractor173]]></Name>
-					<X>465.5</X><Y>498.78099999999995</Y>
+					<X>465.5</X><Y>510.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10633,7 +10711,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687503</Id>
 					<Name><![CDATA[attractor174]]></Name>
-					<X>500.5</X><Y>465.625</Y>
+					<X>500.5</X><Y>477.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10645,7 +10723,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687506</Id>
 					<Name><![CDATA[attractor175]]></Name>
-					<X>483</X><Y>465.625</Y>
+					<X>483</X><Y>477.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10657,7 +10735,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687509</Id>
 					<Name><![CDATA[attractor176]]></Name>
-					<X>465.5</X><Y>465.625</Y>
+					<X>465.5</X><Y>477.533</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10669,7 +10747,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687512</Id>
 					<Name><![CDATA[attractor177]]></Name>
-					<X>500.5</X><Y>432.46900000000005</Y>
+					<X>500.5</X><Y>442.933</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10681,7 +10759,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687515</Id>
 					<Name><![CDATA[attractor178]]></Name>
-					<X>483</X><Y>432.46900000000005</Y>
+					<X>483</X><Y>442.933</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10693,7 +10771,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687518</Id>
 					<Name><![CDATA[attractor179]]></Name>
-					<X>465.5</X><Y>432.46900000000005</Y>
+					<X>465.5</X><Y>442.933</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10705,7 +10783,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687521</Id>
 					<Name><![CDATA[attractor180]]></Name>
-					<X>499.5</X><Y>396.3119999999999</Y>
+					<X>499.5</X><Y>408.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10717,7 +10795,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687524</Id>
 					<Name><![CDATA[attractor181]]></Name>
-					<X>482</X><Y>396.3119999999999</Y>
+					<X>482</X><Y>408.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10729,7 +10807,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687527</Id>
 					<Name><![CDATA[attractor182]]></Name>
-					<X>464.5</X><Y>396.3119999999999</Y>
+					<X>464.5</X><Y>408.333</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10741,7 +10819,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687530</Id>
 					<Name><![CDATA[attractor183]]></Name>
-					<X>499.5</X><Y>363.15599999999995</Y>
+					<X>499.5</X><Y>366.578</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10753,7 +10831,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687533</Id>
 					<Name><![CDATA[attractor184]]></Name>
-					<X>482</X><Y>363.15599999999995</Y>
+					<X>482</X><Y>366.578</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10765,7 +10843,7 @@ activos.add( ped );]]></Code>
 				<Attractor>
 					<Id>1787829687536</Id>
 					<Name><![CDATA[attractor185]]></Name>
-					<X>464.5</X><Y>363.15599999999995</Y>
+					<X>464.5</X><Y>366.578</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13606,6 +13684,9 @@ if ( rol == RolPax.PASAJERO ) {
 			<Parameters>
 				<Parameter>
 					<ParameterName><![CDATA[pesoCongestion]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[totalPax]]></ParameterName>
 				</Parameter>
 			</Parameters>
 			<PresentationProperties>
