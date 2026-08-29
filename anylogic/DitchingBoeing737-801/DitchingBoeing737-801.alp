@@ -40,7 +40,19 @@
 		<ActiveObjectClass>
 			<Id>1787743493622</Id>
 			<Name><![CDATA[Main]]></Name>
-			<StartupCode><![CDATA[Nace.inject( 6 );]]></StartupCode>
+			<StartupCode><![CDATA[salidas = new TargetLine[]{
+    targetLine,      // 0 = 1L        puerta delantera izquierda
+    targetLine1,     // 1 = 1R        puerta delantera derecha
+    targetLine4,     // 2 = AlaFwdL   sobre el ala, delantera izquierda
+    targetLine9,     // 3 = AlaFwdR   sobre el ala, delantera derecha
+    targetLine3,     // 4 = AlaAftL   sobre el ala, trasera izquierda
+    targetLine5      // 5 = AlaAftR   sobre el ala, trasera derecha
+};
+
+salidaActiva = new boolean[]{ true, true, true, true, true, true };
+enCamino     = new int[ 6 ];
+
+Nace.inject( 30 );]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1787743493627</Id>
@@ -136,11 +148,73 @@
 			</ScaleRuler>
 			<CurrentLevel>1787743493628</CurrentLevel>
 			<ConnectionsId>1787743493623</ConnectionsId>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1788006667717</Id>
+					<Name><![CDATA[salidas]]></Name>
+					<X>200</X><Y>-80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[TargetLine[]]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788008378240</Id>
+					<Name><![CDATA[salidaActiva]]></Name>
+					<X>200</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean[]]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788009788841</Id>
+					<Name><![CDATA[enCamino]]></Name>
+					<X>200</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int[]]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1788009756465</Id>
+					<Name><![CDATA[pesoCongestion]]></Name>
+					<X>460</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[90]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1788009756463</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
 			<Connectors>
 				<Connector>
 					<Id>1788003236860</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>150</X><Y>-250</Y>
+					<X>80</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -158,22 +232,22 @@
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Camina]]></ItemName>
+						<ItemName><![CDATA[Sentado]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
-						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>110</X><Y>0</Y></Point>
+						<Point><X>60</X><Y>10</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1788003247309</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>300</X><Y>-250</Y>
+					<X>340</X><Y>-230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -200,10 +274,127 @@
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>140</X><Y>0</Y></Point>
+						<Point><X>70</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788006289931</Id>
+					<Name><![CDATA[connector3]]></Name>
+					<X>300</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Camina]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Sentado]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-120</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788006886992</Id>
+					<Name><![CDATA[posSalidaX]]></Name>
+					<X>460</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[double x = salidas[ i ].getX();
+return x < 450 ? x + 18 : x - 18;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788006944599</Id>
+					<Name><![CDATA[posSalidaY]]></Name>
+					<X>460</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[return salidas[ i ].getY() + 12;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788008550554</Id>
+					<Name><![CDATA[distanciaSalida]]></Name>
+					<X>460</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[p]]></Name>
+						<Type><![CDATA[Pasajero]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[return Math.abs( p.getY() - posSalidaY( i ) )
+     + Math.abs( p.getX() - posSalidaX( i ) );]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1788008599363</Id>
+					<Name><![CDATA[elegirSalida]]></Name>
+					<X>460</X><Y>-40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[p]]></Name>
+						<Type><![CDATA[Pasajero]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[sabeBloqueos]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Body><![CDATA[int mejor = -1;
+double mejorCosto = Double.POSITIVE_INFINITY;
+
+for ( int i = 0; i < salidas.length; i++ ) {
+    if ( sabeBloqueos && !salidaActiva[ i ] ) continue;
+    double costo = distanciaSalida( p, i ) + pesoCongestion * enCamino[ i ];
+    if ( costo < mejorCosto ) { mejorCosto = costo; mejor = i; }
+}
+return mejor;]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1787743493623</Id>
@@ -283,7 +474,7 @@
 				<EmbeddedObject>
 					<Id>1788003075918</Id>
 					<Name><![CDATA[Nace]]></Name>
-					<X>120</X><Y>-250</Y>
+					<X>50</X><Y>-240</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -372,6 +563,24 @@
 										</GenericParameterSubstituteReference>
 									</GenericParameterSubstitute>
 									<Parameters>
+										<Parameter>
+											<Name><![CDATA[edad]]></Name>
+										</Parameter>
+										<Parameter>
+											<Name><![CDATA[esHombre]]></Name>
+										</Parameter>
+										<Parameter>
+											<Name><![CDATA[esPMR]]></Name>
+										</Parameter>
+										<Parameter>
+											<Name><![CDATA[llevaEquipaje]]></Name>
+										</Parameter>
+										<Parameter>
+											<Name><![CDATA[rol]]></Name>
+										</Parameter>
+										<Parameter>
+											<Name><![CDATA[llevaMenor]]></Name>
+										</Parameter>
 									</Parameters>
 									<ReplicationFlag>true</ReplicationFlag>
 									<Replication Class="CodeValue">
@@ -413,7 +622,7 @@
 						<Parameter>
 							<Name><![CDATA[diameter]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[ped.diametro]]></Code>
+								<Code><![CDATA[0.25]]></Code>
 								<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
 							</Value>
 						</Parameter>
@@ -479,7 +688,7 @@
 				<EmbeddedObject>
 					<Id>1788003083229</Id>
 					<Name><![CDATA[Camina]]></Name>
-					<X>260</X><Y>-260</Y>
+					<X>300</X><Y>-240</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -505,14 +714,20 @@
 						<Parameter>
 							<Name><![CDATA[locationLine]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[targetLine]]></Code>
+								<Code><![CDATA[salidas[ ped.salidaIdx ]]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[372]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[302]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
@@ -525,6 +740,10 @@
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[reachTolerance]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[0.5]]></Code>
+								<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
@@ -567,7 +786,7 @@
 				<EmbeddedObject>
 					<Id>1788003095222</Id>
 					<Name><![CDATA[Sale]]></Name>
-					<X>440</X><Y>-250</Y>
+					<X>410</X><Y>-230</Y>
 					<Label><X>-20</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -586,6 +805,9 @@
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[enCamino[ ped.salidaIdx ]--;]]></Code>
+							</Value>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -606,6 +828,126 @@
 					<InitializationType>SPECIFIED_NUMBER</InitializationType>
 					<InitializationDatabaseTableQuery>
 						<Id>1788003095220</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1788005039204</Id>
+					<Name><![CDATA[Sentado]]></Name>
+					<X>140</X><Y>-240</Y>
+					<Label><X>-10</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+							<ClassName><![CDATA[PedWait]]></ClassName>
+							<ItemName><![CDATA[1412464601107]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[locationType]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNode]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[nodoLeftPassengers]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[attractorChoice]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.ATTRACTOR_CHOICE_RANDOM]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[attractor]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLine]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationX]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationY]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayType]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTimeout]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[ ped.tiempoReaccion + ped.demoraEquipaje]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[waitForGroup]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayStartsWhen]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[targetReachTolerance]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onBeginWait]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
+enCamino[ ped.salidaIdx ]++;]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onCancel]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1788005039202</Id>
 						<TableReference>
 						</TableReference>
 					</InitializationDatabaseTableQuery>
@@ -9938,7 +10280,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -9988,7 +10330,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10038,7 +10380,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10088,7 +10430,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10138,7 +10480,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10188,7 +10530,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10238,7 +10580,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10288,7 +10630,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10338,7 +10680,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10388,7 +10730,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10438,7 +10780,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10488,7 +10830,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10538,7 +10880,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10588,7 +10930,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10638,7 +10980,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10688,7 +11030,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10738,7 +11080,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10788,7 +11130,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10838,7 +11180,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10888,7 +11230,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10938,7 +11280,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10988,7 +11330,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11038,7 +11380,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11088,7 +11430,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11138,7 +11480,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11188,7 +11530,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11238,7 +11580,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11288,7 +11630,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11338,7 +11680,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11388,7 +11730,7 @@
 					<Closed>false</Closed>
 					<Points>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11761,6 +12103,21 @@
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788008319185</Id>
+					<Name><![CDATA[salidaIdx]]></Name>
+					<X>270</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[-1]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -12401,6 +12758,9 @@ if ( rol == RolPax.PASAJERO ) {
 			</Presentation>
 
 			<Parameters>
+				<Parameter>
+					<ParameterName><![CDATA[pesoCongestion]]></ParameterName>
+				</Parameter>
 			</Parameters>
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
@@ -12411,11 +12771,11 @@ if ( rol == RolPax.PASAJERO ) {
 				<RealTimeScale>1.0</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
-				<StopOption><![CDATA[Never]]></StopOption>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1787702400000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1790380800000]]></FinalDate>
-				<FinalTime><![CDATA[100.0]]></FinalTime>
+				<FinalDate><![CDATA[1787703000000]]></FinalDate>
+				<FinalTime><![CDATA[600.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
