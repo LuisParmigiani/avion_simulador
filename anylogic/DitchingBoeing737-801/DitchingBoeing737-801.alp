@@ -52,6 +52,8 @@
 configurarEscenario();
 enCamino     = new int[ 6 ];
 porSalida    = new int[ 6 ];
+tApertura    = new double[ 6 ];
+java.util.Arrays.fill( tApertura, -1 );   // -1 = todavia nadie la empezo a abrir
 Nace.inject( 93 );
 NaceDer.inject( 93 );
 
@@ -248,6 +250,18 @@ NacePilotos.inject( 2 );]]></StartupCode>
 						<Type><![CDATA[int[]]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788030959086</Id>
+					<Name><![CDATA[tApertura]]></Name>
+					<X>200</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double[]]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1788009756465</Id>
 					<Name><![CDATA[pesoCongestion]]></Name>
@@ -309,7 +323,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[4]]></Code>
+							<Code><![CDATA[1]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1788030938854</Id>
@@ -319,6 +333,30 @@ NacePilotos.inject( 2 );]]></StartupCode>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
 						</ParameterEditor>
 					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1788036011606</Id>
+					<Name><![CDATA[factorIluminacion]]></Name>
+					<X>690</X><Y>-210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.80]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1788036011607</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>
 				</Variable>
 			</Variables>
 			<Connectors>
@@ -792,6 +830,79 @@ NacePilotos.inject( 2 );]]></StartupCode>
 						<Point><X>-210</X><Y>-15</Y></Point>
 					</Points>
 				</Connector>
+				<Connector>
+					<Id>1788035999588</Id>
+					<Name><![CDATA[connector8]]></Name>
+					<X>480</X><Y>-400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[EsperaPuerta]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Chequeo]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedSelectOutput]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>10</X><Y>0</Y></Point>
+						<Point><X>20</X><Y>0</Y></Point>
+						<Point><X>20</X><Y>80</Y></Point>
+						<Point><X>50</X><Y>80</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788036010606</Id>
+					<Name><![CDATA[connector9]]></Name>
+					<X>440</X><Y>-400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[EsperaPuerta]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Chequeo]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedSelectOutput]]></ClassName>
+						<ItemName><![CDATA[out2]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-30</X><Y>0</Y></Point>
+						<Point><X>-30</X><Y>-50</Y></Point>
+						<Point><X>130</X><Y>-50</Y></Point>
+						<Point><X>130</X><Y>100</Y></Point>
+						<Point><X>110</X><Y>100</Y></Point>
+					</Points>
+				</Connector>
 			</Connectors>
 			<Events>
 				<Event>
@@ -863,6 +974,7 @@ traceln( "evac=%.0fs  sentados=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL
 					</Properties>
 					<Action><![CDATA[for ( Pasajero q : new java.util.ArrayList<Pasajero>( activos ) ) {
     if ( q.getSpeed() >= 0.15 ) continue;
+    if ( EsperaPuerta.contains( q ) ) continue;   // espera que abran su puerta, no es que este trabado
     int nueva = elegirSalida( q, true );
     if ( nueva >= 0 && nueva != q.salidaIdx ) {
         enCamino[ q.salidaIdx ]--;
@@ -907,6 +1019,11 @@ if ( Sentado.size() + SentadoDer.size() < totalPax ) return;
 tAmerizaje = time();
 for ( Pasajero q : new java.util.ArrayList<Pasajero>( Sentado.getPeds() ) ) Sentado.activate( q );
 for ( Pasajero q : new java.util.ArrayList<Pasajero>( SentadoDer.getPeds() ) ) SentadoDer.activate( q );
+// las azafatas delanteras estan sentadas junto a las puertas tipo I:
+// las abren desde su puesto, sin moverse, y despues siguen esperando
+for ( int i = 0; i <= 1; i++ )
+    if ( salidaActiva[ i ] ) tApertura[ i ] = time() + duracionApertura( i );
+
 traceln( ">>> AMERIZAJE en t=" + tAmerizaje );]]></Action>
 				</Event>
 			</Events>
@@ -1034,6 +1151,74 @@ return n;]]></Body>
     case 4:  salidaActiva = new boolean[]{ true,  false, true,  false, true,  false }; break;
     default: salidaActiva = new boolean[]{ true,  true,  true,  true,  true,  true  };
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788030959087</Id>
+					<Name><![CDATA[duracionApertura]]></Name>
+					<X>700</X><Y>-40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[// AnyLogic usa triangular(min, max, mode) pero corrige solo el orden si la
+// moda cae fuera del intervalo, asi que se escribe ascendente como en el resto
+// del modelo. Los 4 numeros son SUPUESTOS PROPIOS (ver DECISIONES.md 7).
+
+// tipo I delanteras: las abre tripulacion entrenada, incluye inflado del tobogan
+if ( i <= 1 ) return triangular( 8, 12, 20 );
+
+// tipo III sobre el ala: la abre un pasajero sin entrenamiento y hay que
+// retirar una escotilla de ~15 kg
+return triangular( 20, 30, 45 );]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788030959088</Id>
+					<Name><![CDATA[intentarAbrir]]></Name>
+					<X>700</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[p]]></Name>
+						<Type><![CDATA[Pasajero]]></Type>
+					</Parameter>
+					<Body><![CDATA[if ( i < 0 || !salidaActiva[ i ] ) return;   // bloqueada en este escenario
+if ( tApertura[ i ] >= 0 )         return;   // ya la esta abriendo alguien
+
+// las tipo I delanteras solo las puede abrir la tripulacion
+if ( i <= 1 && p.rol == RolPax.PASAJERO ) return;
+
+tApertura[ i ] = time() + duracionApertura( i );]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1788030959089</Id>
+					<Name><![CDATA[salidaAbierta]]></Name>
+					<X>700</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[return i >= 0 && salidaActiva[ i ]
+    && tApertura[ i ] >= 0 && time() >= tApertura[ i ];]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -1252,11 +1437,15 @@ return n;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[comfortableSpeed]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
+								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[initialSpeed]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[ped.velocidadPreferida]]></Code>
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
 								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 							</Value>
 						</Parameter>
@@ -1453,13 +1642,13 @@ return n;]]></Body>
 						<Parameter>
 							<Name><![CDATA[condition1]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[salidaActiva[ ped.salidaIdx ]]]></Code>
+								<Code><![CDATA[salidaAbierta( ped.salidaIdx )]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[condition2]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[false]]></Code>
+								<Code><![CDATA[salidaActiva[ ped.salidaIdx ]]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1509,6 +1698,10 @@ if ( nueva >= 0 && nueva != ped.salidaIdx ) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[// el primero que llega a una puerta cerrada se pone a abrirla
+intentarAbrir( ped.salidaIdx, ped );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit1]]></Name>
@@ -1873,11 +2066,15 @@ activos.add( ped );]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[comfortableSpeed]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
+								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[initialSpeed]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[ped.velocidadPreferida]]></Code>
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
 								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 							</Value>
 						</Parameter>
@@ -2399,11 +2596,15 @@ activos.add( ped );]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[comfortableSpeed]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
+								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[initialSpeed]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[ped.velocidadPreferida]]></Code>
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
 								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 							</Value>
 						</Parameter>
@@ -2616,11 +2817,15 @@ activos.add( ped );]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[comfortableSpeed]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
+								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[initialSpeed]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[ped.velocidadPreferida]]></Code>
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
 								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 							</Value>
 						</Parameter>
@@ -2833,11 +3038,15 @@ activos.add( ped );]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[comfortableSpeed]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
+								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[initialSpeed]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[ped.velocidadPreferida]]></Code>
+								<Code><![CDATA[ped.velocidadPreferida * factorIluminacion]]></Code>
 								<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
 							</Value>
 						</Parameter>
@@ -3023,6 +3232,128 @@ activos.add( ped );]]></Code>
 					<InitializationType>SPECIFIED_NUMBER</InitializationType>
 					<InitializationDatabaseTableQuery>
 						<Id>1788030956079</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1788030960089</Id>
+					<Name><![CDATA[EsperaPuerta]]></Name>
+					<X>440</X><Y>-410</Y>
+					<Label><X>-10</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+							<ClassName><![CDATA[PedWait]]></ClassName>
+							<ItemName><![CDATA[1412464601107]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[attractorChoice]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[attractor]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLine]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getX()]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getY()]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.DELAY_TIMEOUT]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTimeout]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[1]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[waitForGroup]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayStartsWhen]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[targetReachTolerance]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onBeginWait]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onCancel]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1788030960090</Id>
 						<TableReference>
 						</TableReference>
 					</InitializationDatabaseTableQuery>
@@ -14886,6 +15217,9 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[escenario]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[factorIluminacion]]></ParameterName>
 				</Parameter>
 			</Parameters>
 			<PresentationProperties>
