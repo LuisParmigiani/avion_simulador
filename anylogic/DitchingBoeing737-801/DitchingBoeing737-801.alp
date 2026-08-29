@@ -200,6 +200,21 @@ NaceDer.inject( 93 );]]></StartupCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788029714068</Id>
+					<Name><![CDATA[evacuados]]></Name>
+					<X>200</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1788009756465</Id>
 					<Name><![CDATA[pesoCongestion]]></Name>
@@ -213,7 +228,7 @@ NaceDer.inject( 93 );]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[90]]></Code>
+							<Code><![CDATA[15]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1788009756463</Id>
@@ -262,7 +277,7 @@ NaceDer.inject( 93 );]]></StartupCode>
 				<Connector>
 					<Id>1788003247309</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>340</X><Y>-230</Y>
+					<X>490</X><Y>-230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -326,7 +341,40 @@ NaceDer.inject( 93 );]]></StartupCode>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1788010463450</Id>
+					<Id>1788029242170</Id>
+					<Name><![CDATA[connector6]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[SalirFila]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Sentado]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>220</X><Y>-230</Y></Point>
+						<Point><X>180</X><Y>-230</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788029261117</Id>
 					<Name><![CDATA[connector4]]></Name>
 					<X>190</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
@@ -346,7 +394,7 @@ NaceDer.inject( 93 );]]></StartupCode>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Pasillo]]></ItemName>
+						<ItemName><![CDATA[SalirFila]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
@@ -355,14 +403,15 @@ NaceDer.inject( 93 );]]></StartupCode>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>10</X><Y>30</Y></Point>
-						<Point><X>40</X><Y>70</Y></Point>
+						<Point><X>10</X><Y>0</Y></Point>
+						<Point><X>10</X><Y>70</Y></Point>
+						<Point><X>30</X><Y>70</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1788011704296</Id>
+					<Id>1788029337791</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>300</X><Y>-230</Y>
+					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -388,14 +437,14 @@ NaceDer.inject( 93 );]]></StartupCode>
 						<ItemName><![CDATA[out]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-30</X><Y>0</Y></Point>
+						<Point><X>450</X><Y>-230</Y></Point>
+						<Point><X>370</X><Y>-230</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1788011704298</Id>
+					<Id>1788029337793</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>230</X><Y>-230</Y>
+					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -413,16 +462,53 @@ NaceDer.inject( 93 );]]></StartupCode>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Sentado]]></ItemName>
+						<ItemName><![CDATA[SalirFila]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
-						<ClassName><![CDATA[PedWait]]></ClassName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
 						<ItemName><![CDATA[out]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
+						<Point><X>330</X><Y>-230</Y></Point>
+						<Point><X>260</X><Y>-230</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788029384613</Id>
+					<Name><![CDATA[connector7]]></Name>
+					<X>480</X><Y>-220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Camina]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[ccl]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Camina]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-50</X><Y>0</Y></Point>
+						<Point><X>30</X><Y>0</Y></Point>
+						<Point><X>30</X><Y>20</Y></Point>
+						<Point><X>-50</X><Y>20</Y></Point>
+						<Point><X>-50</X><Y>-10</Y></Point>
+						<Point><X>-30</X><Y>-10</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -459,10 +545,50 @@ NaceDer.inject( 93 );]]></StartupCode>
 					</Properties>
 					<Action><![CDATA[int quietos = 0;
 for ( Pasajero q : activos ) if ( q.getSpeed() < 0.05 ) quietos++;
-traceln( "t=%.0f  quedan=%d  quietos=%d", time(), activos.size(), quietos );
-if ( time() >= 240 ) {
-    for ( Pasajero q : activos )
-        traceln( "    trabado en (%.0f,%.0f) salida=%d", q.getX(), q.getY(), q.salidaIdx );
+int sentandose = Sentado.size() + SentadoDer.size();
+traceln( "t=%.0f  sentandose=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL=%d",
+         time(), sentandose, activos.size(), quietos, evacuados,
+         sentandose + activos.size() + evacuados );]]></Action>
+				</Event>
+				<Event>
+					<Id>1788028432101</Id>
+					<Name><![CDATA[recalculo]]></Name>
+					<X>330</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<Id>1788028432099</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1788076800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[10]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[10]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[for ( Pasajero q : new java.util.ArrayList<Pasajero>( activos ) ) {
+    if ( q.getSpeed() >= 0.15 ) continue;
+    int nueva = elegirSalida( q, false );
+    if ( nueva >= 0 && nueva != q.salidaIdx ) {
+        enCamino[ q.salidaIdx ]--;
+        q.salidaIdx = nueva;
+        enCamino[ nueva ]++;
+    }
+    if ( Camina.contains( q ) ) Camina.cancel( q );
 }]]></Action>
 				</Event>
 			</Events>
@@ -481,8 +607,7 @@ if ( time() >= 240 ) {
 						<Name><![CDATA[i]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[double x = salidas[ i ].getX();
-return x < 450 ? x + 18 : x - 18;]]></Body>
+					<Body><![CDATA[return salidas[ i ].getX();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -498,7 +623,7 @@ return x < 450 ? x + 18 : x - 18;]]></Body>
 						<Name><![CDATA[i]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[return salidas[ i ].getY() + 12;]]></Body>
+					<Body><![CDATA[return salidas[ i ].getY() + 9;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -544,44 +669,35 @@ double mejorCosto = Double.POSITIVE_INFINITY;
 
 for ( int i = 0; i < salidas.length; i++ ) {
     if ( sabeBloqueos && !salidaActiva[ i ] ) continue;
-    double costo = distanciaSalida( p, i ) + pesoCongestion * enCamino[ i ];
+    double costo = distanciaSalida( p, i ) + pesoCongestion * gentEnCamino( p, i );
     if ( costo < mejorCosto ) { mejorCosto = costo; mejor = i; }
 }
 return mejor;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1788011597530</Id>
-					<Name><![CDATA[puntoPasoX]]></Name>
-					<X>600</X><Y>-130</Y>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1788028294597</Id>
+					<Name><![CDATA[gentEnCamino]]></Name>
+					<X>600</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
-						<Name><![CDATA[i]]></Name>
-						<Type><![CDATA[int]]></Type>
+						<Name><![CDATA[p]]></Name>
+						<Type><![CDATA[Pasajero]]></Type>
 					</Parameter>
-					<Body><![CDATA[if ( i <= 1 ) return 435;
-return 435;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1788011640694</Id>
-					<Name><![CDATA[puntoPasoY]]></Name>
-					<X>600</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[i]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[if ( i <= 1 ) return 330;
-return posSalidaY( i );]]></Body>
+					<Body><![CDATA[double y0 = Math.min( p.getY(), posSalidaY( i ) );
+double y1 = Math.max( p.getY(), posSalidaY( i ) );
+int n = 0;
+for ( Pasajero q : activos )
+    if ( q != p && q.getY() >= y0 && q.getY() <= y1 ) n++;
+return n;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -877,7 +993,7 @@ return posSalidaY( i );]]></Body>
 				<EmbeddedObject>
 					<Id>1788003083229</Id>
 					<Name><![CDATA[Camina]]></Name>
-					<X>300</X><Y>-240</Y>
+					<X>450</X><Y>-240</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -899,9 +1015,6 @@ return posSalidaY( i );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[self.LOCATION_POINT]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationLine]]></Name>
@@ -933,7 +1046,7 @@ return posSalidaY( i );]]></Body>
 						<Parameter>
 							<Name><![CDATA[reachTolerance]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[0.5]]></Code>
+								<Code><![CDATA[0.3]]></Code>
 								<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
 							</Value>
 						</Parameter>
@@ -978,7 +1091,7 @@ return posSalidaY( i );]]></Body>
 				<EmbeddedObject>
 					<Id>1788003095222</Id>
 					<Name><![CDATA[Sale]]></Name>
-					<X>410</X><Y>-230</Y>
+					<X>560</X><Y>-230</Y>
 					<Label><X>-20</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -999,7 +1112,8 @@ return posSalidaY( i );]]></Body>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[enCamino[ ped.salidaIdx ]--;
-activos.remove( ped );]]></Code>
+activos.remove( ped );
+evacuados++;]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -1485,9 +1599,9 @@ activos.add( ped );]]></Code>
 					</QuantityColumn>
 				</EmbeddedObject>
 				<EmbeddedObject>
-					<Id>1788011662374</Id>
-					<Name><![CDATA[Pasillo]]></Name>
-					<X>230</X><Y>-240</Y>
+					<Id>1788029226781</Id>
+					<Name><![CDATA[SalirFila]]></Name>
+					<X>220</X><Y>-240</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1519,13 +1633,13 @@ activos.add( ped );]]></Code>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[puntoPasoX( ped.salidaIdx )]]></Code>
+								<Code><![CDATA[435]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[puntoPasoY( ped.salidaIdx )]]></Code>
+								<Code><![CDATA[ped.getY()]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1570,7 +1684,101 @@ activos.add( ped );]]></Code>
 					</LocationNameCode>
 					<InitializationType>SPECIFIED_NUMBER</InitializationType>
 					<InitializationDatabaseTableQuery>
-						<Id>1788011662372</Id>
+						<Id>1788029226779</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1788029336666</Id>
+					<Name><![CDATA[Pasillo]]></Name>
+					<X>330</X><Y>-240</Y>
+					<Label><X>-10</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+							<ClassName><![CDATA[PedGoTo]]></ClassName>
+							<ItemName><![CDATA[1412464601103]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[mode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLine]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[435]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.salidaIdx <= 1 ? 330 : posSalidaY( ped.salidaIdx )]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[route]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[walkInReverseDirection]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[reachTolerance]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onCancel]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1788029336664</Id>
 						<TableReference>
 						</TableReference>
 					</InitializationDatabaseTableQuery>
@@ -1690,7 +1898,7 @@ activos.add( ped );]]></Code>
 				<TargetLine>
 					<Id>1787743590169</Id>
 					<Name><![CDATA[targetLine]]></Name>
-					<X>357</X><Y>291</Y>
+					<X>375</X><Y>291</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1700,13 +1908,13 @@ activos.add( ped );]]></Code>
 					<LineColor>-16744448</LineColor>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>23</Y></Point>
+						<Point><X>0</X><Y>18</Y></Point>
 					</Points>
 				</TargetLine>
 				<TargetLine>
 					<Id>1787743609139</Id>
 					<Name><![CDATA[targetLine1]]></Name>
-					<X>518</X><Y>291</Y>
+					<X>500</X><Y>291</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1716,13 +1924,13 @@ activos.add( ped );]]></Code>
 					<LineColor>-16744448</LineColor>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>17</Y></Point>
+						<Point><X>0</X><Y>18</Y></Point>
 					</Points>
 				</TargetLine>
 				<TargetLine>
 					<Id>1787743625578</Id>
 					<Name><![CDATA[targetLine3]]></Name>
-					<X>353</X><Y>833</Y>
+					<X>371</X><Y>844</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1732,13 +1940,13 @@ activos.add( ped );]]></Code>
 					<LineColor>-16744448</LineColor>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>27</Y></Point>
+						<Point><X>0</X><Y>18</Y></Point>
 					</Points>
 				</TargetLine>
 				<TargetLine>
 					<Id>1787743641119</Id>
 					<Name><![CDATA[targetLine5]]></Name>
-					<X>521</X><Y>833</Y>
+					<X>503</X><Y>844</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1748,7 +1956,7 @@ activos.add( ped );]]></Code>
 					<LineColor>-16744448</LineColor>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>27</Y></Point>
+						<Point><X>0</X><Y>18</Y></Point>
 					</Points>
 				</TargetLine>
 				<TargetLine>
@@ -5026,7 +5234,7 @@ activos.add( ped );]]></Code>
 				<TargetLine>
 					<Id>1787743927165</Id>
 					<Name><![CDATA[targetLine4]]></Name>
-					<X>352</X><Y>793</Y>
+					<X>370</X><Y>806</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5036,13 +5244,13 @@ activos.add( ped );]]></Code>
 					<LineColor>-16744448</LineColor>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>27</Y></Point>
+						<Point><X>0</X><Y>18</Y></Point>
 					</Points>
 				</TargetLine>
 				<TargetLine>
 					<Id>1787743934721</Id>
 					<Name><![CDATA[targetLine9]]></Name>
-					<X>520</X><Y>794</Y>
+					<X>502</X><Y>806</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5052,7 +5260,7 @@ activos.add( ped );]]></Code>
 					<LineColor>-16744448</LineColor>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>27</Y></Point>
+						<Point><X>0</X><Y>18</Y></Point>
 					</Points>
 				</TargetLine>
 				<Figure3D>
@@ -12740,6 +12948,21 @@ activos.add( ped );]]></Code>
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[-1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788027941129</Id>
+					<Name><![CDATA[enPasillo]]></Name>
+					<X>270</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
