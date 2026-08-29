@@ -4,3 +4,7 @@
 # AnyLogic - archivos generados / temporales
 *.alp.bak
 ~$*
+
+# Notas de trabajo personales (Integrante 3) - no compartir al repo
+PENDIENTES.md
+DECISIONES.md

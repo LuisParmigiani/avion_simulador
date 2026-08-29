@@ -49,7 +49,7 @@
     targetLine5      // 5 = AlaAftR   sobre el ala, trasera derecha
 };
 
-salidaActiva = new boolean[]{ true, true, true, true, true, true };
+configurarEscenario();
 enCamino     = new int[ 6 ];
 Nace.inject( 93 );
 NaceDer.inject( 93 );
@@ -284,6 +284,30 @@ porSalida = new int[ 6 ];]]></StartupCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1788030325617</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1788030938856</Id>
+					<Name><![CDATA[escenario]]></Name>
+					<X>690</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1788030938854</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -634,7 +658,7 @@ traceln( "evac=%.0fs  sentados=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL
 					</Properties>
 					<Action><![CDATA[for ( Pasajero q : new java.util.ArrayList<Pasajero>( activos ) ) {
     if ( q.getSpeed() >= 0.15 ) continue;
-    int nueva = elegirSalida( q, false );
+    int nueva = elegirSalida( q, true );
     if ( nueva >= 0 && nueva != q.salidaIdx ) {
         enCamino[ q.salidaIdx ]--;
         q.salidaIdx = nueva;
@@ -787,6 +811,24 @@ int n = 0;
 for ( Pasajero q : activos )
     if ( q != p && q.getY() >= y0 && q.getY() <= y1 ) n++;
 return n;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788030955066</Id>
+					<Name><![CDATA[configurarEscenario]]></Name>
+					<X>600</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[switch ( escenario ) {
+    case 1:  salidaActiva = new boolean[]{ true,  true,  true,  true,  true,  true  }; break;
+    case 2:  salidaActiva = new boolean[]{ true,  false, false, true,  true,  false }; break;
+    case 3:  salidaActiva = new boolean[]{ false, false, true,  true,  true,  false }; break;
+    case 4:  salidaActiva = new boolean[]{ true,  false, true,  false, true,  false }; break;
+    default: salidaActiva = new boolean[]{ true,  true,  true,  true,  true,  true  };
+}]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -1318,7 +1360,7 @@ if ( evacuados == totalPax )
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
+								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, true );
 enCamino[ ped.salidaIdx ]++;
 activos.add( ped );]]></Code>
 							</Value>
@@ -1653,7 +1695,7 @@ activos.add( ped );]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
+								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, true );
 enCamino[ ped.salidaIdx ]++;
 activos.add( ped );]]></Code>
 							</Value>
@@ -13701,6 +13743,9 @@ if ( rol == RolPax.PASAJERO ) {
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[totalPax]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[escenario]]></ParameterName>
 				</Parameter>
 			</Parameters>
 			<PresentationProperties>
