@@ -309,7 +309,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
+							<Code><![CDATA[4]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1788030938854</Id>
@@ -325,7 +325,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788003236860</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>80</X><Y>-230</Y>
+					<X>80</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -358,7 +358,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788003247309</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>490</X><Y>-230</Y>
+					<X>490</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -376,22 +376,22 @@ NacePilotos.inject( 2 );]]></StartupCode>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Sale]]></ItemName>
+						<ItemName><![CDATA[Chequeo]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
-						<ClassName><![CDATA[PedSink]]></ClassName>
+						<ClassName><![CDATA[PedSelectOutput]]></ClassName>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>70</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>-10</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1788010411657</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>70</X><Y>-300</Y>
+					<X>70</X><Y>-380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -424,7 +424,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788029242170</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>0</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -457,7 +457,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788029261117</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>190</X><Y>-300</Y>
+					<X>190</X><Y>-380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -492,7 +492,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788029337791</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>0</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -525,7 +525,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788029337793</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>0</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -558,7 +558,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788029384613</Id>
 					<Name><![CDATA[connector7]]></Name>
-					<X>480</X><Y>-220</Y>
+					<X>480</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -595,7 +595,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956080</Id>
 					<Name><![CDATA[connTripDel]]></Name>
-					<X>70</X><Y>-380</Y>
+					<X>70</X><Y>-460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -628,7 +628,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956081</Id>
 					<Name><![CDATA[connTripTras]]></Name>
-					<X>70</X><Y>-420</Y>
+					<X>70</X><Y>-500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -661,7 +661,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956082</Id>
 					<Name><![CDATA[connPilotos]]></Name>
-					<X>70</X><Y>-460</Y>
+					<X>70</X><Y>-540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -694,7 +694,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956083</Id>
 					<Name><![CDATA[connTripSale]]></Name>
-					<X>190</X><Y>-410</Y>
+					<X>190</X><Y>-490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -722,6 +722,74 @@ NacePilotos.inject( 2 );]]></StartupCode>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>30</X><Y>180</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788030957085</Id>
+					<Name><![CDATA[connSale]]></Name>
+					<X>550</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Chequeo]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedSelectOutput]]></ClassName>
+						<ItemName><![CDATA[out1]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Sale]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedSink]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788030957086</Id>
+					<Name><![CDATA[connRebote]]></Name>
+					<X>540</X><Y>-295</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Chequeo]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedSelectOutput]]></ClassName>
+						<ItemName><![CDATA[out5]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Pasillo]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>10</X><Y>55</Y></Point>
+						<Point><X>0</X><Y>45</Y></Point>
+						<Point><X>-210</X><Y>45</Y></Point>
+						<Point><X>-210</X><Y>-15</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -1047,7 +1115,7 @@ return n;]]></Body>
 				<EmbeddedObject>
 					<Id>1788003075918</Id>
 					<Name><![CDATA[Nace]]></Name>
-					<X>50</X><Y>-230</Y>
+					<X>50</X><Y>-310</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1261,7 +1329,7 @@ return n;]]></Body>
 				<EmbeddedObject>
 					<Id>1788003083229</Id>
 					<Name><![CDATA[Camina]]></Name>
-					<X>450</X><Y>-240</Y>
+					<X>450</X><Y>-320</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1357,9 +1425,133 @@ return n;]]></Body>
 					</QuantityColumn>
 				</EmbeddedObject>
 				<EmbeddedObject>
+					<Id>1788030957083</Id>
+					<Name><![CDATA[Chequeo]]></Name>
+					<X>520</X><Y>-320</Y>
+					<Label><X>-10</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedSelectOutput]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+							<ClassName><![CDATA[PedSelectOutput]]></ClassName>
+							<ItemName><![CDATA[1412464601215]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[type]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.TYPE_CONDITIONS]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[condition1]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[salidaActiva[ ped.salidaIdx ]]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[condition2]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[false]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[condition3]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[false]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[condition4]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[false]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit5]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[// la puerta estaba bloqueada: recien AHORA se entera y elige otra
+int nueva = elegirSalida( ped, true );
+if ( nueva >= 0 && nueva != ped.salidaIdx ) {
+    enCamino[ ped.salidaIdx ]--;
+    ped.salidaIdx = nueva;
+    enCamino[ nueva ]++;
+}]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probability1]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probability2]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probability3]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probability4]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probability5]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[exitNumber]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[choiceIsVolatile]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit1]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit2]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit3]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit4]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1788030957084</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
 					<Id>1788003095222</Id>
 					<Name><![CDATA[Sale]]></Name>
-					<X>560</X><Y>-230</Y>
+					<X>590</X><Y>-320</Y>
 					<Label><X>-20</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1423,7 +1615,7 @@ if ( evacuados == totalPax + 6 )
 				<EmbeddedObject>
 					<Id>1788005039204</Id>
 					<Name><![CDATA[Sentado]]></Name>
-					<X>140</X><Y>-240</Y>
+					<X>140</X><Y>-320</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1504,7 +1696,7 @@ if ( evacuados == totalPax + 6 )
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, true );
+								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
 enCamino[ ped.salidaIdx ]++;
 activos.add( ped );]]></Code>
 							</Value>
@@ -1544,7 +1736,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788010392786</Id>
 					<Name><![CDATA[NaceDer]]></Name>
-					<X>40</X><Y>-300</Y>
+					<X>40</X><Y>-380</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1758,7 +1950,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788010392839</Id>
 					<Name><![CDATA[SentadoDer]]></Name>
-					<X>150</X><Y>-310</Y>
+					<X>150</X><Y>-390</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1839,7 +2031,7 @@ activos.add( ped );]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, true );
+								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
 enCamino[ ped.salidaIdx ]++;
 activos.add( ped );]]></Code>
 							</Value>
@@ -1879,7 +2071,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788029226781</Id>
 					<Name><![CDATA[SalirFila]]></Name>
-					<X>220</X><Y>-240</Y>
+					<X>220</X><Y>-320</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1973,7 +2165,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788029336666</Id>
 					<Name><![CDATA[Pasillo]]></Name>
-					<X>330</X><Y>-240</Y>
+					<X>330</X><Y>-320</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2067,7 +2259,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956066</Id>
 					<Name><![CDATA[NaceTripDel]]></Name>
-					<X>40</X><Y>-380</Y>
+					<X>40</X><Y>-460</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2284,7 +2476,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956070</Id>
 					<Name><![CDATA[NaceTripTras]]></Name>
-					<X>40</X><Y>-420</Y>
+					<X>40</X><Y>-500</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2501,7 +2693,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956074</Id>
 					<Name><![CDATA[NacePilotos]]></Name>
-					<X>40</X><Y>-460</Y>
+					<X>40</X><Y>-540</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2718,7 +2910,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956078</Id>
 					<Name><![CDATA[SentadoTrip]]></Name>
-					<X>150</X><Y>-420</Y>
+					<X>150</X><Y>-500</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2801,7 +2993,7 @@ activos.add( ped );]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, true );
+								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
 enCamino[ ped.salidaIdx ]++;
 activos.add( ped );]]></Code>
 							</Value>
@@ -14567,6 +14759,32 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 					<IgnoreSceneLights>false</IgnoreSceneLights>
 					<VisibleCode><![CDATA[!esHombre && edad <= 12]]></VisibleCode>
 </Figure3D>
+				<Oval>
+					<Id>1788030958086</Id>
+					<Name><![CDATA[marcaRol]]></Name>
+					<X>1</X><Y>0</Y>
+					<Label><X>0</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<VisibleCode><![CDATA[rol != RolPax.PASAJERO]]></VisibleCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>3</LineWidth>
+					<LineColor>-2354116</LineColor>
+					<LineColorCode><![CDATA[rol == RolPax.PILOTO               ? new java.awt.Color(   0,  90, 200 ) :
+rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
+                                     new java.awt.Color( 255, 140,   0 )]]></LineColorCode>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<RadiusX>14</RadiusX>
+					<RadiusY>14</RadiusY>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Oval>
 			</Presentation>
 
 				</Level>
