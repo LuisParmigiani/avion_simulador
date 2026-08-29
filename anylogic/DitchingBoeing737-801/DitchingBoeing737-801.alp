@@ -185,6 +185,21 @@ NaceDer.inject( 93 );]]></StartupCode>
 						<Type><![CDATA[int[]]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788011268136</Id>
+					<Name><![CDATA[activos]]></Name>
+					<X>200</X><Y>-140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[java.util.List<Pasajero>]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new java.util.LinkedList<Pasajero>()]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1788009756465</Id>
 					<Name><![CDATA[pesoCongestion]]></Name>
@@ -278,42 +293,9 @@ NaceDer.inject( 93 );]]></StartupCode>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1788006289931</Id>
-					<Name><![CDATA[connector3]]></Name>
-					<X>300</X><Y>-230</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Camina]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
-						<ClassName><![CDATA[PedGoTo]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Sentado]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
-						<ClassName><![CDATA[PedWait]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-120</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1788010411657</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>70</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -339,14 +321,14 @@ NaceDer.inject( 93 );]]></StartupCode>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>70</X><Y>-300</Y></Point>
-						<Point><X>130</X><Y>-300</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>80</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1788010463450</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>170</X><Y>-300</Y>
+					<X>190</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -364,7 +346,7 @@ NaceDer.inject( 93 );]]></StartupCode>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[Camina]]></ItemName>
+						<ItemName><![CDATA[Pasillo]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
@@ -373,10 +355,117 @@ NaceDer.inject( 93 );]]></StartupCode>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>130</X><Y>70</Y></Point>
+						<Point><X>10</X><Y>30</Y></Point>
+						<Point><X>40</X><Y>70</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788011704296</Id>
+					<Name><![CDATA[connector3]]></Name>
+					<X>300</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Camina]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Pasillo]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-30</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1788011704298</Id>
+					<Name><![CDATA[connector5]]></Name>
+					<X>230</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Pasillo]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[Sentado]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedWait]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-50</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
+			<Events>
+				<Event>
+					<Id>1788011354224</Id>
+					<Name><![CDATA[radar]]></Name>
+					<X>330</X><Y>-140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<Id>1788011354222</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1788076800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[30]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[int quietos = 0;
+for ( Pasajero q : activos ) if ( q.getSpeed() < 0.05 ) quietos++;
+traceln( "t=%.0f  quedan=%d  quietos=%d", time(), activos.size(), quietos );
+if ( time() >= 240 ) {
+    for ( Pasajero q : activos )
+        traceln( "    trabado en (%.0f,%.0f) salida=%d", q.getX(), q.getY(), q.salidaIdx );
+}]]></Action>
+				</Event>
+			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -459,6 +548,40 @@ for ( int i = 0; i < salidas.length; i++ ) {
     if ( costo < mejorCosto ) { mejorCosto = costo; mejor = i; }
 }
 return mejor;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788011597530</Id>
+					<Name><![CDATA[puntoPasoX]]></Name>
+					<X>600</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if ( i <= 1 ) return 435;
+return 435;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788011640694</Id>
+					<Name><![CDATA[puntoPasoY]]></Name>
+					<X>600</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if ( i <= 1 ) return 330;
+return posSalidaY( i );]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -688,7 +811,7 @@ return mejor;]]></Body>
 						<Parameter>
 							<Name><![CDATA[diameter]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[0.25]]></Code>
+								<Code><![CDATA[0.30]]></Code>
 								<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
 							</Value>
 						</Parameter>
@@ -776,6 +899,9 @@ return mejor;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationLine]]></Name>
@@ -786,13 +912,13 @@ return mejor;]]></Body>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[372]]></Code>
+								<Code><![CDATA[posSalidaX( ped.salidaIdx )]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[302]]></Code>
+								<Code><![CDATA[posSalidaY( ped.salidaIdx )]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -872,7 +998,8 @@ return mejor;]]></Body>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[enCamino[ ped.salidaIdx ]--;]]></Code>
+								<Code><![CDATA[enCamino[ ped.salidaIdx ]--;
+activos.remove( ped );]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -986,7 +1113,8 @@ return mejor;]]></Body>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
-enCamino[ ped.salidaIdx ]++;]]></Code>
+enCamino[ ped.salidaIdx ]++;
+activos.add( ped );]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1172,7 +1300,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Parameter>
 							<Name><![CDATA[diameter]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[0.25]]></Code>
+								<Code><![CDATA[0.30]]></Code>
 								<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
 							</Value>
 						</Parameter>
@@ -1238,7 +1366,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 				<EmbeddedObject>
 					<Id>1788010392839</Id>
 					<Name><![CDATA[SentadoDer]]></Name>
-					<X>130</X><Y>-310</Y>
+					<X>150</X><Y>-310</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1320,7 +1448,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[ped.salidaIdx = elegirSalida( ped, false );
-enCamino[ ped.salidaIdx ]++;]]></Code>
+enCamino[ ped.salidaIdx ]++;
+activos.add( ped );]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1348,6 +1477,100 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<InitializationType>SPECIFIED_NUMBER</InitializationType>
 					<InitializationDatabaseTableQuery>
 						<Id>1788010392837</Id>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1788011662374</Id>
+					<Name><![CDATA[Pasillo]]></Name>
+					<X>230</X><Y>-240</Y>
+					<Label><X>-10</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+						<ClassName><![CDATA[PedGoTo]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
+							<ClassName><![CDATA[PedGoTo]]></ClassName>
+							<ItemName><![CDATA[1412464601103]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[mode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationLine]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[puntoPasoX( ped.salidaIdx )]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[puntoPasoY( ped.salidaIdx )]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[locationNode]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[route]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[walkInReverseDirection]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[reachTolerance]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onCancel]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialLocationType>XYZ</InitialLocationType>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<Id>1788011662372</Id>
 						<TableReference>
 						</TableReference>
 					</InitializationDatabaseTableQuery>
@@ -10657,7 +10880,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -10679,8 +10902,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.5</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.5</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10707,7 +10930,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -10729,8 +10952,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.409</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.409</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10757,7 +10980,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.4</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -10779,8 +11002,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.808</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.808</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10807,7 +11030,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.308</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -10829,8 +11052,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.717</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.717</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10857,9 +11080,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.8</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.8</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -10879,8 +11102,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.208</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.208</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10907,9 +11130,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.708</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.708</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -10929,8 +11152,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.117</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.117</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -10957,9 +11180,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.4</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.4</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -10979,8 +11202,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.808</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.808</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11007,9 +11230,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.308</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.308</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11029,8 +11252,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.717</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.717</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11057,7 +11280,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.2</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11079,8 +11302,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.608</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.608</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11107,7 +11330,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.108</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11129,8 +11352,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.517</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.517</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11157,9 +11380,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.5</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.5</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11179,8 +11402,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.908</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11207,9 +11430,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.408</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11229,8 +11452,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.817</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.817</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11257,9 +11480,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.5</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.5</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11279,8 +11502,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.908</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11307,9 +11530,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.408</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11329,8 +11552,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.817</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.817</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11357,9 +11580,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11379,8 +11602,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.408</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11407,9 +11630,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>68.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>68.908</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11429,8 +11652,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.317</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.317</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11457,7 +11680,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11479,8 +11702,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11507,9 +11730,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11529,8 +11752,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11557,7 +11780,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>71</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11579,8 +11802,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>2.408</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>2.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11607,7 +11830,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11629,8 +11852,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>2.317</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>2.317</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11657,7 +11880,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11679,8 +11902,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11707,9 +11930,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11729,8 +11952,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11757,7 +11980,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11779,8 +12002,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11807,9 +12030,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11829,8 +12052,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11857,7 +12080,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -11879,8 +12102,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11907,9 +12130,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.908</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11929,8 +12152,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.317</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -11957,9 +12180,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.5</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.5</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -11979,8 +12202,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.908</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -12007,9 +12230,9 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>69.408</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
 				</Wall>
 				<Wall>
@@ -12029,8 +12252,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.817</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>0.817</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -12057,7 +12280,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.5</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -12079,8 +12302,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.908</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.908</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
@@ -12107,7 +12330,7 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>-25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>70.408</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>70</X><Y>0</Y><Z>0</Z></Point>
 					</Points>
@@ -12129,8 +12352,8 @@ enCamino[ ped.salidaIdx ]++;]]></Code>
 					<ZHeight>20</ZHeight>
 					<Closed>false</Closed>
 					<Points>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
-						<Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.817</X><Y>0</Y><Z>0</Z></Point>
+						<Point><X>1.817</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>25</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>75.092</X><Y>0</Y><Z>0</Z></Point>
 						<Point><X>50.092</X><Y>0</Y><Z>0</Z></Point>
