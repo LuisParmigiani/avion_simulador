@@ -356,7 +356,31 @@ NacePilotos.inject( 2 );]]></StartupCode>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
 						</ParameterEditor>
-					</Properties>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1788036012607</Id>
+					<Name><![CDATA[velObstaculo]]></Name>
+					<X>690</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1788036012608</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
 				</Variable>
 			</Variables>
 			<Connectors>
@@ -798,7 +822,7 @@ NacePilotos.inject( 2 );]]></StartupCode>
 				<Connector>
 					<Id>1788030957086</Id>
 					<Name><![CDATA[connRebote]]></Name>
-					<X>540</X><Y>-295</Y>
+					<X>550</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -824,10 +848,10 @@ NacePilotos.inject( 2 );]]></StartupCode>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>10</X><Y>55</Y></Point>
-						<Point><X>0</X><Y>45</Y></Point>
-						<Point><X>-210</X><Y>45</Y></Point>
-						<Point><X>-210</X><Y>-15</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>20</Y></Point>
+						<Point><X>-220</X><Y>20</Y></Point>
+						<Point><X>-220</X><Y>-70</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1157,7 +1181,7 @@ return n;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788030959087</Id>
 					<Name><![CDATA[duracionApertura]]></Name>
-					<X>700</X><Y>-40</Y>
+					<X>600</X><Y>-130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1182,7 +1206,7 @@ return triangular( 20, 30, 45 );]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788030959088</Id>
 					<Name><![CDATA[intentarAbrir]]></Name>
-					<X>700</X><Y>20</Y>
+					<X>740</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1208,7 +1232,7 @@ tApertura[ i ] = time() + duracionApertura( i );]]></Body>
 					<ReturnType><![CDATA[boolean]]></ReturnType>
 					<Id>1788030959089</Id>
 					<Name><![CDATA[salidaAbierta]]></Name>
-					<X>700</X><Y>80</Y>
+					<X>730</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1827,12 +1851,12 @@ if ( evacuados == totalPax + 6 )
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[nodoLeftPassengers]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
@@ -1845,9 +1869,15 @@ if ( evacuados == totalPax + 6 )
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getX()]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getY()]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delayType]]></Name>
@@ -2166,12 +2196,12 @@ activos.add( ped );]]></Code>
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.LOCATION_POINT]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationNode]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[nodoRightPassengers]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[attractorChoice]]></Name>
@@ -2184,9 +2214,15 @@ activos.add( ped );]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationX]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getX()]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationY]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ped.getY()]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delayType]]></Name>
@@ -15220,6 +15256,9 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[factorIluminacion]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[velObstaculo]]></ParameterName>
 				</Parameter>
 			</Parameters>
 			<PresentationProperties>
