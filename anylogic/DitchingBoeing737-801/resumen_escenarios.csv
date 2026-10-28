@@ -1,0 +1,6 @@
+sep=;
+clave;corridas;completas;media;desvio;ic95_inf;ic95_sup;p95;min;max;pct_cumple_90;salida_mayor_throughput;salida_mayor_saturacion
+1;30;30;226.17;30.84;214.66;237.69;284.68;189.00;338.30;0.0;AlaAftL;AlaAftR
+2;30;30;276.40;30.89;264.87;287.93;332.60;223.40;344.60;0.0;AlaAftL;AlaAftL
+3;30;30;372.57;273.17;270.58;474.56;444.34;261.20;1796.00;0.0;AlaAftL;AlaFwdR
+4;30;30;245.24;18.81;238.21;252.26;279.59;217.70;285.50;0.0;AlaAftL;AlaAftL

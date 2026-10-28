@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.9.202607020844" AlpVersion="8.9.9">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.9.202607020720" AlpVersion="8.9.9">
 <Model>
 	<Id>1787743493618</Id>
 	<Name><![CDATA[DitchingBoeing737-801]]></Name>
@@ -64,7 +64,11 @@ NaceDer.inject( 93 );
 // tripulacion: 2 azafatas delanteras, 2 traseras, 2 pilotos
 NaceTripDel.inject( 2 );
 NaceTripTras.inject( 2 );
-NacePilotos.inject( 2 );]]></StartupCode>
+NacePilotos.inject( 2 );
+
+// linea de 90 s para el grafico de evacuacion acumulada (Integrante 4)
+dsUmbral90.add( 90, 0 );
+dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1787743493627</Id>
@@ -338,6 +342,66 @@ NacePilotos.inject( 2 );]]></StartupCode>
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788300000001</Id>
+					<Name><![CDATA[tiemposEvac]]></Name>
+					<X>900</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[java.util.ArrayList<Double>]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new java.util.ArrayList<Double>()]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788300000002</Id>
+					<Name><![CDATA[registroAgentes]]></Name>
+					<X>900</X><Y>-220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[java.util.ArrayList<String>]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new java.util.ArrayList<String>()]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788300000003</Id>
+					<Name><![CDATA[dsEvacuados]]></Name>
+					<X>900</X><Y>-190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[DataSet]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new DataSet( 300 )]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1788300000004</Id>
+					<Name><![CDATA[dsUmbral90]]></Name>
+					<X>900</X><Y>-160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[DataSet]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new DataSet( 2 )]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1788009756465</Id>
 					<Name><![CDATA[pesoCongestion]]></Name>
@@ -475,6 +539,30 @@ NacePilotos.inject( 2 );]]></StartupCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1788036013615</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1788300000005</Id>
+					<Name><![CDATA[nBloqueadas]]></Name>
+					<X>900</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1788300000006</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1273,6 +1361,15 @@ return n;]]></Body>
     case 2:  salidaActiva = new boolean[]{ true,  false, false, true,  true,  false }; break;
     case 3:  salidaActiva = new boolean[]{ false, false, true,  true,  true,  false }; break;
     case 4:  salidaActiva = new boolean[]{ true,  false, true,  false, true,  false }; break;
+    case 5: {   // Sensibilidad (Integrante 4): nBloqueadas salidas al azar
+        salidaActiva = new boolean[ 6 ];
+        java.util.Arrays.fill( salidaActiva, true );
+        java.util.List<Integer> idx = new java.util.ArrayList<Integer>();
+        for ( int i = 0; i < 6; i++ ) idx.add( i );
+        java.util.Collections.shuffle( idx, getDefaultRandomGenerator() );
+        for ( int j = 0; j < Math.min( nBloqueadas, 5 ); j++ ) salidaActiva[ idx.get( j ) ] = false;
+        break;
+    }
     default: salidaActiva = new boolean[]{ true,  true,  true,  true,  true,  true  };
 }]]></Body>
 				</Function>
@@ -1395,6 +1492,93 @@ if ( hayObstaculo )
         pasaronObstaculo, tiempoPerdidoObstaculo,
         pasaronObstaculo > 0 ? tiempoPerdidoObstaculo / pasaronObstaculo : 0.0 );
 traceln( "============================================================" );]]></Body>
+				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1788300000007</Id>
+					<Name><![CDATA[nombreSalida]]></Name>
+					<X>1050</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if ( i < 0 || i > 5 ) return "-";
+return new String[]{ "1L", "1R", "AlaFwdL", "AlaFwdR", "AlaAftL", "AlaAftR" }[ i ];]]></Body>
+				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1788300000008</Id>
+					<Name><![CDATA[num]]></Name>
+					<X>1050</X><Y>-220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[x]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[return String.format( java.util.Locale.US, "%.3f", x );]]></Body>
+				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1788300000009</Id>
+					<Name><![CDATA[rel]]></Name>
+					<X>1050</X><Y>-190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[t]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[return t < 0 ? -1 : t - tAmerizaje;]]></Body>
+				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1788300000010</Id>
+					<Name><![CDATA[encabezadoCorrida]]></Name>
+					<X>1050</X><Y>-160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[String[] s = { "1L", "1R", "AlaFwdL", "AlaFwdR", "AlaAftL", "AlaAftR" };
+StringBuilder sb = new StringBuilder( "completa;tEvacPax;tEvacTotal;cumple90" );
+for ( String p : new String[]{ "pax_", "tUlt_", "tApe_", "tPri_" } )
+    for ( String x : s ) sb.append( ';' ).append( p ).append( x );
+return sb.toString();]]></Body>
+				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1788300000011</Id>
+					<Name><![CDATA[filaCorrida]]></Name>
+					<X>1050</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[boolean ok = tEvacuacionTotal >= 0;   // termino: salieron los 192
+StringBuilder sb = new StringBuilder();
+sb.append( ok ? 1 : 0 ).append( ';' )
+  .append( num( tEvacuacionPax ) ).append( ';' )
+  .append( num( tEvacuacionTotal ) ).append( ';' )
+  .append( ok && tEvacuacionTotal <= 90 ? 1 : 0 );   // 14 CFR 25.803(c): todos los ocupantes
+for ( int i = 0; i < 6; i++ ) sb.append( ';' ).append( porSalida[ i ] );
+for ( int i = 0; i < 6; i++ ) sb.append( ';' ).append( num( rel( tUltimaSalida[ i ] ) ) );
+for ( int i = 0; i < 6; i++ ) sb.append( ';' ).append( num( rel( tApertura[ i ] ) ) );
+for ( int i = 0; i < 6; i++ ) sb.append( ';' ).append( num( rel( tPrimeraSalida[ i ] ) ) );
+return sb.toString();]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -1957,7 +2141,16 @@ if ( evacuados == totalPax ) {
 if ( evacuados == totalPax + 6 ) {
     tEvacuacionTotal = time() - tAmerizaje;
     reporteFinal();
-}]]></Code>
+    finishSimulation();   // Integrante 4: la corrida termina sola
+}
+
+// --- Instrumentacion (Integrante 4) ---
+double tRel = time() - tAmerizaje;
+tiemposEvac.add( tRel );                         // todos los ocupantes (192)
+dsEvacuados.add( tRel, tiemposEvac.size() );
+registroAgentes.add( ped.rol + ";" + nombreSalida( ped.salidaIdx ) + ";" + num( tRel ) + ";"
+    + ped.edad + ";" + ped.esHombre + ";" + ped.esPMR + ";"
+    + ped.llevaEquipaje + ";" + ped.llevaMenor );]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -12561,7 +12754,7 @@ activos.add( ped );]]></Code>
 					</Slope>
 
 					<Width>70</Width>
-					<Height>1070</Height>
+					<Height>1060</Height>
 					<Rotation>180.0</Rotation>
 				</RectangleNode>
 				<RectangleNode>
@@ -15454,6 +15647,9 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[escenario]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[5]]></Code>
+					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[factorIluminacion]]></ParameterName>
@@ -15463,6 +15659,12 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[hayObstaculo]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[nBloqueadas]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[3]]></Code>
+					</ParameterValue>
 				</Parameter>
 			</Parameters>
 			<PresentationProperties>
@@ -15481,7 +15683,1252 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 				<FinalTime><![CDATA[600.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
-		</SimulationExperiment>	
+		</SimulationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1787743493622">
+			<Id>1793192728940</Id>
+			<Name><![CDATA[Escenarios]]></Name>
+			<AdditionalClassCode><![CDATA[// ================= Registro y estadistica (Integrante 4) =================
+java.io.PrintWriter csvCorridas, csvAgentes;
+boolean encabezadoListo;
+static final int TMAX = 600;   // horizonte de la curva acumulada (s)
+static final int K = 7;        // claves: escenario 1..5 o nBloqueadas 0..5
+static final String[] SAL = { "1L", "1R", "AlaFwdL", "AlaFwdR", "AlaAftL", "AlaAftR" };
+int[] nCorr, nCumple;
+int paxTotal = 192;
+java.util.List<java.util.List<Double>> tiempos;   // tEvacTotal (192 ocupantes) de cada corrida completa
+double[][] curvaSum, paxSalidaSum, ultSum;
+int[][] ultN;
+
+void iniciar( String sufijo, boolean conAgentes ) {
+    nCorr = new int[ K ];  nCumple = new int[ K ];
+    curvaSum = new double[ K ][ TMAX + 1 ];
+    paxSalidaSum = new double[ K ][ 6 ];
+    ultSum = new double[ K ][ 6 ];  ultN = new int[ K ][ 6 ];
+    tiempos = new java.util.ArrayList<java.util.List<Double>>();
+    for ( int k = 0; k < K; k++ ) tiempos.add( new java.util.ArrayList<Double>() );
+    encabezadoListo = false;
+    try {
+        csvCorridas = new java.io.PrintWriter( new java.io.FileWriter( "corridas_" + sufijo + ".csv" ) );
+        csvAgentes = conAgentes
+            ? new java.io.PrintWriter( new java.io.FileWriter( "agentes_" + sufijo + ".csv" ) ) : null;
+    	        csvCorridas.println( "sep=;" );                       // <-- nuevo
+        if ( csvAgentes != null ) csvAgentes.println( "sep=;" ); // <-- nuevo
+    } catch ( java.io.IOException ex ) {
+        throw new RuntimeException( "No se pudo crear el CSV (esta abierto en Excel?): " + ex );
+    }
+}
+
+synchronized void registrar( Main m, int k, double pct ) {
+    if ( !encabezadoListo ) {
+        csvCorridas.println( "escenario;nBloqueadas;pctBloqueado;replica;" + m.encabezadoCorrida() );
+        if ( csvAgentes != null )
+            csvAgentes.println( "escenario;replica;rol;salida;tEvac;edad;esHombre;esPMR;llevaEquipaje;llevaMenor" );
+        encabezadoListo = true;
+    }
+    int rep = ++nCorr[ k ];
+    csvCorridas.println( m.escenario + ";" + m.nBloqueadas + ";" + m.num( pct ) + ";" + rep + ";" + m.filaCorrida() );
+    csvCorridas.flush();
+    if ( csvAgentes != null ) {
+        for ( String f : m.registroAgentes ) csvAgentes.println( m.escenario + ";" + rep + ";" + f );
+        csvAgentes.flush();
+    }
+    if ( m.tEvacuacionTotal < 0 ) return;   // incompleta: queda en el CSV, no entra en graficos
+    paxTotal = m.totalPax + 6;              // ocupantes: pasajeros + tripulacion
+    tiempos.get( k ).add( m.tEvacuacionTotal );
+    if ( m.tEvacuacionTotal <= 90 ) nCumple[ k ]++;
+    for ( int i = 0; i < 6; i++ ) {
+        paxSalidaSum[ k ][ i ] += m.porSalida[ i ];
+        if ( m.tUltimaSalida[ i ] >= 0 ) { ultSum[ k ][ i ] += m.rel( m.tUltimaSalida[ i ] ); ultN[ k ][ i ]++; }
+    }
+    int j = 0;   // tiemposEvac ya esta en orden cronologico
+    for ( int s = 0; s <= TMAX; s++ ) {
+        while ( j < m.tiemposEvac.size() && m.tiemposEvac.get( j ) <= s ) j++;
+        curvaSum[ k ][ s ] += j;
+    }
+}
+
+int nOk( int k ) { return tiempos.get( k ).size(); }
+
+double media( int k ) {
+    double s = 0;
+    for ( double t : tiempos.get( k ) ) s += t;
+    return nOk( k ) > 0 ? s / nOk( k ) : 0;
+}
+
+double desvio( int k ) {
+    int n = nOk( k );
+    if ( n < 2 ) return 0;
+    double m = media( k ), s = 0;
+    for ( double t : tiempos.get( k ) ) s += ( t - m ) * ( t - m );
+    return Math.sqrt( s / ( n - 1 ) );
+}
+
+double tStudent( int gl ) {   // t(0.975; gl)
+    double[] tab = { 12.706, 4.303, 3.182, 2.776, 2.571, 2.447, 2.365, 2.306, 2.262, 2.228,
+                     2.201, 2.179, 2.160, 2.145, 2.131, 2.120, 2.110, 2.101, 2.093, 2.086,
+                     2.080, 2.074, 2.069, 2.064, 2.060, 2.056, 2.052, 2.048, 2.045, 2.042 };
+    return gl <= 30 ? tab[ gl - 1 ] : 1.96;
+}
+
+double ic95( int k ) {   // semiancho del IC 95% de la media
+    int n = nOk( k );
+    return n < 2 ? 0 : tStudent( n - 1 ) * desvio( k ) / Math.sqrt( n );
+}
+
+double percentil( int k, double p ) {   // mismo criterio que PERCENTIL.INC de Excel
+    java.util.List<Double> v = new java.util.ArrayList<Double>( tiempos.get( k ) );
+    if ( v.isEmpty() ) return 0;
+    java.util.Collections.sort( v );
+    double pos = p * ( v.size() - 1 );
+    int i = (int) Math.floor( pos );
+    if ( i + 1 >= v.size() ) return v.get( v.size() - 1 );
+    return v.get( i ) + ( pos - i ) * ( v.get( i + 1 ) - v.get( i ) );
+}
+
+double promSalida( int k, int i ) { return nOk( k ) > 0 ? paxSalidaSum[ k ][ i ] / nOk( k ) : 0; }
+double promUltima( int k, int i ) { return ultN[ k ][ i ] > 0 ? ultSum[ k ][ i ] / ultN[ k ][ i ] : -1; }
+double curvaProm( int k, int s ) { return nOk( k ) > 0 ? curvaSum[ k ][ s ] / nOk( k ) : 0; }
+
+int salidaMayorThroughput( int k ) {
+    int b = 0;
+    for ( int i = 1; i < 6; i++ ) if ( promSalida( k, i ) > promSalida( k, b ) ) b = i;
+    return b;
+}
+
+int salidaMayorSaturacion( int k ) {   // la que en promedio despacha a su ultimo pasajero mas tarde
+    int b = 0;
+    for ( int i = 1; i < 6; i++ ) if ( promUltima( k, i ) > promUltima( k, b ) ) b = i;
+    return b;
+}
+
+String resumenTexto( int desde, int hasta ) {
+    StringBuilder sb = new StringBuilder();
+    for ( int k = desde; k <= hasta; k++ ) {
+        if ( nCorr == null || nCorr[ k ] == 0 ) continue;
+        sb.append( String.format( "[%d] media %.1f s +/- %.1f  |  P95 %.1f s  |  cumplen 90 s: %d/%d  |  "
+                + "incompletas: %d  |  mas usada: %s  |  satura: %s%n",
+            k, media( k ), ic95( k ), percentil( k, 0.95 ), nCumple[ k ], nOk( k ),
+            nCorr[ k ] - nOk( k ), SAL[ salidaMayorThroughput( k ) ], SAL[ salidaMayorSaturacion( k ) ] ) );
+    }
+    return sb.length() == 0 ? "Sin corridas todavia" : sb.toString();
+}
+
+void escribirResumen( String sufijo, int desde, int hasta ) {
+    try ( java.io.PrintWriter w = new java.io.PrintWriter( new java.io.FileWriter( "resumen_" + sufijo + ".csv" ) ) ) {
+        w.println( "sep=;" );
+        w.println( "clave;corridas;completas;media;desvio;ic95_inf;ic95_sup;p95;min;max;"
+                 + "pct_cumple_90;salida_mayor_throughput;salida_mayor_saturacion" );
+        java.util.Locale ar = java.util.Locale.US;
+        for ( int k = desde; k <= hasta; k++ ) {
+            if ( nCorr[ k ] == 0 ) continue;
+            double m = media( k ), h = ic95( k );
+            w.println( String.format( ar, "%d;%d;%d;%.2f;%.2f;%.2f;%.2f;%.2f;%.2f;%.2f;%.1f;%s;%s",
+                k, nCorr[ k ], nOk( k ), m, desvio( k ), m - h, m + h,
+                percentil( k, 0.95 ), percentil( k, 0 ), percentil( k, 1 ),
+                nOk( k ) > 0 ? 100.0 * nCumple[ k ] / nOk( k ) : 0,
+                SAL[ salidaMayorThroughput( k ) ], SAL[ salidaMayorSaturacion( k ) ] ) );
+        }
+    } catch ( java.io.IOException ex ) {
+        throw new RuntimeException( "No se pudo escribir el resumen: " + ex );
+    }
+}
+
+void cerrar() {
+    if ( csvCorridas != null ) csvCorridas.close();
+    if ( csvAgentes != null ) csvAgentes.close();
+}
+
+// ---------------- utilidades de dibujo sobre un Plot ----------------
+static final java.awt.Color TINTA = new java.awt.Color( 40, 40, 40 );
+static final java.awt.Color ROJO = new java.awt.Color( 227, 73, 72 );
+static final String[] NOMBRE_ESC = { "", "1 Baseline", "2 50% alternado", "3 50% centro libre", "4 Asimetrico" };
+
+// color del escenario e; claro = 0 da el color pleno, claro = 0.65 lo aclara (para cajas)
+java.awt.Color colorEsc( int e, double claro ) {
+    int[][] c = { { 42, 120, 214 }, { 235, 104, 52 }, { 27, 175, 122 }, { 237, 161, 0 } };
+    int[] x = c[ ( e - 1 ) % 4 ];
+    return new java.awt.Color( (int) ( x[ 0 ] + ( 255 - x[ 0 ] ) * claro ),
+                               (int) ( x[ 1 ] + ( 255 - x[ 1 ] ) * claro ),
+                               (int) ( x[ 2 ] + ( 255 - x[ 2 ] ) * claro ) );
+}
+
+// segmento recto de (x1,y1) a (x2,y2)
+void linea( Plot p, double x1, double y1, double x2, double y2, java.awt.Color c, double ancho, String titulo ) {
+    DataSet d = new DataSet( 2 );
+    d.add( x1, y1 );
+    d.add( x2, y2 );
+    p.addDataSet( d, titulo, c, true, Chart.InterpolationType.INTERPOLATION_LINEAR, ancho, Chart.PointStyle.POINT_NONE );
+}
+
+// rectangulo relleno (barra o caja): se rellena con lineas verticales finas pegadas
+void rect( Plot p, double x1, double x2, double y1, double y2, java.awt.Color c, boolean borde ) {
+    int n = Math.max( 8, (int) ( ( x2 - x1 ) * 80 ) );
+    for ( int i = 0; i <= n; i++ ) {
+        double x = x1 + ( x2 - x1 ) * i / n;
+        linea( p, x, y1, x, y2, c, 2, "" );
+    }
+    if ( borde ) {
+        linea( p, x1, y1, x2, y1, TINTA, 1, "" );
+        linea( p, x1, y2, x2, y2, TINTA, 1, "" );
+        linea( p, x1, y1, x1, y2, TINTA, 1, "" );
+        linea( p, x2, y1, x2, y2, TINTA, 1, "" );
+    }
+}
+
+double techo( double v ) { return Math.ceil( Math.max( v, 100 ) * 1.15 / 50 ) * 50; }
+
+// ================= Graficos del experimento Escenarios =================
+synchronized void dibujarEscenarios() {
+    dibujarMedias();
+    dibujarBox();
+    dibujarCurvas();
+    dibujarSalidas();
+}
+
+// Grafico 1: barras con IC 95% + umbral de 90 s
+void dibujarMedias() {
+    plotMedias.removeAll();
+    double ymax = 0;
+    for ( int e = 1; e <= 4; e++ ) {
+        if ( nOk( e ) == 0 ) continue;
+        double m = media( e ), h = ic95( e );
+        rect( plotMedias, e - 0.25, e + 0.25, 0, m, colorEsc( e, 0 ), false );   // barra
+        linea( plotMedias, e, m - h, e, m + h, TINTA, 2, "" );                  // IC
+        linea( plotMedias, e - 0.08, m + h, e + 0.08, m + h, TINTA, 2, "" );
+        linea( plotMedias, e - 0.08, m - h, e + 0.08, m - h, TINTA, 2, "" );
+        ymax = Math.max( ymax, m + h );
+    }
+    linea( plotMedias, 0.5, 90, 4.5, 90, ROJO, 2, "" );
+    plotMedias.setFixedHorizontalScale( 0.5, 4.5 );
+    plotMedias.setFixedVerticalScale( 0, techo( ymax ) );
+}
+
+// Grafico 2: boxplot (caja Q1-Q3, mediana, bigotes de Tukey 1.5*IQR) + las 30 corridas como puntos
+void dibujarBox() {
+    plotBox.removeAll();
+    double ymax = 0;
+    for ( int e = 1; e <= 4; e++ ) {
+        java.util.List<Double> v = tiempos.get( e );
+        if ( v.isEmpty() ) continue;
+        double q1 = percentil( e, 0.25 ), med = percentil( e, 0.5 ), q3 = percentil( e, 0.75 );
+        double iqr = q3 - q1, lo = Double.MAX_VALUE, hi = -Double.MAX_VALUE;
+        for ( double t : v ) {
+            if ( t >= q1 - 1.5 * iqr ) lo = Math.min( lo, t );
+            if ( t <= q3 + 1.5 * iqr ) hi = Math.max( hi, t );
+            ymax = Math.max( ymax, t );
+        }
+        linea( plotBox, e, lo, e, q1, TINTA, 1, "" );
+        linea( plotBox, e, q3, e, hi, TINTA, 1, "" );
+        linea( plotBox, e - 0.1, lo, e + 0.1, lo, TINTA, 1, "" );
+        linea( plotBox, e - 0.1, hi, e + 0.1, hi, TINTA, 1, "" );
+        rect( plotBox, e - 0.25, e + 0.25, q1, q3, colorEsc( e, 0.65 ), true );
+        linea( plotBox, e - 0.25, med, e + 0.25, med, TINTA, 3, "" );
+        DataSet pts = new DataSet( v.size() );
+        for ( int i = 0; i < v.size(); i++ )
+            pts.add( e - 0.2 + 0.4 * i / Math.max( 1, v.size() - 1 ), v.get( i ) );
+        plotBox.addDataSet( pts, "", colorEsc( e, 0 ), false,
+            Chart.InterpolationType.INTERPOLATION_LINEAR, 1, Chart.PointStyle.POINT_CIRCLE );
+    }
+    linea( plotBox, 0.5, 90, 4.5, 90, ROJO, 2, "" );
+    plotBox.setFixedHorizontalScale( 0.5, 4.5 );
+    plotBox.setFixedVerticalScale( 0, techo( ymax ) );
+}
+
+// Grafico 4: curva de evacuacion acumulada promedio, una por escenario
+void dibujarCurvas() {
+    plotCurva.removeAll();
+    int xmax = 100;
+    for ( int e = 1; e <= 4; e++ ) {
+        if ( nOk( e ) == 0 ) continue;
+        DataSet d = new DataSet( TMAX + 1 );
+        double fin = curvaProm( e, TMAX );
+        for ( int s = 0; s <= TMAX; s++ ) {
+            double y = curvaProm( e, s );
+            d.add( s, y );
+            if ( y < fin - 0.5 ) xmax = Math.max( xmax, s );
+        }
+        plotCurva.addDataSet( d, NOMBRE_ESC[ e ], colorEsc( e, 0 ), true,
+            Chart.InterpolationType.INTERPOLATION_LINEAR, 2, Chart.PointStyle.POINT_NONE );
+    }
+    linea( plotCurva, 90, 0, 90, paxTotal, ROJO, 2, "Umbral 90 s" );
+    plotCurva.setFixedHorizontalScale( 0, Math.min( TMAX, Math.ceil( ( xmax + 20 ) / 50.0 ) * 50 ) );
+    plotCurva.setFixedVerticalScale( 0, paxTotal + 4 );
+}
+
+// Grafico 5: pasajeros por salida, barras agrupadas por escenario
+void dibujarSalidas() {
+    plotSalidas.removeAll();
+    double ymax = 0;
+    for ( int i = 0; i < 6; i++ )
+        for ( int e = 1; e <= 4; e++ ) {
+            if ( nOk( e ) == 0 ) continue;
+            double x = i + 1 + ( e - 2.5 ) * 0.2, v = promSalida( e, i );
+            if ( v > 0 ) rect( plotSalidas, x - 0.08, x + 0.08, 0, v, colorEsc( e, 0 ), false );
+            ymax = Math.max( ymax, v );
+        }
+    plotSalidas.setFixedHorizontalScale( 0.5, 6.5 );
+    plotSalidas.setFixedVerticalScale( 0, Math.ceil( Math.max( ymax, 10 ) * 1.15 / 10 ) * 10 );
+}]]></AdditionalClassCode>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<InitialSetupCode><![CDATA[iniciar( "escenarios", true );]]></InitialSetupCode>
+			<MaximumMemory>512</MaximumMemory>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<AfterSimulationRunCode><![CDATA[registrar( root, root.escenario, root.escenario == 1 ? 0 : 50 );]]></AfterSimulationRunCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[   -XX:ActiveProcessorCount=1]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+
+			<Presentation>
+    			<Plot>
+					<Id>1793192869419</Id>
+					<Name><![CDATA[plotMedias]]></Name>
+					<X>50</X><Y>-10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1793192869417</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1793260800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>500</Width>
+					<Height>270</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>420</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Tiempo medio por escenario (IC 95%)]]></Title>
+					<Id>1793192871460</Id>
+					<Expression><![CDATA[dataset]]></Expression>
+					<Color>-9404272</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>CIRCLE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[0]]></HorizontalAxisExpression>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<HorScaleFromExpression><![CDATA[0]]></HorScaleFromExpression>
+					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
+					<HorScaleType>AUTO</HorScaleType>
+    			</Plot>
+    			<Plot>
+					<Id>1793192873143</Id>
+					<Name><![CDATA[plotBox]]></Name>
+					<X>600</X><Y>-10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1793192873141</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1793260800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>500</Width>
+					<Height>270</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>420</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Distribución de tiempos (boxplot)]]></Title>
+					<Id>1793192874641</Id>
+					<Expression><![CDATA[dataset]]></Expression>
+					<Color>-29696</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>CIRCLE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[0]]></HorizontalAxisExpression>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<HorScaleFromExpression><![CDATA[0]]></HorScaleFromExpression>
+					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
+					<HorScaleType>AUTO</HorScaleType>
+    			</Plot>
+    			<Plot>
+					<Id>1793192875797</Id>
+					<Name><![CDATA[plotCurva]]></Name>
+					<X>50</X><Y>280</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1793192875795</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1793260800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>600</Width>
+					<Height>320</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>520</Width>
+						<Height>230</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Curva de evacuación acumulada]]></Title>
+					<Id>1793192877135</Id>
+					<Expression><![CDATA[dataset]]></Expression>
+					<Color>-12004916</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>CIRCLE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[0]]></HorizontalAxisExpression>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<HorScaleFromExpression><![CDATA[0]]></HorScaleFromExpression>
+					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
+					<HorScaleType>AUTO</HorScaleType>
+    			</Plot>
+    			<Plot>
+					<Id>1793192878139</Id>
+					<Name><![CDATA[plotSalidas]]></Name>
+					<X>620</X><Y>300</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1793192878137</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1793260800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>600</Width>
+					<Height>270</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>520</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>false</ShowLegend>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Pasajeros por salida y escenario]]></Title>
+					<Id>1793192879284</Id>
+					<Expression><![CDATA[dataset]]></Expression>
+					<Color>-2354116</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>CIRCLE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[0]]></HorizontalAxisExpression>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<HorScaleFromExpression><![CDATA[0]]></HorScaleFromExpression>
+					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
+					<HorScaleType>AUTO</HorScaleType>
+    			</Plot>
+				<Text>
+					<Id>1793193176401</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>140</X><Y>260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[1 Baseline · 2 50% alternado · 3 50% centro libre · 4 Asimétrico]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1793193209848</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>680</X><Y>260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[1 Baseline · 2 50% alternado · 3 50% centro libre · 4 Asimétrico]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1793193229001</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>690</X><Y>570</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[1 = 1L · 2 = 1R · 3 = AlaFwdL · 4 = AlaFwdR · 5 = AlaAftL · 6 = AlaAftR]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1793193375595</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>100</X><Y>-80</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-13993770</Color>
+					<Text><![CDATA[Esc 1 – Baseline]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1793193443068</Id>
+					<Name><![CDATA[text4]]></Name>
+					<X>100</X><Y>-60</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1349580</Color>
+					<Text><![CDATA[Esc 2 – 50% alternado]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1793193470513</Id>
+					<Name><![CDATA[text5]]></Name>
+					<X>100</X><Y>-40</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-14962822</Color>
+					<Text><![CDATA[Esc 3 – 50% centro libre]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1793193503645</Id>
+					<Name><![CDATA[text6]]></Name>
+					<X>100</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1203968</Color>
+					<Text><![CDATA[Esc 4 – Asimétrico]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1793193585647</Id>
+					<Name><![CDATA[text7]]></Name>
+					<X>110</X><Y>630</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[resumenTexto( 1, 4 )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+			<AfterIterationCode><![CDATA[dibujarEscenarios();]]></AfterIterationCode>
+			<AfterExperimentCode><![CDATA[dibujarEscenarios();
+escribirResumen( "escenarios", 1, 4 );
+cerrar();]]></AfterExperimentCode>
+			<AllowParallelEvaluations>false</AllowParallelEvaluations>
+			<UseFreeformParameters>false</UseFreeformParameters>
+			<NumberOfRuns>10</NumberOfRuns>
+			<FreeformParamValue>	
+				<Id>1788009756465</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788030325619</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788030938856</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788036011606</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788036012607</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788036013614</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788300000005</Id>
+			</FreeformParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788009756465</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788030325619</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788030938856</Id>
+				<Type>RANGE</Type>
+				<From Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</From>
+				<To Class="CodeValue">
+					<Code><![CDATA[4]]></Code>
+				</To>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788036011606</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788036012607</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788036013614</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788300000005</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
+				<InitialDate><![CDATA[1787702400000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1787704400000]]></FinalDate>	
+				<FinalTime><![CDATA[2000.0]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[DitchingBoeing737-801 : Escenarios]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>true</UseReplication>
+				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<ReplicationPerIteration>30</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1787743493622">
+			<Id>1793193935822</Id>
+			<Name><![CDATA[Sensibilidad]]></Name>
+			<AdditionalClassCode><![CDATA[// ================= Registro y estadistica (Integrante 4) =================
+java.io.PrintWriter csvCorridas, csvAgentes;
+boolean encabezadoListo;
+static final int TMAX = 600;   // horizonte de la curva acumulada (s)
+static final int K = 7;        // claves: escenario 1..5 o nBloqueadas 0..5
+static final String[] SAL = { "1L", "1R", "AlaFwdL", "AlaFwdR", "AlaAftL", "AlaAftR" };
+int[] nCorr, nCumple;
+int paxTotal = 192;
+java.util.List<java.util.List<Double>> tiempos;   // tEvacTotal (192 ocupantes) de cada corrida completa
+double[][] curvaSum, paxSalidaSum, ultSum;
+int[][] ultN;
+
+void iniciar( String sufijo, boolean conAgentes ) {
+    nCorr = new int[ K ];  nCumple = new int[ K ];
+    curvaSum = new double[ K ][ TMAX + 1 ];
+    paxSalidaSum = new double[ K ][ 6 ];
+    ultSum = new double[ K ][ 6 ];  ultN = new int[ K ][ 6 ];
+    tiempos = new java.util.ArrayList<java.util.List<Double>>();
+    for ( int k = 0; k < K; k++ ) tiempos.add( new java.util.ArrayList<Double>() );
+    encabezadoListo = false;
+    try {
+        csvCorridas = new java.io.PrintWriter( new java.io.FileWriter( "corridas_" + sufijo + ".csv" ) );
+        csvAgentes = conAgentes
+            ? new java.io.PrintWriter( new java.io.FileWriter( "agentes_" + sufijo + ".csv" ) ) : null;
+            csvCorridas.println( "sep=;" );                       // <-- nuevo
+        if ( csvAgentes != null ) csvAgentes.println( "sep=;" ); // <-- nuevo
+    } catch ( java.io.IOException ex ) {
+        throw new RuntimeException( "No se pudo crear el CSV (esta abierto en Excel?): " + ex );
+    }
+}
+
+synchronized void registrar( Main m, int k, double pct ) {
+    if ( !encabezadoListo ) {
+        csvCorridas.println( "escenario;nBloqueadas;pctBloqueado;replica;" + m.encabezadoCorrida() );
+        if ( csvAgentes != null )
+            csvAgentes.println( "escenario;replica;rol;salida;tEvac;edad;esHombre;esPMR;llevaEquipaje;llevaMenor" );
+        encabezadoListo = true;
+    }
+    int rep = ++nCorr[ k ];
+    csvCorridas.println( m.escenario + ";" + m.nBloqueadas + ";" + m.num( pct ) + ";" + rep + ";" + m.filaCorrida() );
+    csvCorridas.flush();
+    if ( csvAgentes != null ) {
+        for ( String f : m.registroAgentes ) csvAgentes.println( m.escenario + ";" + rep + ";" + f );
+        csvAgentes.flush();
+    }
+    if ( m.tEvacuacionTotal < 0 ) return;   // incompleta: queda en el CSV, no entra en graficos
+    paxTotal = m.totalPax + 6;              // ocupantes: pasajeros + tripulacion
+    tiempos.get( k ).add( m.tEvacuacionTotal );
+    if ( m.tEvacuacionTotal <= 90 ) nCumple[ k ]++;
+    for ( int i = 0; i < 6; i++ ) {
+        paxSalidaSum[ k ][ i ] += m.porSalida[ i ];
+        if ( m.tUltimaSalida[ i ] >= 0 ) { ultSum[ k ][ i ] += m.rel( m.tUltimaSalida[ i ] ); ultN[ k ][ i ]++; }
+    }
+    int j = 0;   // tiemposEvac ya esta en orden cronologico
+    for ( int s = 0; s <= TMAX; s++ ) {
+        while ( j < m.tiemposEvac.size() && m.tiemposEvac.get( j ) <= s ) j++;
+        curvaSum[ k ][ s ] += j;
+    }
+}
+
+int nOk( int k ) { return tiempos.get( k ).size(); }
+
+double media( int k ) {
+    double s = 0;
+    for ( double t : tiempos.get( k ) ) s += t;
+    return nOk( k ) > 0 ? s / nOk( k ) : 0;
+}
+
+double desvio( int k ) {
+    int n = nOk( k );
+    if ( n < 2 ) return 0;
+    double m = media( k ), s = 0;
+    for ( double t : tiempos.get( k ) ) s += ( t - m ) * ( t - m );
+    return Math.sqrt( s / ( n - 1 ) );
+}
+
+double tStudent( int gl ) {   // t(0.975; gl)
+    double[] tab = { 12.706, 4.303, 3.182, 2.776, 2.571, 2.447, 2.365, 2.306, 2.262, 2.228,
+                     2.201, 2.179, 2.160, 2.145, 2.131, 2.120, 2.110, 2.101, 2.093, 2.086,
+                     2.080, 2.074, 2.069, 2.064, 2.060, 2.056, 2.052, 2.048, 2.045, 2.042 };
+    return gl <= 30 ? tab[ gl - 1 ] : 1.96;
+}
+
+double ic95( int k ) {   // semiancho del IC 95% de la media
+    int n = nOk( k );
+    return n < 2 ? 0 : tStudent( n - 1 ) * desvio( k ) / Math.sqrt( n );
+}
+
+double percentil( int k, double p ) {   // mismo criterio que PERCENTIL.INC de Excel
+    java.util.List<Double> v = new java.util.ArrayList<Double>( tiempos.get( k ) );
+    if ( v.isEmpty() ) return 0;
+    java.util.Collections.sort( v );
+    double pos = p * ( v.size() - 1 );
+    int i = (int) Math.floor( pos );
+    if ( i + 1 >= v.size() ) return v.get( v.size() - 1 );
+    return v.get( i ) + ( pos - i ) * ( v.get( i + 1 ) - v.get( i ) );
+}
+
+double promSalida( int k, int i ) { return nOk( k ) > 0 ? paxSalidaSum[ k ][ i ] / nOk( k ) : 0; }
+double promUltima( int k, int i ) { return ultN[ k ][ i ] > 0 ? ultSum[ k ][ i ] / ultN[ k ][ i ] : -1; }
+double curvaProm( int k, int s ) { return nOk( k ) > 0 ? curvaSum[ k ][ s ] / nOk( k ) : 0; }
+
+int salidaMayorThroughput( int k ) {
+    int b = 0;
+    for ( int i = 1; i < 6; i++ ) if ( promSalida( k, i ) > promSalida( k, b ) ) b = i;
+    return b;
+}
+
+int salidaMayorSaturacion( int k ) {   // la que en promedio despacha a su ultimo pasajero mas tarde
+    int b = 0;
+    for ( int i = 1; i < 6; i++ ) if ( promUltima( k, i ) > promUltima( k, b ) ) b = i;
+    return b;
+}
+
+String resumenTexto( int desde, int hasta ) {
+    StringBuilder sb = new StringBuilder();
+    for ( int k = desde; k <= hasta; k++ ) {
+        if ( nCorr == null || nCorr[ k ] == 0 ) continue;
+        sb.append( String.format( "[%d] media %.1f s +/- %.1f  |  P95 %.1f s  |  cumplen 90 s: %d/%d  |  "
+                + "incompletas: %d  |  mas usada: %s  |  satura: %s%n",
+            k, media( k ), ic95( k ), percentil( k, 0.95 ), nCumple[ k ], nOk( k ),
+            nCorr[ k ] - nOk( k ), SAL[ salidaMayorThroughput( k ) ], SAL[ salidaMayorSaturacion( k ) ] ) );
+    }
+    return sb.length() == 0 ? "Sin corridas todavia" : sb.toString();
+}
+
+void escribirResumen( String sufijo, int desde, int hasta ) {
+    try ( java.io.PrintWriter w = new java.io.PrintWriter( new java.io.FileWriter( "resumen_" + sufijo + ".csv" ) ) ) {
+        w.println( "sep=;" );
+        w.println( "clave;corridas;completas;media;desvio;ic95_inf;ic95_sup;p95;min;max;"
+                 + "pct_cumple_90;salida_mayor_throughput;salida_mayor_saturacion" );
+        java.util.Locale ar = java.util.Locale.US;
+        for ( int k = desde; k <= hasta; k++ ) {
+            if ( nCorr[ k ] == 0 ) continue;
+            double m = media( k ), h = ic95( k );
+            w.println( String.format( ar, "%d;%d;%d;%.2f;%.2f;%.2f;%.2f;%.2f;%.2f;%.2f;%.1f;%s;%s",
+                k, nCorr[ k ], nOk( k ), m, desvio( k ), m - h, m + h,
+                percentil( k, 0.95 ), percentil( k, 0 ), percentil( k, 1 ),
+                nOk( k ) > 0 ? 100.0 * nCumple[ k ] / nOk( k ) : 0,
+                SAL[ salidaMayorThroughput( k ) ], SAL[ salidaMayorSaturacion( k ) ] ) );
+        }
+    } catch ( java.io.IOException ex ) {
+        throw new RuntimeException( "No se pudo escribir el resumen: " + ex );
+    }
+}
+
+void cerrar() {
+    if ( csvCorridas != null ) csvCorridas.close();
+    if ( csvAgentes != null ) csvAgentes.close();
+}
+
+// ---------------- utilidades de dibujo sobre un Plot ----------------
+static final java.awt.Color TINTA = new java.awt.Color( 40, 40, 40 );
+static final java.awt.Color ROJO = new java.awt.Color( 227, 73, 72 );
+static final String[] NOMBRE_ESC = { "", "1 Baseline", "2 50% alternado", "3 50% centro libre", "4 Asimetrico" };
+
+// color del escenario e; claro = 0 da el color pleno, claro = 0.65 lo aclara (para cajas)
+java.awt.Color colorEsc( int e, double claro ) {
+    int[][] c = { { 42, 120, 214 }, { 235, 104, 52 }, { 27, 175, 122 }, { 237, 161, 0 } };
+    int[] x = c[ ( e - 1 ) % 4 ];
+    return new java.awt.Color( (int) ( x[ 0 ] + ( 255 - x[ 0 ] ) * claro ),
+                               (int) ( x[ 1 ] + ( 255 - x[ 1 ] ) * claro ),
+                               (int) ( x[ 2 ] + ( 255 - x[ 2 ] ) * claro ) );
+}
+
+// segmento recto de (x1,y1) a (x2,y2)
+void linea( Plot p, double x1, double y1, double x2, double y2, java.awt.Color c, double ancho, String titulo ) {
+    DataSet d = new DataSet( 2 );
+    d.add( x1, y1 );
+    d.add( x2, y2 );
+    p.addDataSet( d, titulo, c, true, Chart.InterpolationType.INTERPOLATION_LINEAR, ancho, Chart.PointStyle.POINT_NONE );
+}
+
+// rectangulo relleno (barra o caja): se rellena con lineas verticales finas pegadas
+void rect( Plot p, double x1, double x2, double y1, double y2, java.awt.Color c, boolean borde ) {
+    int n = Math.max( 8, (int) ( ( x2 - x1 ) * 80 ) );
+    for ( int i = 0; i <= n; i++ ) {
+        double x = x1 + ( x2 - x1 ) * i / n;
+        linea( p, x, y1, x, y2, c, 2, "" );
+    }
+    if ( borde ) {
+        linea( p, x1, y1, x2, y1, TINTA, 1, "" );
+        linea( p, x1, y2, x2, y2, TINTA, 1, "" );
+        linea( p, x1, y1, x1, y2, TINTA, 1, "" );
+        linea( p, x2, y1, x2, y2, TINTA, 1, "" );
+    }
+}
+
+double techo( double v ) { return Math.ceil( Math.max( v, 100 ) * 1.15 / 50 ) * 50; }
+
+// ================= Grafico del experimento Sensibilidad =================
+// Grafico 3: tiempo medio (con banda IC 95%) vs. % de salidas bloqueadas
+synchronized void dibujarSensibilidad() {
+    plotSens.removeAll();
+    DataSet med = new DataSet( 6 ), lo = new DataSet( 6 ), hi = new DataSet( 6 );
+    double ymax = 0;
+    for ( int k = 0; k <= 5; k++ ) {
+        if ( nOk( k ) == 0 ) continue;
+        double x = 100.0 * k / 6, m = media( k ), h = ic95( k );
+        med.add( x, m );  lo.add( x, m - h );  hi.add( x, m + h );
+        ymax = Math.max( ymax, m + h );
+    }
+    java.awt.Color azul = new java.awt.Color( 42, 120, 214 ), celeste = new java.awt.Color( 140, 175, 230 );
+    plotSens.addDataSet( lo, "IC 95% inferior", celeste, true, Chart.InterpolationType.INTERPOLATION_LINEAR, 1, Chart.PointStyle.POINT_NONE );
+    plotSens.addDataSet( hi, "IC 95% superior", celeste, true, Chart.InterpolationType.INTERPOLATION_LINEAR, 1, Chart.PointStyle.POINT_NONE );
+    plotSens.addDataSet( med, "Media", azul, true, Chart.InterpolationType.INTERPOLATION_LINEAR, 2, Chart.PointStyle.POINT_CIRCLE );
+    linea( plotSens, -5, 90, 88, 90, ROJO, 2, "Umbral 90 s" );
+    plotSens.setFixedHorizontalScale( -5, 88 );
+    plotSens.setFixedVerticalScale( 0, techo( ymax ) );
+}]]></AdditionalClassCode>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<InitialSetupCode><![CDATA[iniciar( "sensibilidad", false );]]></InitialSetupCode>
+			<MaximumMemory>512</MaximumMemory>
+			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<AfterSimulationRunCode><![CDATA[registrar( root, root.nBloqueadas, 100.0 * root.nBloqueadas / 6 );]]></AfterSimulationRunCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[   -XX:ActiveProcessorCount=1]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+
+			<Presentation>
+    			<Plot>
+					<Id>1793193997625</Id>
+					<Name><![CDATA[plotSens]]></Name>
+					<X>100</X><Y>50</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1793193997623</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1793260800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>600</Width>
+					<Height>300</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>520</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Sensibilidad: tiempo vs. % de salidas bloqueadas]]></Title>
+					<Id>1793193999154</Id>
+					<Expression><![CDATA[dataset]]></Expression>
+					<Color>-6632142</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>CIRCLE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+						<HorizontalAxisExpression><![CDATA[0]]></HorizontalAxisExpression>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<HorScaleFromExpression><![CDATA[0]]></HorScaleFromExpression>
+					<HorScaleToExpression><![CDATA[1]]></HorScaleToExpression>
+					<HorScaleType>AUTO</HorScaleType>
+    			</Plot>
+				<Text>
+					<Id>1793194027905</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>150</X><Y>390</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[resumenTexto( 0, 5 )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+			<AfterIterationCode><![CDATA[dibujarSensibilidad();]]></AfterIterationCode>
+			<AfterExperimentCode><![CDATA[dibujarSensibilidad();
+escribirResumen( "sensibilidad", 0, 5 );
+cerrar();]]></AfterExperimentCode>
+			<AllowParallelEvaluations>false</AllowParallelEvaluations>
+			<UseFreeformParameters>false</UseFreeformParameters>
+			<NumberOfRuns>10</NumberOfRuns>
+			<FreeformParamValue>	
+				<Id>1788009756465</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788030325619</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788030938856</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788036011606</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788036012607</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788036013614</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1788300000005</Id>
+			</FreeformParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788009756465</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788030325619</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788030938856</Id>
+				<Type>FIXED</Type>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[5]]></Code>
+				</Expression>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788036011606</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788036012607</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788036013614</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1788300000005</Id>
+				<Type>RANGE</Type>
+				<From Class="CodeValue">
+					<Code><![CDATA[0]]></Code>
+				</From>
+				<To Class="CodeValue">
+					<Code><![CDATA[5]]></Code>
+				</To>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+			</RangeVariationParamValue>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
+				<InitialDate><![CDATA[1787702400000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1787704400000]]></FinalDate>	
+				<FinalTime><![CDATA[2000.0]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[DitchingBoeing737-801 : Sensibilidad]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>true</UseReplication>
+				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<ReplicationPerIteration>30</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>	
 	</Experiments>
 	<ModelResources>
 		<Resource>
