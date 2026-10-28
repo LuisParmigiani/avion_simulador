@@ -15584,8 +15584,8 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 			<StopOption><![CDATA[Stop at specified time]]></StopOption>
 			<InitialDate><![CDATA[1787702400000]]></InitialDate>	
 			<InitialTime><![CDATA[0.0]]></InitialTime>	
-			<FinalDate><![CDATA[1790380800000]]></FinalDate>	
-			<FinalTime><![CDATA[100.0]]></FinalTime>	
+			<FinalDate><![CDATA[1787704400000]]></FinalDate>	
+			<FinalTime><![CDATA[2000.0]]></FinalTime>	
 		</ModelTimeProperties>
 		<AnimationProperties>
 			<StopNever>true</StopNever>
@@ -15595,7 +15595,25 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 			<EnableDeveloperPanel>false</EnableDeveloperPanel>
 			<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 		</AnimationProperties>
-		<Inputs>		
+		<Inputs>
+    		<RunConfigurationInput>
+				<Id>1793204118969</Id>
+				<Name><![CDATA[Escenario]]></Name>
+				<InputReference>
+					<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+					<ClassName><![CDATA[Main]]></ClassName>
+					<ItemName><![CDATA[escenario]]></ItemName>
+				</InputReference>
+    		</RunConfigurationInput>
+    		<RunConfigurationInput>
+				<Id>1793204124234</Id>
+				<Name><![CDATA[N bloqueadas]]></Name>
+				<InputReference>
+					<PackageName><![CDATA[ditchingboeing737_800]]></PackageName>
+					<ClassName><![CDATA[Main]]></ClassName>
+					<ItemName><![CDATA[nBloqueadas]]></ItemName>
+				</InputReference>
+    		</RunConfigurationInput>		
 		</Inputs>
 		<Outputs>
 		</Outputs>
@@ -16998,6 +17016,7 @@ cerrar();]]></AfterExperimentCode>
 		<VersionMinor>0</VersionMinor>
 		<VersionBuild>5</VersionBuild>
     </RequiredLibraryReference>
+	<CloudModelUuid><![CDATA[03124131-1043-4190-adb5-7e8a0695af43]]></CloudModelUuid>
 </Model>
 <ConvertersApplied>
 	<Uuid>9f7858c9-b2c8-4ead-9244-fd08833f642b</Uuid>
