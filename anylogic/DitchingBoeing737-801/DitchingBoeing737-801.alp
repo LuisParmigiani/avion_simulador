@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.9.202607020720" AlpVersion="8.9.9">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.9.202607020844" AlpVersion="8.9.9">
 <Model>
 	<Id>1787743493618</Id>
 	<Name><![CDATA[DitchingBoeing737-801]]></Name>
@@ -53,6 +53,7 @@ configurarEscenario();
 enCamino     = new int[ 6 ];
 porSalida    = new int[ 6 ];
 tApertura    = new double[ 6 ];
+tLibre       = new double[ 6 ];   // 0 = libre desde el inicio
 java.util.Arrays.fill( tApertura, -1 );   // -1 = todavia nadie la empezo a abrir
 tPrimeraSalida = new double[ 6 ];  java.util.Arrays.fill( tPrimeraSalida, -1 );
 tUltimaSalida  = new double[ 6 ];  java.util.Arrays.fill( tUltimaSalida,  -1 );
@@ -271,6 +272,18 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
+					<Id>1792000000003</Id>
+					<Name><![CDATA[tLibre]]></Name>
+					<X>110</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double[]]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
 					<Id>1788036013608</Id>
 					<Name><![CDATA[tPrimeraSalida]]></Name>
 					<X>-10</X><Y>-170</Y>
@@ -310,30 +323,6 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 					<Id>1788036013611</Id>
 					<Name><![CDATA[tEvacuacionTotal]]></Name>
 					<X>-10</X><Y>-50</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1788036013612</Id>
-					<Name><![CDATA[pasaronObstaculo]]></Name>
-					<X>-170</X><Y>-130</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1788036013613</Id>
-					<Name><![CDATA[tiempoPerdidoObstaculo]]></Name>
-					<X>-170</X><Y>-170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -499,30 +488,6 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1788036012607</Id>
-					<Name><![CDATA[velObstaculo]]></Name>
-					<X>690</X><Y>-250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.5]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1788036012608</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1788036013614</Id>
 					<Name><![CDATA[hayObstaculo]]></Name>
 					<X>690</X><Y>-290</Y>
@@ -535,7 +500,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[false]]></Code>
+							<Code><![CDATA[true]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1788036013615</Id>
@@ -1152,7 +1117,15 @@ for ( Pasajero q : activos ) if ( q.getSpeed() < 0.05 ) quietos++;
 int sentandose = Sentado.size() + SentadoDer.size() + SentadoTrip.size();
 traceln( "evac=%.0fs  sentados=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL=%d",
          time() - tAmerizaje, sentandose, activos.size(), quietos, evacuados,
-         sentandose + activos.size() + evacuados );]]></Action>
+         sentandose + activos.size() + evacuados );
+// quedan pocos: mostrar donde esta cada uno, para diagnosticar trabas
+if ( activos.size() <= 3 )
+    for ( Pasajero q : activos )
+        traceln( "   rezagado: salida=%s activa=%b abierta=%b  bloque=%s  x=%.0f y=%.0f  v=%.2f",
+            nombreSalida( q.salidaIdx ), salidaActiva[ q.salidaIdx ], salidaAbierta( q.salidaIdx ),
+            SalirFila.contains( q ) ? "SalirFila" : Pasillo.contains( q ) ? "Pasillo"
+            : Camina.contains( q ) ? "Camina" : EsperaPuerta.contains( q ) ? "EsperaPuerta" : "otro",
+            q.getX(), q.getY(), q.getSpeed() );]]></Action>
 				</Event>
 				<Event>
 					<Id>1788028432101</Id>
@@ -1194,6 +1167,50 @@ traceln( "evac=%.0fs  sentados=%d  caminando=%d  quietos=%d  evacuados=%d  TOTAL
         enCamino[ nueva ]++;
     }
     if ( Camina.contains( q ) ) Camina.cancel( q );
+}]]></Action>
+				</Event>
+				<Event>
+					<Id>1792000000001</Id>
+					<Name><![CDATA[frenoValijas]]></Name>
+					<X>330</X><Y>-200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<Id>1792000000002</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1788076800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[0.25]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[// OBSTACULO DE PASILLO (seccion 4.2.2 del informe).
+// Las 4 valijas caidas (agentes Valija, ubicadas al azar en nodoValijas) frenan a quien pasa:
+// todo peaton a menos de "radio" del centro de una valija camina a "factor" de su velocidad
+// normal y la recupera al alejarse. Radio y factor son supuestos propios del equipo.
+if ( !hayObstaculo ) return;   // interruptor para medir el efecto de las valijas
+double radio = 0.5;     // m al centro de la valija
+double factor = 0.5;    // fraccion de la velocidad que conserva al pasarla
+for ( Pasajero q : activos ) {
+    double v = q.velocidadPreferida * factorIluminacion;
+    for ( Valija b : valijas )
+        if ( q.distanceTo( b, METER ) < radio ) { v *= factor; break; }
+    if ( q.getComfortableSpeed() != v ) q.setComfortableSpeed( v );
 }]]></Action>
 				</Event>
 				<Event>
@@ -1399,6 +1416,27 @@ if ( i <= 1 ) return triangular( 8, 12, 20 );
 return triangular( 20, 30, 45 );]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1792000000004</Id>
+					<Name><![CDATA[tiempoPaso]]></Name>
+					<X>730</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[i]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[// CAUDAL POR SALIDA: segundos que la salida i queda ocupada por cada ocupante que la cruza.
+// Medias de Gobbin et al. (2021), Tabla 4 (tomadas de Liu et al., 2014):
+// tipo I 0.780 pax/s (1.28 s/pax), tipo III 0.639 pax/s (1.56 s/pax).
+// La dispersion (triangular, escrita ascendente como en duracionApertura) es supuesto propio.
+if ( i <= 1 ) return triangular( 0.9, 1.2, 1.75 );   // media 1.28 s
+return triangular( 1.1, 1.5, 2.1 );                  // media 1.57 s]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788030959088</Id>
@@ -1467,7 +1505,7 @@ traceln( "  Escenario ......... %d  (%s)", escenario,
 traceln( "  Iluminacion ....... x%.2f  (%s)", factorIluminacion,
          factorIluminacion >= 1.0 ? "plena luz" : "de emergencia" );
 if ( hayObstaculo )
-    traceln( "  Obstaculo pasillo . SI, limitado a %.2f m/s", velObstaculo );
+    traceln( "  Obstaculo pasillo . SI, %d valijas (x0.5 a menos de 0.5 m)", valijas.size() );
 else
     traceln( "  Obstaculo pasillo . NO" );
 traceln( "------------------------------------------------------------" );
@@ -1487,10 +1525,6 @@ traceln( "------------------------------------------------------------" );
 traceln( "  Pasajeros (%d) fuera en ..... %.1f s", totalPax, tEvacuacionPax );
 traceln( "  Ocupantes (%d) fuera en ..... %.1f s", totalPax + 6, tEvacuacionTotal );
 traceln( "  Cumple el umbral de 90 s .... %s", tEvacuacionTotal <= 90 ? "SI" : "NO" );
-if ( hayObstaculo )
-    traceln( "  Obstaculo: pasaron %d, tiempo perdido ~%.1f s en total (~%.2f s c/u)",
-        pasaronObstaculo, tiempoPerdidoObstaculo,
-        pasaronObstaculo > 0 ? tiempoPerdidoObstaculo / pasaronObstaculo : 0.0 );
 traceln( "============================================================" );]]></Body>
 				</Function>
 				<Function AccessType="public" StaticFunction="false">
@@ -2002,7 +2036,7 @@ return sb.toString();]]></Body>
 						<Parameter>
 							<Name><![CDATA[condition1]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[salidaAbierta( ped.salidaIdx )]]></Code>
+								<Code><![CDATA[salidaAbierta( ped.salidaIdx ) && time() >= tLibre[ ped.salidaIdx ]]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -2124,7 +2158,9 @@ intentarAbrir( ped.salidaIdx, ped );]]></Code>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[enCamino[ ped.salidaIdx ]--;
+								<Code><![CDATA[// la salida queda ocupada mientras este ocupante la cruza (caudal limitado)
+tLibre[ ped.salidaIdx ] = time() + tiempoPaso( ped.salidaIdx );
+enCamino[ ped.salidaIdx ]--;
 porSalida[ ped.salidaIdx ]++;
 activos.remove( ped );
 evacuados++;
@@ -3684,7 +3720,7 @@ activos.add( ped );]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTimeout]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[1]]></Code>
+								<Code><![CDATA[0.1]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 							</Value>
 						</Parameter>
@@ -14794,7 +14830,7 @@ activos.add( ped );]]></Code>
 				</GenericParameterValue>
 				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
 			</GenericParameter>
-			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<FlowChartsUsage>PED</FlowChartsUsage>
 			<SamplesToKeep>100</SamplesToKeep>
 			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
 			<ElementsLimitValue>100</ElementsLimitValue>
@@ -14962,7 +14998,7 @@ activos.add( ped );]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1788036013616</Id>
 					<Name><![CDATA[tEntroObstaculo]]></Name>
-					<X>70</X><Y>180</Y>
+					<X>270</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15671,9 +15707,6 @@ rol == RolPax.TRIPULANTE_DELANTERO ? new java.awt.Color( 210,  30,  30 ) :
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[factorIluminacion]]></ParameterName>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[velObstaculo]]></ParameterName>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[hayObstaculo]]></ParameterName>
