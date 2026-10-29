@@ -543,10 +543,14 @@ contemplando pasajeros y tripulaci\'on completa.
 Se marcaron las 8 salidas de emergencia mediante componentes \textbf{\textit{target
 line}}, y se definieron nodos de \'area con nombres representativos para gestionar
 la l\'ogica de la simulaci\'on. Cada nodo cuenta con puntos
-\textbf{\textit{attractor}} que determinan d\'onde pueden aparecer los agentes;
-estos se configuraron de forma que coincidan con la posici\'on real de cada
-asiento, garantizando una representaci\'on fiel de la ubicaci\'on inicial de
-pasajeros y tripulaci\'on al momento del impacto.
+\textbf{\textit{attractor}} ubicados sobre la posici\'on real de cada asiento,
+que se usaron para verificar que la geometr\'ia de cada bloque coincidiera con
+el espacio real de los asientos. Sin embargo, los agentes no nacen sobre esos
+puntos: el bloque \textbf{PedSource} solo acepta como origen una l\'inea, un
+punto o un nodo (en AnyLogic los \textit{attractors} fijan posiciones exactas
+\'unicamente para los bloques \textbf{PedGoTo} y \textbf{PedWait}), por lo que
+cada pasajero aparece en una posici\'on sorteada dentro del nodo del bloque de
+asientos de su lado (ver Tabla~\ref{tab:aclaraciones}).
 
 Adicionalmente, se defini\'o un nodo central denominado
 ``\textbf{\textit{Valija}}'', con instanciamiento aleatorio de 4
