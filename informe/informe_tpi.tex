@@ -542,15 +542,17 @@ contemplando pasajeros y tripulaci\'on completa.
 
 Se marcaron las 8 salidas de emergencia mediante componentes \textbf{\textit{target
 line}}, y se definieron nodos de \'area con nombres representativos para gestionar
-la l\'ogica de la simulaci\'on. Cada nodo cuenta con puntos
-\textbf{\textit{attractor}} ubicados sobre la posici\'on real de cada asiento,
-que se usaron para verificar que la geometr\'ia de cada bloque coincidiera con
-el espacio real de los asientos. Sin embargo, los agentes no nacen sobre esos
-puntos: el bloque \textbf{PedSource} solo acepta como origen una l\'inea, un
-punto o un nodo (en AnyLogic los \textit{attractors} fijan posiciones exactas
-\'unicamente para los bloques \textbf{PedGoTo} y \textbf{PedWait}), por lo que
-cada pasajero aparece en una posici\'on sorteada dentro del nodo del bloque de
-asientos de su lado (ver Tabla~\ref{tab:aclaraciones}).
+la l\'ogica de la simulaci\'on. Cada nodo cuenta con puntos \textbf{\textit{attractor}} ubicados sobre la
+posici\'on real de cada asiento. Se incorporaron al inicio del desarrollo con la
+intenci\'on de usarlos como posici\'on inicial de cada pasajero, pero en la versi\'on
+actual del modelo \textbf{no tienen efecto} sobre la simulaci\'on: ning\'un bloque los
+utiliza como destino ni como origen, y se conservan solo como referencia visual de
+la disposici\'on de los asientos. Esto se debe a que el bloque \textbf{PedSource}
+solo acepta como origen una l\'inea, un punto o un nodo (en AnyLogic los
+\textit{attractors} fijan posiciones exactas \'unicamente para los bloques
+\textbf{PedGoTo} y \textbf{PedWait}), por lo que cada pasajero aparece en una
+posici\'on sorteada dentro del nodo del bloque de asientos de su lado (ver
+Tabla~\ref{tab:aclaraciones}).
 
 Adicionalmente, se defini\'o un nodo central denominado
 ``\textbf{\textit{Valija}}'', con instanciamiento aleatorio de 4
@@ -787,7 +789,7 @@ a que la cabina quede completamente vac\'ia.
 \endfoot
 \textbf{Ancho de pasillo modelado} & \textbf{0.68 m} & Supuesto propio (estimaci\'on) & El respaldo del asiento ($\sim$1.05 m de altura) s\'i est\'a dentro del rango donde 14 CFR 25.815 exige 0.51 m como m\'inimo (aplicable desde 64 cm de altura hacia arriba). Por encima del respaldo, hasta la altura de los hombros de un pasajero de pie ($\sim$1.40 m), ya no hay asiento que restrinja el paso (solo el fuselaje, m\'as ancho a esa altura). Este valor fue estimado por nosotros porque nos permit\'ia que pasen dos personas por el mismo lugar del pasillo ``moviendo sus hombros'' y reflejaba la realidad. \\
 \midrule
-\textbf{Posici\'on inicial del pasajero} & \textbf{Sorteada de forma uniforme dentro del bloque de asientos de su lado, no en un asiento individual} & Adaptaci\'on propia (limitaci\'on t\'ecnica) & \textbf{PedSource} no permite instanciar agentes directamente sobre un punto de asiento (\textit{attractor}); solo acepta como origen un nodo, una l\'inea o un punto. Los 186 \textit{attractors} definidos originalmente s\'i se usaron para verificar que la geometr\'ia del bloque coincidiera con el espacio real de los asientos, pero no determinan la posici\'on de nacimiento de cada pasajero individual. \\
+\textbf{Posici\'on inicial del pasajero} & \textbf{Sorteada de forma uniforme dentro del bloque de asientos de su lado, no en un asiento individual} & Adaptaci\'on propia (limitaci\'on t\'ecnica) & \textbf{PedSource} no permite instanciar agentes directamente sobre un punto de asiento (\textit{attractor}); solo acepta como origen un nodo, una l\'inea o un punto. Los 186 \textit{attractors} de asientos se definieron al inicio con la intenci\'on de usarlos como posici\'on inicial, pero actualmente no tienen efecto sobre la simulaci\'on y se conservan solo como referencia visual. \\
 \midrule
 \textbf{Instante de inicio de la evacuaci\'on} & \textbf{Se activa expl\'icitamente para todos los agentes en el momento del amerizaje} & Decisi\'on de implementaci\'on propia & Definimos el instante ``$t=0$'' de todas las m\'etricas del informe (secci\'on~\ref{sub:metricas}): el cron\'ometro arranca con la se\~nal de evacuaci\'on, no con un proceso previo de acomodamiento de los agentes en el modelo. \\
 \midrule
@@ -1072,8 +1074,14 @@ pasajeros m\'as alejados de las salidas y la tripulaci\'on.
 \pendiente
     \centering
     \includegraphics[width=0.85\textwidth]{fig5_uso_salidas.png}
-    \caption{Ocupantes evacuados por cada salida (promedio por corrida) en cada
-    escenario. Las salidas bloqueadas en un escenario no registran evacuados.}
+        \caption{Ocupantes evacuados por cada salida (promedio por corrida) en cada
+    escenario. Eje horizontal: 1 = 1L (delantera izquierda), 2 = 1R (delantera
+    derecha), 3 = AlaFwdL (ala delantera izquierda), 4 = AlaFwdR (ala delantera
+    derecha), 5 = AlaAftL (ala trasera izquierda) y 6 = AlaAftR (ala trasera
+    derecha). Colores: azul = escenario 1 (Baseline), naranja = escenario 2 (50\%
+    alternado), verde = escenario 3 (50\% centro libre) y amarillo = escenario 4
+    (Asim\'etrico), igual que en la Figura~\ref{fig:barras}. Las salidas bloqueadas
+    en un escenario no registran evacuados.}
     \label{fig:uso_salidas}
 \end{figure}
 
