@@ -823,6 +823,8 @@ a que la cabina quede completamente vac\'ia.
 \textbf{Efecto de las valijas en el pasillo} & \textbf{A menos de 0.5 m de una valija, el agente camina al 50\% de su velocidad (chequeo cada 0.25 s)} & Supuesto propio & No hay datos medidos. El factor tiene un antecedente: Galea et al. (2024)~\cite{galea2024luggage} aplican en airEXODUS una reducci\'on arbitraria de velocidad (0.5 por defecto) al pasajero que pasa junto a quien recoge equipaje en el pasillo, y sus resultados no cambian entre 0.4 y 0.6. El radio de 0.5 m no tiene fuente. En el modelo los agentes no pueden chocar con la valija, as\'i que la reducci\'on de velocidad representa todo el obst\'aculo f\'isico: pasar por encima de una valija en un pasillo angosto y con iluminaci\'on reducida. \\
 \midrule
 \textbf{Momento de evacuaci\'on de la tripulaci\'on} & \textbf{Evac\'uan en \'ultimo lugar, liberados reci\'en cuando el conteo de pasajeros evacuados alcanza el total} & Decisi\'on de modelado propia & Replica el procedimiento operativo real. Implementado mediante liberaci\'on manual (no por temporizador), condicionada al estado de evacuaci\'on del resto del pasaje (ver mecanismo detallado en el p\'arrafo anterior). \\
+\midrule
+\textbf{Cambio de salida en la reevaluaci\'on peri\'odica} & \textbf{Solo si la nueva salida tiene un costo al menos 20\% menor que la actual, o si la actual est\'a bloqueada; no se reeval\'ua a menos de 2~m de una salida habilitada} & Supuesto propio & Sin fuente. Sin este margen, los agentes que esperan en una cola cambiaban de salida en cada reevaluaci\'on y se daban vuelta en el pasillo, generando flujos encontrados que no se observan en una evacuaci\'on real. Los valores de 20\% y 2~m son una calibraci\'on del equipo. \\
 \end{longtable}
 }
 
@@ -1028,8 +1030,8 @@ por escenario (en los escenarios 2 y 4, 29 corridas completas).}
 \pendiente
     \centering
     \includegraphics[width=0.8\textwidth]{fig3_boxplot.png}
-    \caption{Distribuci\'on de los tiempos de evacuaci\'on de las 30 corridas de cada
-    escenario (caja: cuartiles; l\'inea central: mediana; bigotes: 1,5 veces el rango
+    \caption{Distribuci\'on de los tiempos de evacuaci\'on de las corridas completas de
+    cada escenario (caja: cuartiles; l\'inea central: mediana; bigotes: 1,5 veces el rango
     intercuart\'ilico; puntos: cada corrida).}
     \label{fig:boxplot}
 \end{figure}
@@ -1078,7 +1080,7 @@ conclusiones.
     \centering
     \includegraphics[width=0.85\textwidth]{fig4_curva_acumulada.png}
     \caption{Ocupantes evacuados acumulados en funci\'on del tiempo, promedio de las
-    30 corridas de cada escenario. La l\'inea roja vertical marca los 90 segundos.}
+    corridas completas de cada escenario. La l\'inea roja vertical marca los 90 segundos.}
     \label{fig:curva}
 \end{figure}
 
