@@ -4,7 +4,7 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.10.202609231424" AlpVersion="8.9.10">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.10.202609221911" AlpVersion="8.9.10">
 <Model>
 	<Id>1787743493618</Id>
 	<Name><![CDATA[DitchingBoeing737-801]]></Name>
@@ -49,7 +49,7 @@
     targetLine5      // 5 = AlaAftR   sobre el ala, trasera derecha
 };
 
-configurarEscenario();
+configurarEscenario();      
 enCamino     = new int[ 6 ];
 porSalida    = new int[ 6 ];
 tApertura    = new double[ 6 ];
@@ -163,7 +163,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 			<ScaleRuler>
 				<Id>1787743493625</Id>
 				<Name><![CDATA[scale]]></Name>
-				<X>144.834</X><Y>-715.334</Y>
+				<X>214.834</X><Y>-1495.334</Y>
 				<PublicFlag>false</PublicFlag>
 				<PresentationFlag>true</PresentationFlag>
 				<ShowLabel>false</ShowLabel>
@@ -181,7 +181,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788006667717</Id>
 					<Name><![CDATA[salidas]]></Name>
-					<X>200</X><Y>-80</Y>
+					<X>270</X><Y>-860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -193,7 +193,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788008378240</Id>
 					<Name><![CDATA[salidaActiva]]></Name>
-					<X>200</X><Y>-50</Y>
+					<X>270</X><Y>-830</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -205,7 +205,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788009788841</Id>
 					<Name><![CDATA[enCamino]]></Name>
-					<X>200</X><Y>-110</Y>
+					<X>270</X><Y>-890</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -217,7 +217,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788011268136</Id>
 					<Name><![CDATA[activos]]></Name>
-					<X>200</X><Y>-140</Y>
+					<X>270</X><Y>-920</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -232,7 +232,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788029714068</Id>
 					<Name><![CDATA[evacuados]]></Name>
-					<X>200</X><Y>-20</Y>
+					<X>270</X><Y>-800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -247,7 +247,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788030516975</Id>
 					<Name><![CDATA[tAmerizaje]]></Name>
-					<X>200</X><Y>-170</Y>
+					<X>270</X><Y>-950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -262,7 +262,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788030789515</Id>
 					<Name><![CDATA[porSalida]]></Name>
-					<X>110</X><Y>-170</Y>
+					<X>180</X><Y>-950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -274,7 +274,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788030959086</Id>
 					<Name><![CDATA[tApertura]]></Name>
-					<X>110</X><Y>-140</Y>
+					<X>180</X><Y>-920</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -286,7 +286,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1792000000003</Id>
 					<Name><![CDATA[tLibre]]></Name>
-					<X>110</X><Y>-110</Y>
+					<X>180</X><Y>-890</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -298,7 +298,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788036013608</Id>
 					<Name><![CDATA[tPrimeraSalida]]></Name>
-					<X>-10</X><Y>-170</Y>
+					<X>60</X><Y>-950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -310,7 +310,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788036013609</Id>
 					<Name><![CDATA[tUltimaSalida]]></Name>
-					<X>-10</X><Y>-130</Y>
+					<X>60</X><Y>-910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -322,7 +322,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788036013610</Id>
 					<Name><![CDATA[tEvacuacionPax]]></Name>
-					<X>-10</X><Y>-90</Y>
+					<X>60</X><Y>-870</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -334,7 +334,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788036013611</Id>
 					<Name><![CDATA[tEvacuacionTotal]]></Name>
-					<X>-10</X><Y>-50</Y>
+					<X>60</X><Y>-830</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -346,7 +346,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788300000001</Id>
 					<Name><![CDATA[tiemposEvac]]></Name>
-					<X>900</X><Y>-250</Y>
+					<X>970</X><Y>-1030</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -361,7 +361,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788300000002</Id>
 					<Name><![CDATA[registroAgentes]]></Name>
-					<X>900</X><Y>-220</Y>
+					<X>970</X><Y>-1000</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -376,7 +376,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788300000003</Id>
 					<Name><![CDATA[dsEvacuados]]></Name>
-					<X>900</X><Y>-190</Y>
+					<X>970</X><Y>-970</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -391,7 +391,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1788300000004</Id>
 					<Name><![CDATA[dsUmbral90]]></Name>
-					<X>900</X><Y>-160</Y>
+					<X>970</X><Y>-940</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -406,7 +406,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1793301259833</Id>
 					<Name><![CDATA[nBebes]]></Name>
-					<X>110</X><Y>-80</Y>
+					<X>180</X><Y>-860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -421,7 +421,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1788009756465</Id>
 					<Name><![CDATA[pesoCongestion]]></Name>
-					<X>460</X><Y>-170</Y>
+					<X>530</X><Y>-950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -445,7 +445,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1788030325619</Id>
 					<Name><![CDATA[totalPax]]></Name>
-					<X>590</X><Y>-170</Y>
+					<X>660</X><Y>-950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -469,7 +469,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1788030938856</Id>
 					<Name><![CDATA[escenario]]></Name>
-					<X>690</X><Y>-170</Y>
+					<X>760</X><Y>-950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -493,7 +493,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1788036011606</Id>
 					<Name><![CDATA[factorIluminacion]]></Name>
-					<X>690</X><Y>-210</Y>
+					<X>760</X><Y>-990</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -517,7 +517,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1788036013614</Id>
 					<Name><![CDATA[hayObstaculo]]></Name>
-					<X>690</X><Y>-290</Y>
+					<X>760</X><Y>-1070</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -541,7 +541,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1788300000005</Id>
 					<Name><![CDATA[nBloqueadas]]></Name>
-					<X>900</X><Y>-130</Y>
+					<X>970</X><Y>-910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -567,7 +567,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788003236860</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>80</X><Y>-310</Y>
+					<X>150</X><Y>-1090</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -600,7 +600,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788003247309</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>490</X><Y>-310</Y>
+					<X>560</X><Y>-1090</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -633,7 +633,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788010411657</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>70</X><Y>-380</Y>
+					<X>140</X><Y>-1160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -666,7 +666,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788029242170</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>0</X><Y>-80</Y>
+					<X>70</X><Y>-860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -699,7 +699,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788029261117</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>190</X><Y>-380</Y>
+					<X>260</X><Y>-1160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -734,7 +734,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788029337791</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>0</X><Y>-80</Y>
+					<X>70</X><Y>-860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -767,7 +767,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788029337793</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>0</X><Y>-80</Y>
+					<X>70</X><Y>-860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -800,7 +800,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956080</Id>
 					<Name><![CDATA[connTripDel]]></Name>
-					<X>70</X><Y>-460</Y>
+					<X>140</X><Y>-1240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -833,7 +833,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956081</Id>
 					<Name><![CDATA[connTripTras]]></Name>
-					<X>70</X><Y>-500</Y>
+					<X>140</X><Y>-1280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -866,7 +866,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956082</Id>
 					<Name><![CDATA[connPilotos]]></Name>
-					<X>70</X><Y>-540</Y>
+					<X>140</X><Y>-1320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -899,7 +899,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788030956083</Id>
 					<Name><![CDATA[connTripSale]]></Name>
-					<X>190</X><Y>-490</Y>
+					<X>260</X><Y>-1270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -932,7 +932,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788030957085</Id>
 					<Name><![CDATA[connSale]]></Name>
-					<X>550</X><Y>-320</Y>
+					<X>620</X><Y>-1100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -965,7 +965,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788030957086</Id>
 					<Name><![CDATA[connRebote]]></Name>
-					<X>550</X><Y>-240</Y>
+					<X>620</X><Y>-1020</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1000,7 +1000,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788035999588</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>480</X><Y>-400</Y>
+					<X>550</X><Y>-1180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1036,7 +1036,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1788036010606</Id>
 					<Name><![CDATA[connector9]]></Name>
-					<X>440</X><Y>-400</Y>
+					<X>510</X><Y>-1180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1073,7 +1073,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1793303324080</Id>
 					<Name><![CDATA[connector7]]></Name>
-					<X>480</X><Y>-300</Y>
+					<X>550</X><Y>-1080</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1108,7 +1108,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Connector>
 					<Id>1793322508338</Id>
 					<Name><![CDATA[connector10]]></Name>
-					<X>360</X><Y>-300</Y>
+					<X>430</X><Y>-1080</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1145,7 +1145,7 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 				<Event>
 					<Id>1788011354224</Id>
 					<Name><![CDATA[radar]]></Name>
-					<X>330</X><Y>-140</Y>
+					<X>400</X><Y>-920</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1190,7 +1190,7 @@ if ( activos.size() <= 3 )
 				<Event>
 					<Id>1788028432101</Id>
 					<Name><![CDATA[recalculo]]></Name>
-					<X>330</X><Y>-170</Y>
+					<X>400</X><Y>-950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1250,7 +1250,7 @@ if ( activos.size() <= 3 )
 				<Event>
 					<Id>1792000000001</Id>
 					<Name><![CDATA[frenoValijas]]></Name>
-					<X>330</X><Y>-200</Y>
+					<X>400</X><Y>-980</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1294,7 +1294,7 @@ for ( Pasajero q : activos ) {
 				<Event>
 					<Id>1788030406665</Id>
 					<Name><![CDATA[amerizaje]]></Name>
-					<X>330</X><Y>-110</Y>
+					<X>400</X><Y>-890</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1353,7 +1353,7 @@ traceln( ">>> AMERIZAJE en t=" + tAmerizaje );]]></Action>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788006886992</Id>
 					<Name><![CDATA[posSalidaX]]></Name>
-					<X>460</X><Y>-130</Y>
+					<X>530</X><Y>-910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1369,7 +1369,7 @@ traceln( ">>> AMERIZAJE en t=" + tAmerizaje );]]></Action>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788006944599</Id>
 					<Name><![CDATA[posSalidaY]]></Name>
-					<X>460</X><Y>-100</Y>
+					<X>530</X><Y>-880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1385,7 +1385,7 @@ traceln( ">>> AMERIZAJE en t=" + tAmerizaje );]]></Action>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788008550554</Id>
 					<Name><![CDATA[distanciaSalida]]></Name>
-					<X>460</X><Y>-70</Y>
+					<X>530</X><Y>-850</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1406,7 +1406,7 @@ traceln( ">>> AMERIZAJE en t=" + tAmerizaje );]]></Action>
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1788008599363</Id>
 					<Name><![CDATA[elegirSalida]]></Name>
-					<X>460</X><Y>-40</Y>
+					<X>530</X><Y>-820</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1434,7 +1434,7 @@ return mejor;]]></Body>
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1788028294597</Id>
 					<Name><![CDATA[gentEnCamino]]></Name>
-					<X>600</X><Y>-70</Y>
+					<X>670</X><Y>-850</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1459,7 +1459,7 @@ return n;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788030955066</Id>
 					<Name><![CDATA[configurarEscenario]]></Name>
-					<X>600</X><Y>-100</Y>
+					<X>670</X><Y>-880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1486,7 +1486,7 @@ return n;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788030959087</Id>
 					<Name><![CDATA[duracionApertura]]></Name>
-					<X>600</X><Y>-130</Y>
+					<X>670</X><Y>-910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1511,7 +1511,7 @@ return triangular( 20, 30, 45 );]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1792000000004</Id>
 					<Name><![CDATA[tiempoPaso]]></Name>
-					<X>730</X><Y>-130</Y>
+					<X>800</X><Y>-910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1532,7 +1532,7 @@ return triangular( 1.1, 1.5, 2.1 );                  // media 1.57 s]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788030959088</Id>
 					<Name><![CDATA[intentarAbrir]]></Name>
-					<X>740</X><Y>-100</Y>
+					<X>810</X><Y>-880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1558,7 +1558,7 @@ tApertura[ i ] = time() + duracionApertura( i );]]></Body>
 					<ReturnType><![CDATA[boolean]]></ReturnType>
 					<Id>1788030959089</Id>
 					<Name><![CDATA[salidaAbierta]]></Name>
-					<X>730</X><Y>-70</Y>
+					<X>800</X><Y>-850</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1623,7 +1623,7 @@ traceln( "============================================================" );]]></B
 					<ReturnType><![CDATA[String]]></ReturnType>
 					<Id>1788300000007</Id>
 					<Name><![CDATA[nombreSalida]]></Name>
-					<X>1050</X><Y>-250</Y>
+					<X>1120</X><Y>-1030</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1640,7 +1640,7 @@ return new String[]{ "1L", "1R", "AlaFwdL", "AlaFwdR", "AlaAftL", "AlaAftR" }[ i
 					<ReturnType><![CDATA[String]]></ReturnType>
 					<Id>1788300000008</Id>
 					<Name><![CDATA[num]]></Name>
-					<X>1050</X><Y>-220</Y>
+					<X>1120</X><Y>-1000</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1656,7 +1656,7 @@ return new String[]{ "1L", "1R", "AlaFwdL", "AlaFwdR", "AlaAftL", "AlaAftR" }[ i
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1788300000009</Id>
 					<Name><![CDATA[rel]]></Name>
-					<X>1050</X><Y>-190</Y>
+					<X>1120</X><Y>-970</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1672,7 +1672,7 @@ return new String[]{ "1L", "1R", "AlaFwdL", "AlaFwdR", "AlaAftL", "AlaAftR" }[ i
 					<ReturnType><![CDATA[String]]></ReturnType>
 					<Id>1788300000010</Id>
 					<Name><![CDATA[encabezadoCorrida]]></Name>
-					<X>1050</X><Y>-160</Y>
+					<X>1120</X><Y>-940</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1688,7 +1688,7 @@ return sb.toString();]]></Body>
 					<ReturnType><![CDATA[String]]></ReturnType>
 					<Id>1788300000011</Id>
 					<Name><![CDATA[filaCorrida]]></Name>
-					<X>1050</X><Y>-130</Y>
+					<X>1120</X><Y>-910</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1711,7 +1711,7 @@ return sb.toString();]]></Body>
 				<EmbeddedObject>
 					<Id>1787831647690</Id>
 					<Name><![CDATA[valijas]]></Name>
-					<X>360</X><Y>-80</Y>
+					<X>430</X><Y>-860</Y>
 					<Label><X>-380</X><Y>-220</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1764,7 +1764,7 @@ return sb.toString();]]></Body>
 				<EmbeddedObject>
 					<Id>1788003075918</Id>
 					<Name><![CDATA[Nace]]></Name>
-					<X>50</X><Y>-310</Y>
+					<X>120</X><Y>-1090</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1982,7 +1982,7 @@ return sb.toString();]]></Body>
 				<EmbeddedObject>
 					<Id>1788003083229</Id>
 					<Name><![CDATA[Camina]]></Name>
-					<X>450</X><Y>-320</Y>
+					<X>520</X><Y>-1100</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2080,7 +2080,7 @@ return sb.toString();]]></Body>
 				<EmbeddedObject>
 					<Id>1788030957083</Id>
 					<Name><![CDATA[Chequeo]]></Name>
-					<X>520</X><Y>-320</Y>
+					<X>590</X><Y>-1100</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2208,7 +2208,7 @@ intentarAbrir( ped.salidaIdx, ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788003095222</Id>
 					<Name><![CDATA[Sale]]></Name>
-					<X>590</X><Y>-320</Y>
+					<X>660</X><Y>-1100</Y>
 					<Label><X>-20</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2291,7 +2291,7 @@ registroAgentes.add( ped.rol + ";" + nombreSalida( ped.salidaIdx ) + ";" + num( 
 				<EmbeddedObject>
 					<Id>1788005039204</Id>
 					<Name><![CDATA[Sentado]]></Name>
-					<X>140</X><Y>-320</Y>
+					<X>210</X><Y>-1100</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2418,7 +2418,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788010392786</Id>
 					<Name><![CDATA[NaceDer]]></Name>
-					<X>40</X><Y>-380</Y>
+					<X>110</X><Y>-1160</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2636,7 +2636,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788010392839</Id>
 					<Name><![CDATA[SentadoDer]]></Name>
-					<X>150</X><Y>-390</Y>
+					<X>220</X><Y>-1170</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2763,7 +2763,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788029226781</Id>
 					<Name><![CDATA[SalirFila]]></Name>
-					<X>220</X><Y>-320</Y>
+					<X>290</X><Y>-1100</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2857,7 +2857,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788029336666</Id>
 					<Name><![CDATA[Pasillo]]></Name>
-					<X>330</X><Y>-320</Y>
+					<X>400</X><Y>-1100</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2951,7 +2951,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956066</Id>
 					<Name><![CDATA[NaceTripDel]]></Name>
-					<X>40</X><Y>-460</Y>
+					<X>110</X><Y>-1240</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3176,7 +3176,7 @@ ped.configurarPerfil();]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956070</Id>
 					<Name><![CDATA[NaceTripTras]]></Name>
-					<X>40</X><Y>-500</Y>
+					<X>110</X><Y>-1280</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3401,7 +3401,7 @@ ped.configurarPerfil();]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956074</Id>
 					<Name><![CDATA[NacePilotos]]></Name>
-					<X>40</X><Y>-540</Y>
+					<X>110</X><Y>-1320</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3626,7 +3626,7 @@ ped.configurarPerfil();]]></Code>
 				<EmbeddedObject>
 					<Id>1788030956078</Id>
 					<Name><![CDATA[SentadoTrip]]></Name>
-					<X>150</X><Y>-500</Y>
+					<X>220</X><Y>-1280</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3749,7 +3749,7 @@ activos.add( ped );]]></Code>
 				<EmbeddedObject>
 					<Id>1788030960089</Id>
 					<Name><![CDATA[EsperaPuerta]]></Name>
-					<X>440</X><Y>-410</Y>
+					<X>510</X><Y>-1190</Y>
 					<Label><X>-10</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4095,8 +4095,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4125,8 +4125,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4155,8 +4155,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4185,8 +4185,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4215,8 +4215,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4245,8 +4245,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4275,8 +4275,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4305,8 +4305,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4335,8 +4335,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4365,8 +4365,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4395,8 +4395,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4425,8 +4425,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4455,8 +4455,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4485,8 +4485,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4515,8 +4515,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4545,8 +4545,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4575,8 +4575,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4605,8 +4605,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4635,8 +4635,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4665,8 +4665,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4695,8 +4695,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4725,8 +4725,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4755,8 +4755,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4785,8 +4785,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4815,8 +4815,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4845,8 +4845,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4875,8 +4875,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4905,8 +4905,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4935,8 +4935,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4965,8 +4965,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -4995,8 +4995,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5025,8 +5025,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5055,8 +5055,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5085,8 +5085,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5115,8 +5115,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5145,8 +5145,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5175,8 +5175,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5205,8 +5205,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5235,8 +5235,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5265,8 +5265,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5295,8 +5295,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5325,8 +5325,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5355,8 +5355,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5385,8 +5385,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5415,8 +5415,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5445,8 +5445,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5475,8 +5475,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5505,8 +5505,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5535,8 +5535,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5565,8 +5565,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5595,8 +5595,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5625,8 +5625,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5655,8 +5655,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5685,8 +5685,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5715,8 +5715,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5745,8 +5745,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5775,8 +5775,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5805,8 +5805,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5835,8 +5835,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5865,8 +5865,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5895,8 +5895,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5925,8 +5925,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5955,8 +5955,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -5985,8 +5985,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6015,8 +6015,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6045,8 +6045,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6075,8 +6075,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6105,8 +6105,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6135,8 +6135,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6165,8 +6165,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6195,8 +6195,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6225,8 +6225,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6255,8 +6255,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6285,8 +6285,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6315,8 +6315,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6345,8 +6345,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6375,8 +6375,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6405,8 +6405,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6435,8 +6435,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6465,8 +6465,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6495,8 +6495,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6525,8 +6525,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6555,8 +6555,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6585,8 +6585,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6615,8 +6615,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6645,8 +6645,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6675,8 +6675,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6705,8 +6705,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6735,8 +6735,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6765,8 +6765,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6795,8 +6795,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6825,8 +6825,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6855,8 +6855,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6885,8 +6885,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6915,8 +6915,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6945,8 +6945,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -6975,8 +6975,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7005,8 +7005,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7035,8 +7035,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7065,8 +7065,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7095,8 +7095,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7125,8 +7125,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7155,8 +7155,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7185,8 +7185,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7215,8 +7215,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7245,8 +7245,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7275,8 +7275,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7305,8 +7305,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7367,8 +7367,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7397,8 +7397,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7427,8 +7427,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7457,8 +7457,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7487,8 +7487,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7517,8 +7517,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7547,8 +7547,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7577,8 +7577,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7607,8 +7607,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7637,8 +7637,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7667,8 +7667,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7697,8 +7697,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7727,8 +7727,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7757,8 +7757,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7787,8 +7787,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7817,8 +7817,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7847,8 +7847,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7877,8 +7877,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7907,8 +7907,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7937,8 +7937,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7967,8 +7967,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -7997,8 +7997,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8027,8 +8027,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8057,8 +8057,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8087,8 +8087,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8117,8 +8117,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8147,8 +8147,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8177,8 +8177,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8207,8 +8207,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8237,8 +8237,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8267,8 +8267,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8297,8 +8297,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8327,8 +8327,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8357,8 +8357,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8387,8 +8387,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8417,8 +8417,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8447,8 +8447,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8477,8 +8477,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8507,8 +8507,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8537,8 +8537,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8567,8 +8567,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8597,8 +8597,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8627,8 +8627,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8657,8 +8657,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8687,8 +8687,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8717,8 +8717,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8747,8 +8747,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8777,8 +8777,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8807,8 +8807,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8837,8 +8837,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8867,8 +8867,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8897,8 +8897,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8927,8 +8927,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8957,8 +8957,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -8987,8 +8987,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9017,8 +9017,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9047,8 +9047,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9077,8 +9077,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9107,8 +9107,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9137,8 +9137,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9167,8 +9167,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9197,8 +9197,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9227,8 +9227,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9257,8 +9257,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9287,8 +9287,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9317,8 +9317,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9347,8 +9347,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9377,8 +9377,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9407,8 +9407,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9437,8 +9437,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9467,8 +9467,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9497,8 +9497,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9527,8 +9527,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9557,8 +9557,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9587,8 +9587,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9617,8 +9617,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9647,8 +9647,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9677,8 +9677,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9857,8 +9857,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9887,8 +9887,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9943,8 +9943,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -9974,8 +9974,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -10005,8 +10005,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -10036,8 +10036,8 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>0.5</Scale>
-					<Rotation>0.0</Rotation>
+					<Scale>0.4</Scale>
+					<Rotation>180.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
 					<ApplyShading>true</ApplyShading>
@@ -14671,9 +14671,9 @@ activos.add( ped );]]></Code>
 				<Control Type="Window3D">
 					<Id>1788268449637</Id>
 					<Name><![CDATA[window3d]]></Name>
-					<X>1100</X><Y>0</Y>
+					<X>4000</X><Y>-640</Y>
 					<Width>1000</Width>
-					<Height>700</Height>
+					<Height>600</Height>
 					<MakeDefaultViewArea>true</MakeDefaultViewArea>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ShowLabel>false</ShowLabel>
@@ -14685,7 +14685,7 @@ activos.add( ped );]]></Code>
                 <EmbeddedObjectPresentation>
 					<Id>1787831647692</Id>
 					<Name><![CDATA[valijas_presentation]]></Name>
-					<X>760</X><Y>-400</Y>
+					<X>830</X><Y>-1180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14700,10 +14700,798 @@ activos.add( ped );]]></Code>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
                 </EmbeddedObjectPresentation>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061141718</Id>
+					<Name><![CDATA[boton2D]]></Name>
+					<X>-1460</X><Y>-630</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 2D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061143164</Id>
+					<Name><![CDATA[botonResultados]]></Name>
+					<X>-1460</X><Y>-560</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Resultados]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061145172</Id>
+					<Name><![CDATA[boton3D]]></Name>
+					<X>-1310</X><Y>-630</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 3D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061149920</Id>
+					<Name><![CDATA[botonLogica]]></Name>
+					<X>-1310</X><Y>-560</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Lógica]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061298834</Id>
+					<Name><![CDATA[boton2D1]]></Name>
+					<X>680</X><Y>-1380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 2D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061298838</Id>
+					<Name><![CDATA[botonResultados1]]></Name>
+					<X>680</X><Y>-1310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Resultados]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061298840</Id>
+					<Name><![CDATA[boton3D1]]></Name>
+					<X>830</X><Y>-1380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 3D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061298842</Id>
+					<Name><![CDATA[botonLogica1]]></Name>
+					<X>830</X><Y>-1310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Lógica]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061329512</Id>
+					<Name><![CDATA[boton2D2]]></Name>
+					<X>4000</X><Y>-680</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 2D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061329515</Id>
+					<Name><![CDATA[botonResultados2]]></Name>
+					<X>4280</X><Y>-680</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Resultados]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061329517</Id>
+					<Name><![CDATA[boton3D2]]></Name>
+					<X>4140</X><Y>-680</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 3D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061329519</Id>
+					<Name><![CDATA[botonLogica2]]></Name>
+					<X>4420</X><Y>-680</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Lógica]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061356000</Id>
+					<Name><![CDATA[boton2D3]]></Name>
+					<X>60</X><Y>40</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 2D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061356003</Id>
+					<Name><![CDATA[botonResultados3]]></Name>
+					<X>60</X><Y>110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Resultados]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061356005</Id>
+					<Name><![CDATA[boton3D3]]></Name>
+					<X>210</X><Y>40</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Vista 3D]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1794061356007</Id>
+					<Name><![CDATA[botonLogica3]]></Name>
+					<X>210</X><Y>110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="100" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Lógica]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794061448398</Id>
+					<Name><![CDATA[resultadosText]]></Name>
+					<X>-2140</X><Y>-580</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("Evac. pasajeros: %.1f s", tEvacuacionPax)]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794062881733</Id>
+					<Name><![CDATA[resultadosText1]]></Name>
+					<X>-2140</X><Y>-540</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("Evac. total (192 ocupantes): %.1f s", tEvacuacionTotal)]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794062894778</Id>
+					<Name><![CDATA[resultadosText2]]></Name>
+					<X>-2140</X><Y>-500</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[tEvacuacionTotal >= 0 && tEvacuacionTotal <= 90
+    ? "Cumple 90 s (14 CFR 25.803): SI"
+    : "Cumple 90 s (14 CFR 25.803): NO"]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794062894780</Id>
+					<Name><![CDATA[resultadosText3]]></Name>
+					<X>-2140</X><Y>-460</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("Evacuados: %d / %d", evacuados, totalPax + 6)]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794062901932</Id>
+					<Name><![CDATA[resultadosText4]]></Name>
+					<X>-2140</X><Y>-420</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("Salidas habilitadas: %d", salidas.length)]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794062901934</Id>
+					<Name><![CDATA[resultadosText5]]></Name>
+					<X>-2140</X><Y>-380</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[tAmerizaje >= 0
+    ? String.format("Tiempo desde amerizaje: %.0f s", time() - tAmerizaje)
+    : "Tiempo desde amerizaje: aun no amerizo"]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063054659</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>-2140</X><Y>-340</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-65536</Color>
+					<Text><![CDATA[Evacuacion por ala]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>22</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063092296</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>-2140</X><Y>-620</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-65536</Color>
+					<Text><![CDATA[Resultados]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>22</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063132041</Id>
+					<Name><![CDATA[resultadosText6]]></Name>
+					<X>-2140</X><Y>-300</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("1L:      %3d pax | ultimo %s", porSalida[0],
+    rel(tUltimaSalida[0]) < 0 ? "-" : String.format("%.1f s", rel(tUltimaSalida[0])))]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063132043</Id>
+					<Name><![CDATA[resultadosText7]]></Name>
+					<X>-2000</X><Y>-300</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("1R:      %3d pax | ultimo %s", porSalida[1],
+    rel(tUltimaSalida[1]) < 0 ? "-" : String.format("%.1f s", rel(tUltimaSalida[1])))]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063132045</Id>
+					<Name><![CDATA[resultadosText8]]></Name>
+					<X>-2140</X><Y>-260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("AlaFwdL: %3d pax | ultimo %s", porSalida[2],
+    rel(tUltimaSalida[2]) < 0 ? "-" : String.format("%.1f s", rel(tUltimaSalida[2])))]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063132047</Id>
+					<Name><![CDATA[resultadosText9]]></Name>
+					<X>-2000</X><Y>-260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("AlaFwdR: %3d pax | ultimo %s", porSalida[3],
+    rel(tUltimaSalida[3]) < 0 ? "-" : String.format("%.1f s", rel(tUltimaSalida[3])))]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063132049</Id>
+					<Name><![CDATA[resultadosText10]]></Name>
+					<X>-2140</X><Y>-220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format(String.format("AlaAftL: %3d pax | ultimo %s", porSalida[4],
+    rel(tUltimaSalida[4]) < 0 ? "-" : String.format("%.1f s", rel(tUltimaSalida[4]))))]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063132051</Id>
+					<Name><![CDATA[resultadosText11]]></Name>
+					<X>-2000</X><Y>-220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[String.format("AlaAftR: %3d pax | ultimo %s", porSalida[5],
+    rel(tUltimaSalida[5]) < 0 ? "-" : String.format("%.1f s", rel(tUltimaSalida[5])))]]></TextCode>
+					<Font>
+						<Name>Monospaced</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Level>
+				<Level>
+					<Id>1794063755631</Id>
+					<Name><![CDATA[level1]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
+
+			<Presentation>
+    			<TimePlot>
+					<Id>1794063248656</Id>
+					<Name><![CDATA[plot]]></Name>
+					<X>-1860</X><Y>-520</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1794063248654</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1794124800000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>600</Width>
+					<Height>360</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>520</Width>
+						<Height>270</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[192]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Evacuados]]></Title>
+					<Id>1794063249149</Id>
+					<Expression><![CDATA[evacuados]]></Expression>
+					<Color>-16711936</Color>
+					<Expression2><![CDATA[evacuados]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[300]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
 			</Presentation>
 
 				</Level>
 			</Presentation>
+			<Areas>
+				<Area>
+					<Id>1794060800871</Id>
+					<Name><![CDATA[vaLogica]]></Name>
+					<X>20</X><Y>-1400</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1230</Width>
+					<Height>610</Height>
+				</Area>
+				<Area>
+					<Id>1794060908001</Id>
+					<Name><![CDATA[va2D]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1000</Width>
+					<Height>1740</Height>
+				</Area>
+				<Area>
+					<Id>1794060930012</Id>
+					<Name><![CDATA[va3D]]></Name>
+					<X>4000</X><Y>-700</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1000</Width>
+					<Height>660</Height>
+				</Area>
+				<Area>
+					<Id>1794061065850</Id>
+					<Name><![CDATA[vaResultados]]></Name>
+					<X>-2200</X><Y>-640</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1000</Width>
+					<Height>600</Height>
+				</Area>
+			</Areas>
 
 		</ActiveObjectClass>
 		<!--   =========   Active Object Class   ========  -->
@@ -14872,7 +15660,7 @@ activos.add( ped );]]></Code>
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
+					<Scale>0.5</Scale>
 					<Rotation>0.0</Rotation>
 					<AxisOrder>XYZ_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose></SelectedAnimationPose>
@@ -15408,8 +16196,8 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 							<OriginalColor>-16119286</OriginalColor>
 						</ColorMapping>
 					</ColorTable>
-					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
+					<AutoScale>false</AutoScale>
+					<Scale>0.5</Scale>
 					<Rotation>0.0</Rotation>
 					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose>idle</SelectedAnimationPose>
@@ -15477,7 +16265,7 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
+					<Scale>0.5</Scale>
 					<Rotation>0.0</Rotation>
 					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose>idle</SelectedAnimationPose>
@@ -15541,7 +16329,7 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
+					<Scale>0.5</Scale>
 					<Rotation>0.0</Rotation>
 					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose>idle</SelectedAnimationPose>
@@ -15595,7 +16383,7 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 						</ColorMapping>
 					</ColorTable>
 					<AutoScale>true</AutoScale>
-					<Scale>1.0</Scale>
+					<Scale>0.5</Scale>
 					<Rotation>0.0</Rotation>
 					<AxisOrder>YZX_AXIS_ORDER</AxisOrder>
 					<SelectedAnimationPose>idle</SelectedAnimationPose>
@@ -15720,9 +16508,9 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 			<Name><![CDATA[Simulation]]></Name>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<MaximumMemory>512</MaximumMemory>
-			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
+			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
-			<SeedValue>1</SeedValue>
+			<SeedValue>10001</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
 			<VmArgs><![CDATA[]]></VmArgs>
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
@@ -15761,7 +16549,7 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 				<Parameter>
 					<ParameterName><![CDATA[escenario]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[5]]></Code>
+						<Code><![CDATA[3]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
@@ -15990,10 +16778,12 @@ double techo( double v ) { return Math.ceil( Math.max( v, 100 ) * 1.15 / 50 ) * 
 
 // ================= Graficos del experimento Escenarios =================
 synchronized void dibujarEscenarios() {
-    dibujarMedias();
-    dibujarBox();
-    dibujarCurvas();
-    dibujarSalidas();
+    synchronized ( presentation ) {
+        dibujarMedias();
+        dibujarBox();
+        dibujarCurvas();
+        dibujarSalidas();
+    }
 }
 
 // Grafico 1: barras con IC 95% + umbral de 90 s
@@ -16083,8 +16873,9 @@ void dibujarSalidas() {
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
 			<InitialSetupCode><![CDATA[iniciar( "escenarios", true );]]></InitialSetupCode>
 			<MaximumMemory>512</MaximumMemory>
-			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
-			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<RandomNumberGenerationType>customGenerator</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random(Semilla.para( getCurrentReplication() ))</CustomGeneratorCode>
+			<BeforeSimulationRunCode><![CDATA[traceln( "Rep " + getCurrentReplication() + " -> semilla " + Semilla.para( getCurrentReplication() ) );]]></BeforeSimulationRunCode>
 			<AfterSimulationRunCode><![CDATA[registrar( root, root.escenario, root.escenario == 1 ? 0 : 50 );]]></AfterSimulationRunCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
@@ -16539,7 +17330,7 @@ void dibujarSalidas() {
 				</Text>
 			</Presentation>
 
-			<AfterIterationCode><![CDATA[dibujarEscenarios();]]></AfterIterationCode>
+			<AfterIterationCode><![CDATA[dibujarEscenarios(); ]]></AfterIterationCode>
 			<AfterExperimentCode><![CDATA[dibujarEscenarios();
 escribirResumen( "escenarios", 1, 4 );
 cerrar();]]></AfterExperimentCode>
@@ -16818,6 +17609,7 @@ double techo( double v ) { return Math.ceil( Math.max( v, 100 ) * 1.15 / 50 ) * 
 // ================= Grafico del experimento Sensibilidad =================
 // Grafico 3: tiempo medio (con banda IC 95%) vs. % de salidas bloqueadas
 synchronized void dibujarSensibilidad() {
+    synchronized ( presentation ) {
     plotSens.removeAll();
     DataSet med = new DataSet( 6 ), lo = new DataSet( 6 ), hi = new DataSet( 6 );
     double ymax = 0;
@@ -16834,12 +17626,16 @@ synchronized void dibujarSensibilidad() {
     linea( plotSens, -5, 90, 88, 90, ROJO, 2, "Umbral 90 s" );
     plotSens.setFixedHorizontalScale( -5, 88 );
     plotSens.setFixedVerticalScale( 0, techo( ymax ) );
-}]]></AdditionalClassCode>
+    }
+}
+]]></AdditionalClassCode>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
-			<InitialSetupCode><![CDATA[iniciar( "sensibilidad", false );]]></InitialSetupCode>
+			<InitialSetupCode><![CDATA[
+iniciar( "sensibilidad", false );]]></InitialSetupCode>
 			<MaximumMemory>512</MaximumMemory>
-			<RandomNumberGenerationType>randomSeed</RandomNumberGenerationType>
-			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<RandomNumberGenerationType>customGenerator</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random( Semilla.para( getCurrentReplication() ) )</CustomGeneratorCode>
+			<BeforeSimulationRunCode><![CDATA[traceln( "Rep " + getCurrentReplication() + " -> semilla " + Semilla.para( getCurrentReplication() ) );]]></BeforeSimulationRunCode>
 			<AfterSimulationRunCode><![CDATA[registrar( root, root.nBloqueadas, 100.0 * root.nBloqueadas / 6 );]]></AfterSimulationRunCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
@@ -17026,6 +17822,46 @@ cerrar();]]></AfterExperimentCode>
 			</ReplicationsProperties>
 		</ParamVariationExperiment>	
 	</Experiments>
+	<JavaClasses>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1794056731639</Id>
+			<Name><![CDATA[Semilla]]></Name>
+			<Text><![CDATA[/**
+ * Semilla
+ */	
+public class Semilla implements Serializable {
+
+    /**
+     * Default constructor
+     */
+    public Semilla() {
+    }
+    public static final long[] LISTA = {
+            10001, 10002, 10003, 10004, 10005, 10006, 10007, 10008, 10009, 10010,
+            10011, 10012, 10013, 10014, 10015, 10016, 10017, 10018, 10019, 10020,
+            10021, 10022, 10023, 10024, 10025, 10026, 10027, 10028, 10029, 10030
+        };
+
+        /** Devuelve la semilla de la réplica i de forma segura (envuelve si se pasa). */
+        public static long para( int i ) {
+            return LISTA[ ( (i % LISTA.length) + LISTA.length ) % LISTA.length ];
+        }
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+
+	/**
+	 * This number is here for model snapshot storing purpose<br>
+	 * It needs to be changed when this class gets changed
+	 */ 
+	private static final long serialVersionUID = 1L;
+
+}]]></Text>
+		</JavaClass>
+	</JavaClasses>
 	<ModelResources>
 		<Resource>
 			<Id>1787743670572</Id>
