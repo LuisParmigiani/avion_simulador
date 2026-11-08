@@ -13,3 +13,6 @@ TASKS.md
 # Informe del TPI (no se sube)
 TPI_*.md
 documents/informe/
+
+# AnyLogic autosave
+*.alp.autosave

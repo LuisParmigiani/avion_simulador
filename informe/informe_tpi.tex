@@ -130,10 +130,10 @@ disponibilidad los pasajeros desconocen, y una tripulaci\'on que evac\'ua en
 Sobre la cabina modelada (186 pasajeros y 6 tripulantes, con las salidas traseras
 inutilizables por la actitud de cola baja del amerizaje) se evaluaron cuatro
 escenarios de disponibilidad de salidas y un an\'alisis de sensibilidad de 0 a 5
-salidas bloqueadas, con 30 r\'eplicas por configuraci\'on.
-Ninguna de las 300 corridas evacu\'o a los 192 ocupantes dentro del umbral de
+salidas bloqueadas, con 100 r\'eplicas por configuraci\'on.
+Ninguna de las 1000 corridas evacu\'o a los 192 ocupantes dentro del umbral de
 90~segundos que fija la norma 14 CFR 25.803: aun con todas las salidas utilizables
-disponibles, el tiempo mediano fue de 280,4~s.
+disponibles, el tiempo mediano fue de 272,0~s.
 El modelo reproduce cualitativamente los patrones de evacuaci\'on documentados en
 el amerizaje del vuelo 1549 de US Airways en el r\'io Hudson.
 Los resultados se proponen como insumo para que los organismos certificadores
@@ -312,7 +312,7 @@ evento real.
           heterog\'eneos calibrados a partir de la literatura y de los requisitos del
           Appendix J~\cite{cfrAppJ}.
     \item Cuantificar el tiempo total de evacuaci\'on en cuatro configuraciones de
-          salidas disponibles, con 30 r\'eplicas por configuraci\'on.
+          salidas disponibles, con 100 r\'eplicas por configuraci\'on.
     \item Analizar la sensibilidad del tiempo de evacuaci\'on a la cantidad de
           salidas bloqueadas.
     \item Identificar los factores y cuellos de botella que m\'as inciden en el
@@ -405,7 +405,7 @@ reducida, ausencia de aviso previo, menor cantidad de tripulantes-gu\'ia):
 
 \subsubsection{M\'etricas a registrar}\label{sub:metricas}
 
-Para cada uno de los 4 escenarios se ejecutan 30 corridas independientes en
+Para cada uno de los 4 escenarios se ejecutan 100 corridas independientes en
 AnyLogic (\textit{Parameter Variation} / \textit{Multi-run}), dado el componente
 estoc\'astico en la velocidad y el comportamiento de los agentes. Se registra:
 
@@ -424,7 +424,7 @@ estoc\'astico en la velocidad y el comportamiento de los agentes. Se registra:
     \item Cumplimiento o no del umbral de 90 segundos (variable binaria por corrida).
 \end{itemize}
 
-\textbf{Agregadas por escenario, tras las 30 corridas:}
+\textbf{Agregadas por escenario, tras las 100 corridas:}
 \begin{itemize}[leftmargin=2em]
     \item Media y desv\'io est\'andar del tiempo total de evacuaci\'on.
     \item Percentil 95 (el peor 5\% de los casos), como medida de margen de seguridad
@@ -454,10 +454,13 @@ uniformidad e independencia, que es justamente lo que permite reproducir los
 experimentos.
 
 En lugar de dejar que cada corrida parta de una semilla aleatoria irrepetible, se
-defini\'o una \textbf{lista fija de 30 semillas} (Tabla~\ref{tab:semillas}), una por
+defini\'o una \textbf{lista fija de 100 semillas} (Tabla~\ref{tab:semillas}), una por
 r\'eplica, que comparten los tres experimentos. La r\'eplica $i$ usa siempre la
 semilla $i$-\'esima de la lista, en todos los escenarios y en todos los niveles de
-salidas bloqueadas. Esto tiene dos consecuencias:
+salidas bloqueadas. Se eligieron 100 r\'eplicas por configuraci\'on para que, por la
+ley de los grandes n\'umeros, los promedios estimados se estabilicen y los intervalos
+de confianza se estrechen respecto de un n\'umero menor de corridas. Esto tiene dos
+consecuencias:
 
 \begin{itemize}[leftmargin=2em]
     \item \textbf{Reproducibilidad.} Cualquier corrida de los experimentos puede
@@ -482,9 +485,16 @@ salidas bloqueadas. Esto tiene dos consecuencias:
 10001 & 10002 & 10003 & 10004 & 10005 & 10006 & 10007 & 10008 & 10009 & 10010 \\
 10011 & 10012 & 10013 & 10014 & 10015 & 10016 & 10017 & 10018 & 10019 & 10020 \\
 10021 & 10022 & 10023 & 10024 & 10025 & 10026 & 10027 & 10028 & 10029 & 10030 \\
+10031 & 10032 & 10033 & 10034 & 10035 & 10036 & 10037 & 10038 & 10039 & 10040 \\
+10041 & 10042 & 10043 & 10044 & 10045 & 10046 & 10047 & 10048 & 10049 & 10050 \\
+10051 & 10052 & 10053 & 10054 & 10055 & 10056 & 10057 & 10058 & 10059 & 10060 \\
+10061 & 10062 & 10063 & 10064 & 10065 & 10066 & 10067 & 10068 & 10069 & 10070 \\
+10071 & 10072 & 10073 & 10074 & 10075 & 10076 & 10077 & 10078 & 10079 & 10080 \\
+10081 & 10082 & 10083 & 10084 & 10085 & 10086 & 10087 & 10088 & 10089 & 10090 \\
+10091 & 10092 & 10093 & 10094 & 10095 & 10096 & 10097 & 10098 & 10099 & 10100 \\
 \bottomrule
 \end{tabular}
-\caption{Lista fija de 30 semillas usada en los tres experimentos. Los valores son
+\caption{Lista fija de 100 semillas usada en los tres experimentos. Los valores son
 arbitrarios; lo relevante es que sean distintos entre s\'i y que la misma r\'eplica
 use la misma semilla en todos los escenarios.}
 \label{tab:semillas}
@@ -497,7 +507,7 @@ use la misma semilla en todos los escenarios.}
           por escenario, con una l\'inea horizontal marcando el umbral de 90
           segundos, para ver de un vistazo qu\'e escenarios cumplen y cu\'ales no.
     \item \textbf{Boxplot por escenario:} distribuci\'on completa de los tiempos de
-          evacuaci\'on (las 30 corridas), para mostrar dispersi\'on y valores
+          evacuaci\'on (las 100 corridas), para mostrar dispersi\'on y valores
           at\'ipicos, no solo el promedio.
     \item \textbf{Curva de sensibilidad:} tiempo de evacuaci\'on vs.\ porcentaje de
           salidas bloqueadas, para mostrar la tendencia general de degradaci\'on a
@@ -832,7 +842,7 @@ ya conocen qu\'e salidas est\'an bloqueadas (fueron quienes las evaluaron durant
 evacuaci\'on) y eligen directamente entre las salidas habilitadas.
 
 Esta decisi\'on tiene un efecto directo y con bastante peso sobre la m\'etrica
-principal (suma en promedio entre 44 y 62 segundos seg\'un el escenario). Como la norma mide hasta el \'ultimo
+principal (suma en promedio entre 44 y 60 segundos seg\'un el escenario). Como la norma mide hasta el \'ultimo
 ocupante, el tiempo total de evacuaci\'on incluye el tramo que va desde que sale el
 \'ultimo pasajero hasta que sale el \'ultimo tripulante. Ese tramo es
 particularmente largo para los dos tripulantes traseros: como las salidas traseras
@@ -899,7 +909,7 @@ realidad. Se apoy\'o en cuatro mecanismos:
           r\'eplica se comprueba que hayan evacuado los 192 ocupantes (186
           pasajeros y 6 tripulantes) y que ninguno haya egresado por una salida
           bloqueada en ese escenario. Ninguna corrida evacu\'o por una salida
-          bloqueada; 5 de las 300 corridas de los dos experimentos no
+          bloqueada; 12 de las 1000 corridas de los dos experimentos no
           terminaron dentro del horizonte de 2000~s (un pasajero trabado, ver
           secci\'on~\ref{sub:res_escenarios}) y se excluyen de las estad\'isticas.
     \item \textbf{Correcci\'on de defectos detectados.} Durante la construcci\'on
@@ -918,8 +928,8 @@ realidad. Se apoy\'o en cuatro mecanismos:
           sobre una muestra de 1000 agentes con los requisitos del Appendix J
           (Tabla~\ref{tab:poblacion}). Adem\'as, el caso de 0 salidas bloqueadas
           del experimento Sensibilidad reproduce la configuraci\'on del
-          escenario~1, y ambos conjuntos de 30 r\'eplicas no muestran diferencias
-          significativas (Mann-Whitney, $p = 0{,}93$), lo que indica que la
+          escenario~1, y ambos conjuntos de 100 r\'eplicas no muestran diferencias
+          significativas (Mann-Whitney, $p = 0{,}65$), lo que indica que la
           l\'ogica de bloqueo aleatorio no altera el caso base.
 \end{itemize}
 
@@ -1005,9 +1015,9 @@ orientado a responder una pregunta distinta:
 \midrule
 Simulation & Simulation & Una \'unica corrida, con animaci\'on de los agentes. & Verificaci\'on visual del comportamiento del modelo y demostraci\'on. \\
 \midrule
-Escenarios & Parameter Variation & Los 4 escenarios de la Tabla~\ref{tab:escenarios} $\times$ 30 r\'eplicas, sin animaci\'on. & M\'etricas y gr\'aficos principales (secciones~\ref{sub:res_escenarios} a~\ref{sub:uso_salidas}). \\
+Escenarios & Parameter Variation & Los 4 escenarios de la Tabla~\ref{tab:escenarios} $\times$ 100 r\'eplicas, sin animaci\'on. & M\'etricas y gr\'aficos principales (secciones~\ref{sub:res_escenarios} a~\ref{sub:uso_salidas}). \\
 \midrule
-Sensibilidad & Parameter Variation & De 0 a 5 salidas bloqueadas $\times$ 30 r\'eplicas; en cada r\'eplica las salidas bloqueadas se eligen al azar. & Curva de sensibilidad (secci\'on~\ref{sub:res_sens}). \\
+Sensibilidad & Parameter Variation & De 0 a 5 salidas bloqueadas $\times$ 100 r\'eplicas; en cada r\'eplica las salidas bloqueadas se eligen al azar. & Curva de sensibilidad (secci\'on~\ref{sub:res_sens}). \\
 \bottomrule
 \end{tabular}
 \caption{Experimentos implementados en AnyLogic.}
@@ -1044,14 +1054,14 @@ el \'ultimo ocupante, tripulaci\'on incluida.
 \toprule
 \textbf{Escenario} & \textbf{Media (s)} & \textbf{IC 95\% (s)} & \textbf{Mediana (s)} & \textbf{Desv\'io (s)} & \textbf{P95 (s)} & \textbf{Cumplen 90 s} \\
 \midrule
-1 $\cdot$ Baseline            & 284,7 & 268,7 -- 300,8 & 280,4 & 42,3  & 385,7 & 0 / 29 \\
-2 $\cdot$ 50\% alternado      & 302,1 & 285,2 -- 319,0 & 293,3 & 45,3  & 386,9 & 0 / 30 \\
-3 $\cdot$ 50\% centro libre   & 339,1 & 318,8 -- 359,5 & 322,4 & 53,5  & 420,7 & 0 / 29 \\
-4 $\cdot$ Asim\'etrico        & 301,8 & 287,1 -- 316,6 & 296,3 & 38,8  & 357,0 & 0 / 29 \\
+1 $\cdot$ Baseline            & 287,3 & 273,8 -- 300,9 & 272,0 & 68,6  & 381,2 & 0 / 99 \\
+2 $\cdot$ 50\% alternado      & 295,9 & 288,2 -- 303,6 & 290,9 & 39,3  & 361,3 & 0 / 100 \\
+3 $\cdot$ 50\% centro libre   & 341,2 & 330,7 -- 351,7 & 330,5 & 53,3  & 420,5 & 0 / 99 \\
+4 $\cdot$ Asim\'etrico        & 300,0 & 292,7 -- 307,3 & 289,7 & 37,3  & 353,8 & 0 / 99 \\
 \bottomrule
 \end{tabular}
-\caption{Tiempo total de evacuaci\'on (192 ocupantes) por escenario, 30 r\'eplicas
-por escenario (en los escenarios 1, 3 y 4, 29 corridas completas).}
+\caption{Tiempo total de evacuaci\'on (192 ocupantes) por escenario, 100 r\'eplicas
+por escenario (en los escenarios 1, 3 y 4, 99 corridas completas).}
 \label{tab:res_escenarios}
 \end{table}
 
@@ -1076,35 +1086,38 @@ por escenario (en los escenarios 1, 3 y 4, 29 corridas completas).}
 
 \pendiente
 
-Ninguna de las 117 corridas completas cumple el umbral de 90 segundos, ni siquiera
-en el escenario baseline con las seis salidas disponibles (284,7~s en promedio).
+Ninguna de las 397 corridas completas cumple el umbral de 90 segundos, ni siquiera
+en el escenario baseline con las seis salidas disponibles (287,3~s en promedio).
 Esto se mantiene incluso si se considera solamente el tiempo hasta el \'ultimo
-pasajero, sin el tramo final de la tripulaci\'on: 238,7~s en promedio en el
+pasajero, sin el tramo final de la tripulaci\'on: 242,9~s en promedio en el
 baseline.
 
-Las medianas ordenan los escenarios de mejor a peor: baseline (280,4~s),
-50\% alternado (293,3~s), asim\'etrico (296,3~s) y 50\% con el centro libre
-(322,4~s). Con 30 r\'eplicas por escenario, sin embargo, la \'unica diferencia
-claramente significativa es la del escenario 3 frente al resto (prueba de
-Mann-Whitney: frente al 50\% alternado $p = 0{,}003$, frente al asim\'etrico
-$p = 0{,}005$ y frente al baseline $p < 0{,}001$); entre los otros tres las
-diferencias no son significativas (baseline frente a 50\% alternado $p = 0{,}08$;
-baseline frente a asim\'etrico $p = 0{,}055$; asim\'etrico frente a 50\% alternado
-$p = 0{,}99$). El escenario 3 es el m\'as desfavorable: al bloquear las dos salidas
-delanteras tipo~I, que la tripulaci\'on abre a los pocos segundos del amerizaje, toda
-la evacuaci\'on depende de las salidas sobre el ala, cuya apertura por parte de un
-pasajero sin entrenamiento es m\'as lenta.
+Las medianas ordenan los escenarios de mejor a peor: baseline (272,0~s),
+asim\'etrico (289,7~s), 50\% alternado (290,9~s) y 50\% con el centro libre
+(330,5~s). Con 100 r\'eplicas por escenario, las diferencias entre configuraciones
+se vuelven claramente significativas: el escenario 3 es m\'as lento que todos los
+dem\'as (prueba de Mann-Whitney: frente al 50\% alternado, al asim\'etrico y al
+baseline, $p < 0{,}001$ en los tres casos), y el baseline es m\'as r\'apido que el
+resto (frente al 50\% alternado $p = 0{,}005$ y frente al asim\'etrico $p < 0{,}001$).
+La \'unica comparaci\'on que no muestra diferencia significativa es la del 50\%
+alternado frente al asim\'etrico ($p = 0{,}37$). El escenario 3 es el m\'as
+desfavorable: al bloquear las dos salidas delanteras tipo~I, que la tripulaci\'on
+abre a los pocos segundos del amerizaje, toda la evacuaci\'on depende de las salidas
+sobre el ala, cuya apertura por parte de un pasajero sin entrenamiento es m\'as lenta.
 
-En los escenarios 1, 3 y 4, adem\'as, una de las 30 corridas no termin\'o dentro del
+En los escenarios 1, 3 y 4, adem\'as, una de las 100 corridas no termin\'o dentro del
 horizonte de 2000~s porque un pasajero qued\'o trabado. Se atribuye a una
 traba puntual de peatones dentro de la Pedestrian Library, se excluyen de las
-estad\'isticas y se declara como limitaci\'on del modelo. Por ese tipo de casos,
-para comparar escenarios se toma como referencia la mediana, que no se ve afectada
-por casos aislados.
+estad\'isticas y se declara como limitaci\'on del modelo. Estas trabas tambi\'en
+explican que en el baseline la media (287,3~s) quede por encima de la mediana
+(272,0~s) y que su desv\'io sea el mayor de los cuatro escenarios: unas pocas
+corridas con un pasajero demorado estiran la cola de la distribuci\'on. Por ese tipo
+de casos, para comparar escenarios se toma como referencia la mediana, que no se ve
+afectada por casos aislados.
 
 La diferencia entre el tiempo total y el tiempo de los pasajeros corresponde a la
-salida de la tripulaci\'on, que evac\'ua \'ultima: en promedio suma 46,1~s en el
-baseline y llega a 61,9~s en el escenario 3.
+salida de la tripulaci\'on, que evac\'ua \'ultima: en promedio suma 44,5~s en el
+baseline y llega a 60,1~s en el escenario 3.
 
 El escenario asim\'etrico (un lado completo disponible) y el escenario alternado,
 que es la configuraci\'on t\'ipica de certificaci\'on, dieron tiempos
@@ -1125,10 +1138,10 @@ conclusiones.
 
 \pendiente
 
-Al llegar a los 90 segundos, en promedio evacuaron 105 de los 192 ocupantes en el
-baseline (55\%), 92 y 91 en los escenarios 2 y 4 (48\% y 47\%) y 61 en el
+Al llegar a los 90 segundos, en promedio evacuaron 104 de los 192 ocupantes en el
+baseline (54\%), 90 y 90 en los escenarios 2 y 4 (47\% en ambos) y 61 en el
 escenario 3 (32\%). La curva del escenario 3 adem\'as arranca m\'as tarde: el primer
-ocupante sale en promedio a los 38,7~s, contra unos 14~s en el resto de los
+ocupante sale en promedio a los 38,0~s, contra unos 14~s en el resto de los
 escenarios, porque no dispone de las salidas delanteras que abre la tripulaci\'on. En
 todos los escenarios la pendiente disminuye en el tramo final, cuando quedan los
 pasajeros m\'as alejados de las salidas y la tripulaci\'on.
@@ -1154,8 +1167,8 @@ pasajeros m\'as alejados de las salidas y la tripulaci\'on.
 
 La salida sobre el ala trasera izquierda (AlaAftL) es la m\'as utilizada en los
 escenarios con salidas bloqueadas: evac\'ua en promedio unos 50 ocupantes en el
-baseline (a la par de la trasera derecha AlaAftR, con una cantidad similar) y entre
-100 y 103 (aproximadamente la mitad del avi\'on) en los escenarios con el 50\% de las
+baseline (a la par de la trasera derecha AlaAftR, con una cantidad similar) y unos
+101 (aproximadamente la mitad del avi\'on) en los escenarios con el 50\% de las
 salidas bloqueadas, donde AlaAftR queda inactiva. Se trata del principal cuello de botella del modelo, consecuencia
 directa de que las salidas traseras 2L/2R no son utilizables y de que es la salida
 m\'as cercana para toda la mitad trasera de la cabina. La concentraci\'on del flujo
@@ -1182,43 +1195,42 @@ en las salidas sobre el ala es coherente con lo observado en el caso Hudson
 \toprule
 \textbf{Salidas bloqueadas} & \textbf{\% bloqueado} & \textbf{Media (s)} & \textbf{IC 95\% (s)} & \textbf{Mediana (s)} & \textbf{P95 (s)} & \textbf{Corridas completas} \\
 \midrule
-0 & 0\%  & 291,9 & 272,0 -- 311,7 & 275,2 & 404,1 & 30 / 30 \\
-1 & 17\% & 328,4 & 267,2 -- 389,6 & 280,6 & 494,0 & 30 / 30 \\
-2 & 33\% & 316,3 & 289,0 -- 343,6 & 298,4 & 375,5 & 30 / 30 \\
-3 & 50\% & 334,1 & 311,7 -- 356,4 & 321,8 & 438,7 & 29 / 30 \\
-4 & 67\% & 356,6 & 344,7 -- 368,5 & 352,1 & 410,8 & 29 / 30 \\
-5 & 83\% & 491,3 & 429,9 -- 552,7 & 440,2 & 654,7 & 30 / 30 \\
+0 & 0\%  & 287,8 & 278,2 -- 297,4 & 272,3 & 399,6 & 99 / 100 \\
+1 & 17\% & 297,6 & 277,9 -- 317,3 & 278,3 & 360,1 & 99 / 100 \\
+2 & 33\% & 308,6 & 297,7 -- 319,4 & 299,1 & 383,9 & 98 / 100 \\
+3 & 50\% & 325,5 & 316,1 -- 335,0 & 318,2 & 394,3 & 98 / 100 \\
+4 & 67\% & 363,3 & 353,5 -- 373,1 & 351,5 & 461,3 & 98 / 100 \\
+5 & 83\% & 471,3 & 447,7 -- 494,8 & 431,3 & 623,3 & 99 / 100 \\
 \bottomrule
 \end{tabular}
-\caption{Tiempo total de evacuaci\'on seg\'un la cantidad de salidas bloqueadas, 30
+\caption{Tiempo total de evacuaci\'on seg\'un la cantidad de salidas bloqueadas, 100
 r\'eplicas por nivel.}
 \label{tab:sensibilidad}
 \end{table}
 
-El tiempo de evacuaci\'on crece a medida que se pierden salidas, con un salto
-pronunciado al llegar a una sola salida disponible: su tiempo medio (491,3~s) es
-alrededor de un 68\% mayor que sin bloqueos (291,9~s). Tomando la mediana, menos
-sensible a los casos extremos, la tendencia es m\'as regular (de 275,2~s sin
-bloqueos a 440,2~s con una sola salida). Ning\'un nivel de bloqueo, incluido el caso
-sin salidas bloqueadas, se acerca al umbral de 90 segundos. Con cinco salidas
-bloqueadas importa adem\'as cu\'al es la que queda disponible: cuando la \'unica
-salida es la delantera derecha (1R), cuyo acceso es un paso angosto junto al
-\textit{galley}, el tiempo medio ronda los 720~s, contra 410 a 444~s con cualquiera
-de las otras, aunque con 3 a 6 corridas por caso esa diferencia es solo indicativa.
+El tiempo de evacuaci\'on crece de forma sostenida a medida que se pierden salidas,
+con un salto pronunciado al llegar a una sola salida disponible: su tiempo medio
+(471,3~s) es alrededor de un 64\% mayor que sin bloqueos (287,8~s). La mediana sigue
+la misma tendencia (de 272,3~s sin bloqueos a 431,3~s con una sola salida). Ning\'un
+nivel de bloqueo, incluido el caso sin salidas bloqueadas, se acerca al umbral de 90
+segundos. Con cinco salidas bloqueadas importa adem\'as cu\'al es la que queda
+disponible: cuando la \'unica salida es la delantera derecha (1R), cuyo acceso es un
+paso angosto junto al \textit{galley}, el tiempo medio ronda los 665~s, contra 425 a
+438~s con cualquiera de las otras, aunque con 15 a 19 corridas por caso esa
+diferencia es solo indicativa.
 
-En este experimento, 2 de las 180 corridas (una con tres salidas bloqueadas y otra
-con cuatro) no terminaron dentro del horizonte de 2000~s y se excluyen de las
+En este experimento, 9 de las 600 corridas (repartidas entre los niveles de 0 a 5
+salidas bloqueadas) no terminaron dentro del horizonte de 2000~s y se excluyen de las
 estad\'isticas. Adem\'as, en algunos niveles aparecen corridas notablemente m\'as
 largas que el resto (1118,6~s con una salida bloqueada, 650,0~s con dos y 1258,1~s
 con cinco, esta \'ultima con 1R como \'unica salida), que elevan la media por encima
-de la mediana\,---\,de ah\'i la media at\'ipicamente alta del nivel de una salida
-bloqueada. Como en el experimento anterior, se atribuyen a trabas puntuales de
+de la mediana. Como en el experimento anterior, se atribuyen a trabas puntuales de
 peatones en los pasos m\'as angostos de la cabina y se declaran como limitaci\'on
 del modelo.
 
 Como verificaci\'on cruzada, el caso sin salidas bloqueadas de este experimento
-(291,9~s) no presenta diferencias significativas con el escenario baseline del
-experimento anterior (284,7~s; prueba de Mann-Whitney, $p = 0{,}93$), aunque ambos
+(287,8~s) no presenta diferencias significativas con el escenario baseline del
+experimento anterior (287,3~s; prueba de Mann-Whitney, $p = 0{,}65$), aunque ambos
 resultados se generan por caminos distintos del modelo.
 
 % =============================================================================
@@ -1234,15 +1246,15 @@ La pregunta que gui\'o este trabajo era en qu\'e medida el cumplimiento de la re
 de los 90 segundos se sostiene cuando las condiciones de evacuaci\'on dejan de ser
 las estandarizadas del ensayo de certificaci\'on. Bajo las condiciones modeladas, la
 respuesta es que no se sostiene en ninguna de las configuraciones analizadas:
-ninguna de las 295 corridas completas, entre los dos experimentos, evacu\'o a los
+ninguna de las 988 corridas completas, entre los dos experimentos, evacu\'o a los
 192 ocupantes en 90 segundos o menos.
 
 La distancia respecto del umbral no es marginal. Aun en el escenario m\'as favorable,
 con las seis salidas utilizables disponibles, el tiempo mediano de evacuaci\'on fue
-de 280,4 segundos, unas 3,1 veces el umbral normativo, y a los 90 segundos hab\'ia
-evacuado en promedio alrededor del 55\% de los ocupantes. Tampoco se alcanza el
+de 272,0 segundos, unas 3,0 veces el umbral normativo, y a los 90 segundos hab\'ia
+evacuado en promedio alrededor del 54\% de los ocupantes. Tampoco se alcanza el
 umbral si se descuenta la salida de la tripulaci\'on: el \'ultimo pasajero abandon\'o
-el avi\'on, en promedio, a los 239 segundos.
+el avi\'on, en promedio, a los 243 segundos.
 
 \subsection{Factores que m\'as inciden en el tiempo de evacuaci\'on}
 
@@ -1251,9 +1263,9 @@ el avi\'on, en promedio, a los 239 segundos.
 \textbf{Disponibilidad y ubicaci\'on de las salidas.} La p\'erdida de salidas es el
 factor con mayor efecto: el tiempo crece a medida que se bloquean
 salidas, con un salto pronunciado cuando queda una sola salida, hasta aumentar
-alrededor de un 68\% respecto del caso sin bloqueos. Pero no alcanza con saber
+alrededor de un 64\% respecto del caso sin bloqueos. Pero no alcanza con saber
 cu\'antas salidas se pierden, sino cu\'ales: los tres escenarios que bloquean el 50\%
-de las salidas dieron tiempos medianos de entre 293 y 322 segundos. El caso m\'as desfavorable fue el que bloquea
+de las salidas dieron tiempos medianos de entre 291 y 331 segundos. El caso m\'as desfavorable fue el que bloquea
 las dos salidas delanteras, porque son las que abre la tripulaci\'on entrenada a los
 pocos segundos del amerizaje; sin ellas, toda la evacuaci\'on depende de salidas que
 deben abrir pasajeros sin entrenamiento.
@@ -1267,9 +1279,9 @@ del amerizaje, que inutiliza las salidas traseras, condiciona as\'i el desempe\~
 todas las configuraciones.
 
 \textbf{Salida de la tripulaci\'on en \'ultimo lugar.} El procedimiento por el cual
-la tripulaci\'on evac\'ua despu\'es del \'ultimo pasajero agrega en promedio entre 44 y 62
+la tripulaci\'on evac\'ua despu\'es del \'ultimo pasajero agrega en promedio entre 44 y 60
 segundos al tiempo total seg\'un el escenario. Este tramo, que la norma incluye en la
-medici\'on al contar a todos los ocupantes, por s\'i solo representa entre el 49\% y el 69\%
+medici\'on al contar a todos los ocupantes, por s\'i solo representa entre el 49\% y el 67\%
 del umbral de 90 segundos.
 
 \subsection{Configuraci\'on alternada frente a configuraci\'on asim\'etrica}
@@ -1278,8 +1290,8 @@ del umbral de 90 segundos.
 
 El escenario con un lado completo disponible (asim\'etrico) y el escenario
 alternado, que es la distribuci\'on de salidas bloqueadas t\'ipica del ensayo de
-certificaci\'on, dieron tiempos pr\'acticamente iguales: 296,3~s contra 293,3~s de
-mediana, sin diferencia estad\'isticamente significativa ($p = 0{,}99$). Ambos
+certificaci\'on, dieron tiempos pr\'acticamente iguales: 289,7~s contra 290,9~s de
+mediana, sin diferencia estad\'isticamente significativa ($p = 0{,}37$). Ambos
 conservan una salida delantera y dos sobre el ala en las mismas posiciones a lo
 largo del fuselaje, y en el modelo eso pesa m\'as que el lado del avi\'on en el que
 quedan esas salidas, aun cuando en el escenario asim\'etrico todos los cruces del
@@ -1334,7 +1346,7 @@ Distintos valores razonables podr\'ian desplazar los tiempos obtenidos.
 \textbf{Trabas puntuales de peatones.} En un peque\~no n\'umero de corridas, un
 pasajero qued\'o detenido durante un tiempo prolongado en los pasos m\'as angostos de
 la cabina (en particular, el paso entre el \textit{galley} delantero y el pasillo),
-por limitaciones de la Pedestrian Library de AnyLogic. Las 5 corridas (de 300) que no terminaron dentro del
+por limitaciones de la Pedestrian Library de AnyLogic. Las 12 corridas (de 1000) que no terminaron dentro del
 horizonte de 2000~s se excluyeron de las estad\'isticas; las que terminaron se
 conservaron en los datos y se mitig\'o su efecto informando la mediana junto con la
 media.
