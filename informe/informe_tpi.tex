@@ -832,7 +832,7 @@ ya conocen qu\'e salidas est\'an bloqueadas (fueron quienes las evaluaron durant
 evacuaci\'on) y eligen directamente entre las salidas habilitadas.
 
 Esta decisi\'on tiene un efecto directo y con bastante peso sobre la m\'etrica
-principal (suma en promedio entre 44 y 63 segundos seg\'un el escenario). Como la norma mide hasta el \'ultimo
+principal (suma en promedio entre 44 y 62 segundos seg\'un el escenario). Como la norma mide hasta el \'ultimo
 ocupante, el tiempo total de evacuaci\'on incluye el tramo que va desde que sale el
 \'ultimo pasajero hasta que sale el \'ultimo tripulante. Ese tramo es
 particularmente largo para los dos tripulantes traseros: como las salidas traseras
@@ -1044,10 +1044,10 @@ el \'ultimo ocupante, tripulaci\'on incluida.
 \toprule
 \textbf{Escenario} & \textbf{Media (s)} & \textbf{IC 95\% (s)} & \textbf{Mediana (s)} & \textbf{Desv\'io (s)} & \textbf{P95 (s)} & \textbf{Cumplen 90 s} \\
 \midrule
-1 $\cdot$ Baseline            & 284,7 & 268,7 -- 300,8 & 280,4 & 42,3  & 380,3 & 0 / 29 \\
-2 $\cdot$ 50\% alternado      & 302,1 & 285,2 -- 319,0 & 293,3 & 45,3  & 360,8 & 0 / 30 \\
-3 $\cdot$ 50\% centro libre   & 339,1 & 318,8 -- 359,5 & 322,4 & 53,5  & 420,5 & 0 / 29 \\
-4 $\cdot$ Asim\'etrico        & 301,8 & 287,1 -- 316,5 & 296,3 & 38,8  & 351,2 & 0 / 29 \\
+1 $\cdot$ Baseline            & 284,7 & 268,7 -- 300,8 & 280,4 & 42,3  & 385,7 & 0 / 29 \\
+2 $\cdot$ 50\% alternado      & 302,1 & 285,2 -- 319,0 & 293,3 & 45,3  & 386,9 & 0 / 30 \\
+3 $\cdot$ 50\% centro libre   & 339,1 & 318,8 -- 359,5 & 322,4 & 53,5  & 420,7 & 0 / 29 \\
+4 $\cdot$ Asim\'etrico        & 301,8 & 287,1 -- 316,6 & 296,3 & 38,8  & 357,0 & 0 / 29 \\
 \bottomrule
 \end{tabular}
 \caption{Tiempo total de evacuaci\'on (192 ocupantes) por escenario, 30 r\'eplicas
@@ -1089,7 +1089,7 @@ claramente significativa es la del escenario 3 frente al resto (prueba de
 Mann-Whitney: frente al 50\% alternado $p = 0{,}003$, frente al asim\'etrico
 $p = 0{,}005$ y frente al baseline $p < 0{,}001$); entre los otros tres las
 diferencias no son significativas (baseline frente a 50\% alternado $p = 0{,}08$;
-baseline frente a asim\'etrico $p = 0{,}05$; asim\'etrico frente a 50\% alternado
+baseline frente a asim\'etrico $p = 0{,}055$; asim\'etrico frente a 50\% alternado
 $p = 0{,}99$). El escenario 3 es el m\'as desfavorable: al bloquear las dos salidas
 delanteras tipo~I, que la tripulaci\'on abre a los pocos segundos del amerizaje, toda
 la evacuaci\'on depende de las salidas sobre el ala, cuya apertura por parte de un
@@ -1126,7 +1126,7 @@ conclusiones.
 \pendiente
 
 Al llegar a los 90 segundos, en promedio evacuaron 105 de los 192 ocupantes en el
-baseline (55\%), 92 y 90 en los escenarios 2 y 4 (48\% y 47\%) y 61 en el
+baseline (55\%), 92 y 91 en los escenarios 2 y 4 (48\% y 47\%) y 61 en el
 escenario 3 (32\%). La curva del escenario 3 adem\'as arranca m\'as tarde: el primer
 ocupante sale en promedio a los 38,7~s, contra unos 14~s en el resto de los
 escenarios, porque no dispone de las salidas delanteras que abre la tripulaci\'on. En
@@ -1182,12 +1182,12 @@ en las salidas sobre el ala es coherente con lo observado en el caso Hudson
 \toprule
 \textbf{Salidas bloqueadas} & \textbf{\% bloqueado} & \textbf{Media (s)} & \textbf{IC 95\% (s)} & \textbf{Mediana (s)} & \textbf{P95 (s)} & \textbf{Corridas completas} \\
 \midrule
-0 & 0\%  & 291,9 & 272,0 -- 311,7 & 275,1 & 404,1 & 30 / 30 \\
+0 & 0\%  & 291,9 & 272,0 -- 311,7 & 275,2 & 404,1 & 30 / 30 \\
 1 & 17\% & 328,4 & 267,2 -- 389,6 & 280,6 & 494,0 & 30 / 30 \\
 2 & 33\% & 316,3 & 289,0 -- 343,6 & 298,4 & 375,5 & 30 / 30 \\
 3 & 50\% & 334,1 & 311,7 -- 356,4 & 321,8 & 438,7 & 29 / 30 \\
 4 & 67\% & 356,6 & 344,7 -- 368,5 & 352,1 & 410,8 & 29 / 30 \\
-5 & 83\% & 491,3 & 429,9 -- 552,7 & 440,1 & 654,7 & 30 / 30 \\
+5 & 83\% & 491,3 & 429,9 -- 552,7 & 440,2 & 654,7 & 30 / 30 \\
 \bottomrule
 \end{tabular}
 \caption{Tiempo total de evacuaci\'on seg\'un la cantidad de salidas bloqueadas, 30
@@ -1198,8 +1198,8 @@ r\'eplicas por nivel.}
 El tiempo de evacuaci\'on crece a medida que se pierden salidas, con un salto
 pronunciado al llegar a una sola salida disponible: su tiempo medio (491,3~s) es
 alrededor de un 68\% mayor que sin bloqueos (291,9~s). Tomando la mediana, menos
-sensible a los casos extremos, la tendencia es m\'as regular (de 275,1~s sin
-bloqueos a 440,1~s con una sola salida). Ning\'un nivel de bloqueo, incluido el caso
+sensible a los casos extremos, la tendencia es m\'as regular (de 275,2~s sin
+bloqueos a 440,2~s con una sola salida). Ning\'un nivel de bloqueo, incluido el caso
 sin salidas bloqueadas, se acerca al umbral de 90 segundos. Con cinco salidas
 bloqueadas importa adem\'as cu\'al es la que queda disponible: cuando la \'unica
 salida es la delantera derecha (1R), cuyo acceso es un paso angosto junto al
@@ -1267,9 +1267,9 @@ del amerizaje, que inutiliza las salidas traseras, condiciona as\'i el desempe\~
 todas las configuraciones.
 
 \textbf{Salida de la tripulaci\'on en \'ultimo lugar.} El procedimiento por el cual
-la tripulaci\'on evac\'ua despu\'es del \'ultimo pasajero agrega en promedio entre 46 y 62
+la tripulaci\'on evac\'ua despu\'es del \'ultimo pasajero agrega en promedio entre 44 y 62
 segundos al tiempo total seg\'un el escenario. Este tramo, que la norma incluye en la
-medici\'on al contar a todos los ocupantes, por s\'i solo representa entre el 51\% y el 69\%
+medici\'on al contar a todos los ocupantes, por s\'i solo representa entre el 49\% y el 69\%
 del umbral de 90 segundos.
 
 \subsection{Configuraci\'on alternada frente a configuraci\'on asim\'etrica}
