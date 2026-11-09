@@ -122,11 +122,13 @@ Zeballos 1341, S2000, Argentina \\
 El presente trabajo desarrolla un modelo de simulaci\'on basado en agentes,
 implementado en AnyLogic con su Pedestrian Library, para estudiar la evacuaci\'on
 de un Boeing 737-800 tras un amerizaje.
-En lugar de reproducir el ensayo de certificaci\'on, el modelo somete al avi\'on a
-condiciones m\'as cercanas a las de un evento real: equipaje de mano, pasajeros con
-movilidad reducida, iluminaci\'on de emergencia, salidas que deben abrirse y cuya
-disponibilidad los pasajeros desconocen, y una tripulaci\'on que evac\'ua en
-\'ultimo lugar.
+El objetivo es verificar si el avi\'on cumple el requisito de la norma
+14 CFR 25.803(c) de evacuar a todos sus ocupantes en 90 segundos o menos. Para ello,
+el modelo reproduce las condiciones de ensayo del Appendix J de la norma
+(iluminaci\'on de emergencia, equipaje en los pasillos, desconocimiento de las salidas
+habilitadas y una poblaci\'on representativa) y les suma las de un amerizaje:
+salidas traseras inutilizables, pasajeros con movilidad reducida y salidas sobre el
+ala que deben abrir pasajeros sin entrenamiento.
 Sobre la cabina modelada (186 pasajeros y 6 tripulantes, con las salidas traseras
 inutilizables por la actitud de cola baja del amerizaje) se evaluaron cuatro
 escenarios de disponibilidad de salidas y un an\'alisis de sensibilidad de 0 a 5
@@ -136,9 +138,8 @@ Ninguna de las 1000 corridas evacu\'o a los 192 ocupantes dentro del umbral de
 disponibles, el tiempo mediano fue de 272,0~s.
 El modelo reproduce cualitativamente los patrones de evacuaci\'on documentados en
 el amerizaje del vuelo 1549 de US Airways en el r\'io Hudson.
-Los resultados se proponen como insumo para que los organismos certificadores
-eval\'uen si el umbral de 90~segundos sigue siendo representativo bajo condiciones
-m\'as realistas.
+En las condiciones simuladas, por lo tanto, el Boeing 737-800 no cumple el
+requisito de evacuaci\'on en 90 segundos tras un amerizaje.
 \end{abstract}
 
 \vspace{0.5cm}
@@ -163,16 +164,14 @@ Federal Aviation Administration (FAA) de Estados Unidos (con su equivalente euro
 en la normativa EASA CS-25.803)~\cite{cfr25803}.}, o si bajo ciertas combinaciones
 de factores ese umbral deja de ser alcanzable.
 
-En una primera instancia, el trabajo se plante\'o como una verificaci\'on:
-comprobar si el Boeing 737-800 cumple efectivamente con el umbral de 90 segundos.
-A medida que avanz\'o la construcci\'on del modelo, el equipo concluy\'o que el
-aporte de mayor valor no era reproducir la demostraci\'on de certificaci\'on, sino
-someter al avi\'on a condiciones m\'as cercanas a las de un evento real que las del
-ensayo normativo: pasajeros con equipaje de mano y con movilidad reducida, salidas
-que deben abrirse y cuya disponibilidad los pasajeros desconocen, iluminaci\'on de
-emergencia y una tripulaci\'on que evac\'ua en \'ultimo lugar. \textbf{Sobre esa base,
-el objetivo pas\'o a ser analizar si, bajo estas condiciones, el umbral de 90
-segundos sigue siendo un par\'ametro representativo o si deber\'ia revisarse.}
+El trabajo se plantea como una verificaci\'on: \textbf{comprobar si el Boeing
+737-800 cumple efectivamente con el umbral de 90 segundos cuando la evacuaci\'on
+ocurre tras un amerizaje.} Para ello, el modelo reproduce las condiciones de ensayo
+que fija el Appendix J de la norma~\cite{cfrAppJ} (iluminaci\'on de emergencia,
+equipaje en los pasillos, desconocimiento de las salidas habilitadas y una
+poblaci\'on representativa) y les suma las propias de un amerizaje: salidas traseras
+inutilizables, pasajeros con movilidad reducida, salidas sobre el ala que deben
+abrir pasajeros sin entrenamiento y una tripulaci\'on que evac\'ua en \'ultimo lugar.
 
 Si bien la certificaci\'on de amerizaje concretamente (14 CFR
 25.801)~\cite{cfr25801} valida el comportamiento estructural e hidrodin\'amico del
@@ -204,26 +203,35 @@ conclusiones sobre los factores que m\'as inciden en el tiempo de evacuaci\'on.
 
 \subsection{Marco regulatorio}\label{sub:marco}
 
-La certificaci\'on de aeronavegabilidad exige que la cabina de pasajeros pueda
-evacuarse completamente en 90 segundos, usando solo la mitad de las salidas de
-emergencia disponibles (supuesto pensado para representar un escenario donde parte
-de las salidas queda inutilizable tras una emergencia como ser\'ia, en nuestro caso
-de estudio, un aterrizaje forzoso en el agua). Esta demostraci\'on se realiza bajo
-condiciones deliberadamente adversas: de noche o con oscuridad simulada, usando
-exclusivamente el sistema de iluminaci\'on de emergencia, y sin aviso previo a los
-pasajeros sobre cu\'ales ser\'an las salidas bloqueadas\footnote{Este factor es
-desconocido por la naturaleza del incidente, que hasta que no ocurra o no se
-proceda a tratar de abrir dichas salidas no se sabe con certeza qu\'e salidas
-quedar\'an bloqueadas.}.
+La norma 14 CFR 25.803(c) de la FAA~\cite{cfr25803} exige que, en los aviones con
+capacidad para m\'as de 44 pasajeros, se demuestre que la capacidad m\'axima de
+asientos, incluida la tripulaci\'on requerida, puede evacuarse hasta el suelo en
+condiciones de emergencia simuladas en 90 segundos o menos. El cumplimiento se
+demuestra con un ensayo real que sigue los criterios del Appendix J de la
+norma~\cite{cfrAppJ}, entre los que se destacan:
 
-Sin embargo, existe un cuestionamiento creciente sobre si estas condiciones de
-ensayo siguen representando un escenario realista. Publicaciones especializadas del
-sector aeron\'autico~\cite{raes_gone90} se\~nalan que factores como las dimensiones
-de los asientos, la cantidad de equipaje de mano que llevan los pasajeros hoy y la
-tendencia de los pasajeros a detenerse a recuperar equipaje de mano durante una
-evacuaci\'on real no se han actualizado al mismo ritmo que la norma o no se han
-tenido en cuenta en la misma, lo que abre la pregunta de si el est\'andar de 90
-segundos sigue siendo un umbral representativo.
+\begin{itemize}[leftmargin=2em]
+    \item Se usa solo una salida de cada par, es decir, la mitad de las salidas de
+          emergencia, y ning\'un participante sabe de antemano cu\'ales estar\'an
+          habilitadas.
+    \item El ensayo se realiza de noche o con oscuridad simulada, iluminado solo por
+          el sistema de iluminaci\'on de emergencia del avi\'on.
+    \item La poblaci\'on debe ser representativa: al menos un 40\% de mujeres, un
+          35\% de mayores de 50 a\~nos, un 15\% de mujeres mayores de 50 a\~nos y tres
+          mu\~necos de tama\~no real que simulan beb\'es.
+    \item Aproximadamente la mitad del equipaje de mano promedio, junto con mantas y
+          almohadas, se distribuye en pasillos y accesos a las salidas como
+          obst\'aculos.
+    \item No se puede ensayar ni explicar la demostraci\'on a los participantes, y la
+          tripulaci\'on de vuelo no puede ayudar activamente en la cabina.
+    \item El avi\'on se ubica en tierra, en actitud normal y con el tren de aterrizaje
+          extendido, y el tiempo termina cuando el \'ultimo ocupante llega al suelo.
+\end{itemize}
+
+La demostraci\'on, por lo tanto, se realiza en tierra y con el avi\'on nivelado. Un
+amerizaje, como el caso de estudio de este trabajo, agrega condiciones que el ensayo
+no contempla, como la p\'erdida de las salidas traseras por la actitud de cola baja
+del avi\'on en el agua.
 
 \subsection{Caso real}
 
@@ -239,9 +247,8 @@ Midtown Manhattan. El amerizaje ocurri\'o menos de cuatro minutos despu\'es del
 impacto con las aves, sin da\~nos estructurales significativos en el momento del
 contacto con el agua, y los 155 ocupantes sobrevivieron~\cite{wiki1549}.
 
-El caso del vuelo 1549 de US Airways (el amerizaje en el r\'io Hudson en enero de
-2009) ofrece evidencia concreta de esta brecha entre lo que asume la
-certificaci\'on y lo que ocurre en un evento real. Los 150 pasajeros y 5
+El caso del vuelo 1549 de US Airways ofrece un antecedente concreto de evacuaci\'on
+tras un amerizaje. Los 150 pasajeros y 5
 tripulantes evacuaron por las salidas delanteras y sobre el ala, ya que las salidas
 traseras no resultaron utilizables tras el amerizaje\footnote{Ya que el impacto
 contra el agua da\~n\'o estructuralmente la secci\'on trasera del fuselaje,
@@ -262,48 +269,37 @@ seg\'un su \textit{Type Certificate Data Sheet}~\cite{easa_tcds737}.
 
 De los 155 ocupantes, una minor\'ia fue rescatada a trav\'es de los
 toboganes/balsas de las puertas delanteras, mientras que la mayor\'ia evacu\'o por
-las salidas sobre el ala hacia las alas del avi\'on (un patr\'on de uso de salidas
+las salidas sobre el ala hacia las alas del avi\'on, un patr\'on de uso de salidas
 notablemente distinto al que suele asumirse en un ensayo de certificaci\'on
-sim\'etrico). Adem\'as, la certificaci\'on de aeronavegabilidad espec\'ifica para
-amerizaje es opcional y no se exige a todos los aviones de transporte, lo que ha
-llevado a cuestionamientos sobre qu\'e tan rigurosamente se validan en la pr\'actica
-los supuestos de evacuaci\'on en agua.
+sim\'etrico.
 
 \subsection{Planteamiento del problema}
 
-Esta combinaci\'on (una norma que fija un umbral fijo bajo condiciones
-estandarizadas, cuestionamientos documentados sobre su realismo, y al menos un caso
-real donde el patr\'on de evacuaci\'on difiri\'o del supuesto por defecto) plantea
-la pregunta central de este trabajo: \textbf{¿en qu\'e medida el cumplimiento de la
-regla de los 90 segundos se sostiene bajo distintas configuraciones de salidas
-disponibles y condiciones de piso realistas, m\'as all\'a del escenario
-estandarizado de certificaci\'on?}
+La norma fija un umbral \'unico de 90 segundos, verificado mediante una
+demostraci\'on en tierra con el avi\'on nivelado~\cite{cfrAppJ}. Un amerizaje, en
+cambio, agrega condiciones que esa demostraci\'on no contempla: la actitud de cola
+baja inutiliza las salidas traseras, y el caso real del vuelo 1549 mostr\'o un
+patr\'on de uso de salidas distinto del sim\'etrico. Esto plantea la pregunta central
+de este trabajo: \textbf{¿un Boeing 737-800 cumple el requisito de evacuar a todos sus
+ocupantes en 90 segundos o menos cuando la evacuaci\'on ocurre tras un amerizaje?}
 
-Dado que esta certificaci\'on espec\'ifica, como ya se mencion\'o anteriormente, no
-es obligatoria para todos los aviones de transporte, y que los criterios sobre los
-que se aprueba no siempre son sometidos a un escrutinio riguroso (como evidenci\'o
-el propio NTSB al cuestionar los supuestos presentados en la certificaci\'on de
-amerizaje del avi\'on del caso Hudson\footnote{Presentes en la secci\'on 1.6.7 del
-informe NTSB~\cite{ntsb2010}.}), consideramos pertinente desarrollar un modelo que
-no se limite a reproducir el ensayo de certificaci\'on, sino que incorpore
-condiciones de cabina m\'as cercanas a las de un evento real. El objetivo no es
-determinar si el Boeing 737-800 aprueba o no la certificaci\'on vigente, sino
-aportar evidencia sobre cu\'anto se aleja el tiempo de evacuaci\'on del umbral de 90
-segundos cuando las condiciones dejan de ser las estandarizadas. \textbf{De esta
-forma, los organismos certificadores podr\'ian evaluar la validez de este escenario
-m\'as realista y decidir si corresponde mantener el umbral, ampliarlo o exigir que
-las aeronaves vuelvan a demostrar su cumplimiento bajo condiciones m\'as exigentes.}
+Para responderla, el modelo reproduce las condiciones de ensayo que fija el
+Appendix J de la norma (oscuridad con solo la iluminaci\'on de emergencia, equipaje
+en los pasillos, desconocimiento de las salidas habilitadas, una poblaci\'on
+representativa y la medici\'on hasta que sale el \'ultimo ocupante, tripulaci\'on
+incluida) y les incorpora las propias de un amerizaje, como la p\'erdida de las
+salidas traseras. Sobre esa base se eval\'ua si el tiempo de evacuaci\'on queda por
+debajo del umbral en distintas configuraciones de salidas disponibles.
 
 % =============================================================================
 \newpage
 \section{Objetivos}\label{sec:objetivos}
 % =============================================================================
 
-\textbf{Objetivo general.} Evaluar, mediante un modelo de simulaci\'on basado en
-agentes, si el umbral de evacuaci\'on de 90 segundos de la norma 14 CFR
-25.803~\cite{cfr25803} sigue siendo representativo cuando la evacuaci\'on de un
-Boeing 737-800 tras un amerizaje se somete a condiciones m\'as cercanas a las de un
-evento real.
+\textbf{Objetivo general.} Determinar, mediante un modelo de simulaci\'on basado en
+agentes, si un Boeing 737-800 cumple el requisito de evacuaci\'on en 90 segundos de
+la norma 14 CFR 25.803(c)~\cite{cfr25803} cuando la evacuaci\'on ocurre tras un
+amerizaje, bajo las condiciones de ensayo del Appendix J~\cite{cfrAppJ}.
 
 \textbf{Objetivos espec\'ificos.}
 \begin{enumerate}[leftmargin=2em]
@@ -311,16 +307,14 @@ evento real.
           disposici\'on real de asientos, pasillo y salidas, poblado por agentes
           heterog\'eneos calibrados a partir de la literatura y de los requisitos del
           Appendix J~\cite{cfrAppJ}.
-    \item Cuantificar el tiempo total de evacuaci\'on en cuatro configuraciones de
-          salidas disponibles, con 100 r\'eplicas por configuraci\'on.
+    \item Verificar si se cumple el umbral de 90 segundos en cuatro configuraciones
+          de salidas disponibles, con 100 r\'eplicas por configuraci\'on.
     \item Analizar la sensibilidad del tiempo de evacuaci\'on a la cantidad de
           salidas bloqueadas.
     \item Identificar los factores y cuellos de botella que m\'as inciden en el
           tiempo de evacuaci\'on.
     \item Validar cualitativamente el comportamiento del modelo contra la
           evacuaci\'on documentada del vuelo 1549 de US Airways.
-    \item Aportar evidencia para que los organismos certificadores eval\'uen la
-          vigencia del umbral bajo condiciones m\'as realistas.
 \end{enumerate}
 
 % =============================================================================
@@ -1139,7 +1133,7 @@ conclusiones.
 \pendiente
 
 Al llegar a los 90 segundos, en promedio evacuaron 104 de los 192 ocupantes en el
-baseline (54\%), 90 y 90 en los escenarios 2 y 4 (47\% en ambos) y 61 en el
+baseline (54\%), 91 y 90 en los escenarios 2 y 4 (47\% en ambos) y 61 en el
 escenario 3 (32\%). La curva del escenario 3 adem\'as arranca m\'as tarde: el primer
 ocupante sale en promedio a los 38,0~s, contra unos 14~s en el resto de los
 escenarios, porque no dispone de las salidas delanteras que abre la tripulaci\'on. En
@@ -1197,7 +1191,7 @@ en las salidas sobre el ala es coherente con lo observado en el caso Hudson
 \midrule
 0 & 0\%  & 287,8 & 278,2 -- 297,4 & 272,3 & 399,6 & 99 / 100 \\
 1 & 17\% & 297,6 & 277,9 -- 317,3 & 278,3 & 360,1 & 99 / 100 \\
-2 & 33\% & 308,6 & 297,7 -- 319,4 & 299,1 & 383,9 & 98 / 100 \\
+2 & 33\% & 308,6 & 297,7 -- 319,4 & 299,2 & 383,9 & 98 / 100 \\
 3 & 50\% & 325,5 & 316,1 -- 335,0 & 318,2 & 394,3 & 98 / 100 \\
 4 & 67\% & 363,3 & 353,5 -- 373,1 & 351,5 & 461,3 & 98 / 100 \\
 5 & 83\% & 471,3 & 447,7 -- 494,8 & 431,3 & 623,3 & 99 / 100 \\
@@ -1242,10 +1236,10 @@ resultados se generan por caminos distintos del modelo.
 
 \pendiente
 
-La pregunta que gui\'o este trabajo era en qu\'e medida el cumplimiento de la regla
-de los 90 segundos se sostiene cuando las condiciones de evacuaci\'on dejan de ser
-las estandarizadas del ensayo de certificaci\'on. Bajo las condiciones modeladas, la
-respuesta es que no se sostiene en ninguna de las configuraciones analizadas:
+La pregunta que gui\'o este trabajo era si un Boeing 737-800 cumple el requisito de
+la norma 14 CFR 25.803(c) de evacuar a todos sus ocupantes en 90 segundos o menos
+cuando la evacuaci\'on ocurre tras un amerizaje. Bajo las condiciones modeladas, la
+respuesta es que no lo cumple en ninguna de las configuraciones analizadas:
 ninguna de las 988 corridas completas, entre los dos experimentos, evacu\'o a los
 192 ocupantes en 90 segundos o menos.
 
@@ -1301,29 +1295,32 @@ sentidos opuestos.
 Lo que s\'i marca una diferencia es cu\'ales se pierden: con la misma cantidad de
 salidas bloqueadas, el escenario que pierde las dos salidas delanteras (50\% con el
 centro libre) es significativamente m\'as lento que los otros dos. El resultado
-sugiere que la configuraci\'on utilizada en la certificaci\'on no es
-necesariamente la m\'as exigente ni la m\'as representativa de un evento real.
+sugiere que la configuraci\'on alternada que se usa en la demostraci\'on de
+certificaci\'on no es necesariamente la m\'as exigente para esta aeronave.
 
-\subsection{Implicancias para la norma}
+\subsection{Cumplimiento de la norma}
 
 \pendiente
 
-Los resultados no permiten afirmar que el Boeing 737-800 no cumpla con la
-certificaci\'on vigente: el modelo no reproduce el ensayo normativo, sino que lo
-somete deliberadamente a condiciones m\'as exigentes. Lo que s\'i muestran es que,
-cuando a la configuraci\'on de salidas se le suman el equipaje de mano, los pasajeros
-con movilidad reducida, la iluminaci\'on de emergencia, el desconocimiento de las
-salidas bloqueadas, la apertura de las salidas por parte de pasajeros sin
-entrenamiento y la evacuaci\'on final de la tripulaci\'on, el tiempo de evacuaci\'on
-se aleja sistem\'aticamente del umbral de 90 segundos, y lo hace en todas las
-configuraciones evaluadas.
+Bajo las condiciones simuladas, el Boeing 737-800 \textbf{no cumple} el requisito de
+evacuaci\'on en 90 segundos de la norma 14 CFR 25.803(c) tras un amerizaje. El
+incumplimiento se da en todas las configuraciones evaluadas y aun en el escenario
+baseline, que dispone de seis salidas: m\'as de las cuatro (una de cada par) que
+habilita la demostraci\'on del Appendix J~\cite{cfrAppJ}. La distancia al umbral
+(un tiempo mediano unas tres veces mayor) es demasiado grande para atribuirla a un
+ajuste fino de los par\'ametros del modelo.
 
-A partir de estos resultados, el equipo considera que este escenario podr\'ia
-ponerse a disposici\'on de los organismos certificadores (FAA y EASA) como insumo
-para su an\'alisis. Corresponde a ellos evaluar si las condiciones incorporadas son
-representativas de un evento real y, en ese caso, decidir si mantener el umbral de
-90 segundos, ampliarlo para estas condiciones, o requerir que las aeronaves vuelvan
-a demostrar su cumplimiento bajo un ensayo m\'as realista.
+Este resultado debe leerse con su alcance. El modelo reproduce las condiciones
+centrales del ensayo normativo (oscuridad con solo la iluminaci\'on de emergencia,
+equipaje desparramado en los pasillos, desconocimiento de las salidas habilitadas,
+una poblaci\'on con mujeres y mayores de 50 a\~nos y una medici\'on que termina con el
+\'ultimo ocupante fuera del avi\'on), pero les suma las propias de un amerizaje: la
+p\'erdida de las salidas traseras, pasajeros con movilidad reducida o con menores a
+cargo y una apertura de las salidas sobre el ala a cargo de pasajeros sin
+entrenamiento. Tampoco reemplaza la demostraci\'on con personas reales que exige la
+norma para certificar la aeronave. Lo que el trabajo s\'i aporta es evidencia de que,
+en una evacuaci\'on tras un amerizaje con estas caracter\'isticas, el 737-800 no
+alcanzar\'ia a evacuar a todos sus ocupantes dentro del tiempo que fija la norma.
 
 \subsection{Limitaciones}
 
@@ -1411,7 +1408,9 @@ El siguiente video muestra una corrida del modelo con animaci\'on de los agentes
 la ejecuci\'on de los experimentos utilizados para obtener los resultados de la
 secci\'on~\ref{sec:resultados}:
 
-\completar{LINK AL VIDEO DE DEMOSTRACI\'ON EN YOUTUBE}
+\begin{center}
+\url{https://youtu.be/aobVdcSZUAo}
+\end{center}
 
 % =============================================================================
 \newpage
