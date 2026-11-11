@@ -203,6 +203,21 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
+					<Id>1794070000021</Id>
+					<Name><![CDATA[camActual]]></Name>
+					<X>270</X><Y>-800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[4]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
 					<Id>1788009788841</Id>
 					<Name><![CDATA[enCamino]]></Name>
 					<X>270</X><Y>-890</Y>
@@ -561,6 +576,30 @@ dsUmbral90.add( 90, totalPax + 6 );]]></StartupCode>
 							<DelimeterType>NO_DELIMETER</DelimeterType>
 						</ParameterEditor>
 					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1794063760001</Id>
+					<Name><![CDATA[salidasPersonalizadas]]></Name>
+					<X>970</X><Y>-870</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[63]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1794063760002</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>
 				</Variable>
 			</Variables>
 			<Connectors>
@@ -1478,6 +1517,10 @@ return n;]]></Body>
         for ( int j = 0; j < Math.min( nBloqueadas, 5 ); j++ ) salidaActiva[ idx.get( j ) ] = false;
         break;
     }
+    case 6:     // Personalizado (panel de inicio): bit i de salidasPersonalizadas = salida i abierta
+        salidaActiva = new boolean[ 6 ];
+        for ( int i = 0; i < 6; i++ ) salidaActiva[ i ] = ( ( salidasPersonalizadas >> i ) & 1 ) == 1;
+        break;
     default: salidaActiva = new boolean[]{ true,  true,  true,  true,  true,  true  };
 }]]></Body>
 				</Function>
@@ -14660,20 +14703,56 @@ activos.add( ped );]]></Code>
 					<RotationZ>67.0</RotationZ>
 				</Camera3D>
 				<Camera3D>
-					<Id>1788267201577</Id>
-					<Name><![CDATA[camera1]]></Name>
-					<X>530</X><Y>250</Y><Z>100</Z>
+					<Id>1794070000101</Id>
+					<Name><![CDATA[cam1L]]></Name>
+					<X>455</X><Y>370</Y><Z>90</Z>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ShowLabel>false</ShowLabel>
-					<RotationX>0.0</RotationX>
-					<RotationZ>117.0</RotationZ>
+					<RotationX>30.0</RotationX>
+					<RotationZ>224.6</RotationZ>
+				</Camera3D>
+				<Camera3D>
+					<Id>1794070000102</Id>
+					<Name><![CDATA[cam1R]]></Name>
+					<X>420</X><Y>370</Y><Z>90</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ShowLabel>false</ShowLabel>
+					<RotationX>30.0</RotationX>
+					<RotationZ>315.4</RotationZ>
+				</Camera3D>
+				<Camera3D>
+					<Id>1794070000103</Id>
+					<Name><![CDATA[camAlaIzq]]></Name>
+					<X>455</X><Y>910</Y><Z>90</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ShowLabel>false</ShowLabel>
+					<RotationX>30.0</RotationX>
+					<RotationZ>225.0</RotationZ>
+				</Camera3D>
+				<Camera3D>
+					<Id>1794070000104</Id>
+					<Name><![CDATA[camAlaDer]]></Name>
+					<X>420</X><Y>910</Y><Z>90</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ShowLabel>false</ShowLabel>
+					<RotationX>30.0</RotationX>
+					<RotationZ>314.3</RotationZ>
+				</Camera3D>
+				<Camera3D>
+					<Id>1794070000105</Id>
+					<Name><![CDATA[camTrasera]]></Name>
+					<X>437</X><Y>1560</Y><Z>100</Z>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<ShowLabel>false</ShowLabel>
+					<RotationX>10.0</RotationX>
+					<RotationZ>270.0</RotationZ>
 				</Camera3D>
 				<Control Type="Window3D">
 					<Id>1788268449637</Id>
 					<Name><![CDATA[window3d]]></Name>
-					<X>4000</X><Y>-640</Y>
+					<X>4000</X><Y>-700</Y>
 					<Width>1000</Width>
-					<Height>600</Height>
+					<Height>660</Height>
 					<MakeDefaultViewArea>true</MakeDefaultViewArea>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<ShowLabel>false</ShowLabel>
@@ -14700,342 +14779,486 @@ activos.add( ped );]]></Code>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
                 </EmbeddedObjectPresentation>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061141718</Id>
-					<Name><![CDATA[boton2D]]></Name>
-					<X>-1460</X><Y>-630</Y>
+				<Rectangle>
+					<Id>1794070000001</Id>
+					<Name><![CDATA[barra2D]]></Name>
+					<X>0</X><Y>-108</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 2D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061143164</Id>
-					<Name><![CDATA[botonResultados]]></Name>
-					<X>-1460</X><Y>-560</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>108</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000002</Id>
+					<Name><![CDATA[pestana2D]]></Name>
+					<X>0</X><Y>-108</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Resultados]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061145172</Id>
-					<Name><![CDATA[boton3D]]></Name>
-					<X>-1310</X><Y>-630</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[0 + index * 250]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>250</Width>
+					<Height>108</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillColorCode><![CDATA[index == 0 ? new java.awt.Color(38,38,38) : new java.awt.Color(0,0,0)]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1794070000003</Id>
+					<Name><![CDATA[pestanaTexto2D]]></Name>
+					<X>125</X><Y>-76</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 3D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061149920</Id>
-					<Name><![CDATA[botonLogica]]></Name>
-					<X>-1310</X><Y>-560</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[125 + index * 250]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<ColorCode><![CDATA[index == 0 ? new java.awt.Color(255,255,255) : new java.awt.Color(160,160,160)]]></ColorCode>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[new String[]{ "Vista 2D", "Vista 3D", "Resultados", "Lógica" }[ index ]]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>39</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1794070000004</Id>
+					<Name><![CDATA[marca2D]]></Name>
+					<X>0</X><Y>-9</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Lógica]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061298834</Id>
-					<Name><![CDATA[boton2D1]]></Name>
-					<X>680</X><Y>-1380</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>250</Width>
+					<Height>9</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-19712</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000005</Id>
+					<Name><![CDATA[barra3D]]></Name>
+					<X>4000</X><Y>-764</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 2D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061298838</Id>
-					<Name><![CDATA[botonResultados1]]></Name>
-					<X>680</X><Y>-1310</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>36</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000006</Id>
+					<Name><![CDATA[pestana3D]]></Name>
+					<X>4000</X><Y>-764</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Resultados]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061298840</Id>
-					<Name><![CDATA[boton3D1]]></Name>
-					<X>830</X><Y>-1380</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[4000 + index * 130]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>36</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillColorCode><![CDATA[index == 1 ? new java.awt.Color(38,38,38) : new java.awt.Color(0,0,0)]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1794070000007</Id>
+					<Name><![CDATA[pestanaTexto3D]]></Name>
+					<X>4065</X><Y>-755</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 3D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061298842</Id>
-					<Name><![CDATA[botonLogica1]]></Name>
-					<X>830</X><Y>-1310</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[4065 + index * 130]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<ColorCode><![CDATA[index == 1 ? new java.awt.Color(255,255,255) : new java.awt.Color(160,160,160)]]></ColorCode>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[new String[]{ "Vista 2D", "Vista 3D", "Resultados", "Lógica" }[ index ]]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1794070000008</Id>
+					<Name><![CDATA[marca3D]]></Name>
+					<X>4130</X><Y>-731</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Lógica]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061329512</Id>
-					<Name><![CDATA[boton2D2]]></Name>
-					<X>4000</X><Y>-680</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>3</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-19712</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000009</Id>
+					<Name><![CDATA[barraRes]]></Name>
+					<X>-2200</X><Y>-676</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 2D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061329515</Id>
-					<Name><![CDATA[botonResultados2]]></Name>
-					<X>4280</X><Y>-680</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>36</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000010</Id>
+					<Name><![CDATA[pestanaRes]]></Name>
+					<X>-2200</X><Y>-676</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Resultados]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061329517</Id>
-					<Name><![CDATA[boton3D2]]></Name>
-					<X>4140</X><Y>-680</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[-2200 + index * 130]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>36</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillColorCode><![CDATA[index == 2 ? new java.awt.Color(38,38,38) : new java.awt.Color(0,0,0)]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1794070000011</Id>
+					<Name><![CDATA[pestanaTextoRes]]></Name>
+					<X>-2135</X><Y>-667</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 3D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061329519</Id>
-					<Name><![CDATA[botonLogica2]]></Name>
-					<X>4420</X><Y>-680</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[-2135 + index * 130]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<ColorCode><![CDATA[index == 2 ? new java.awt.Color(255,255,255) : new java.awt.Color(160,160,160)]]></ColorCode>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[new String[]{ "Vista 2D", "Vista 3D", "Resultados", "Lógica" }[ index ]]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1794070000012</Id>
+					<Name><![CDATA[marcaRes]]></Name>
+					<X>-1940</X><Y>-643</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Lógica]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061356000</Id>
-					<Name><![CDATA[boton2D3]]></Name>
-					<X>60</X><Y>40</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>3</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-19712</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000013</Id>
+					<Name><![CDATA[barraLog]]></Name>
+					<X>20</X><Y>-1436</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va2D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 2D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061356003</Id>
-					<Name><![CDATA[botonResultados3]]></Name>
-					<X>60</X><Y>110</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1230</Width>
+					<Height>36</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000014</Id>
+					<Name><![CDATA[pestanaLog]]></Name>
+					<X>20</X><Y>-1436</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaResultados.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Resultados]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061356005</Id>
-					<Name><![CDATA[boton3D3]]></Name>
-					<X>210</X><Y>40</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[20 + index * 130]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>36</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillColorCode><![CDATA[index == 3 ? new java.awt.Color(38,38,38) : new java.awt.Color(0,0,0)]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1794070000015</Id>
+					<Name><![CDATA[pestanaTextoLog]]></Name>
+					<X>85</X><Y>-1427</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[va3D.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Vista 3D]]></LabelText>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="Button">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1794061356007</Id>
-					<Name><![CDATA[botonLogica3]]></Name>
-					<X>210</X><Y>110</Y>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[85 + index * 130]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[4]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[new ViewArea[]{ va2D, va3D, vaResultados, vaLogica }[ index ].navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<ColorCode><![CDATA[index == 3 ? new java.awt.Color(255,255,255) : new java.awt.Color(160,160,160)]]></ColorCode>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[new String[]{ "Vista 2D", "Vista 3D", "Resultados", "Lógica" }[ index ]]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1794070000016</Id>
+					<Name><![CDATA[marcaLog]]></Name>
+					<X>410</X><Y>-1403</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
-                        <EmbeddedIcon>false</EmbeddedIcon>	
-						<TextColor>-16777216</TextColor>
-						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[vaLogica.navigateTo();]]></ActionCode>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LabelText><![CDATA[Lógica]]></LabelText>
-					</ExtendedProperties>
-				</Control>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>3</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-19712</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000017</Id>
+					<Name><![CDATA[barraCamaras]]></Name>
+					<X>4000</X><Y>-728</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>28</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-14277082</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1794070000018</Id>
+					<Name><![CDATA[pestanaCam]]></Name>
+					<X>4000</X><Y>-728</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[4000 + index * 110]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[6]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[window3d.setCamera( new Camera3D[]{ cam1L, cam1R, camAlaIzq, camAlaDer, camera, camTrasera }[ index ], true );
+camActual = index;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>110</Width>
+					<Height>28</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-16777216</FillColor>
+					<FillColorCode><![CDATA[index == camActual ? new java.awt.Color(255,179,0) : new java.awt.Color(38,38,38)]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1794070000019</Id>
+					<Name><![CDATA[pestanaTextoCam]]></Name>
+					<X>4055</X><Y>-722</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[4055 + index * 110]]></XCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[6]]></Code>
+					</ReplicationCode>
+					<OnClickCode><![CDATA[window3d.setCamera( new Camera3D[]{ cam1L, cam1R, camAlaIzq, camAlaDer, camera, camTrasera }[ index ], true );
+camActual = index;]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<ColorCode><![CDATA[index == camActual ? new java.awt.Color(0,0,0) : new java.awt.Color(210,210,210)]]></ColorCode>
+					<Text><![CDATA[text]]></Text>
+					<TextCode><![CDATA[new String[]{ "1L", "1R", "Ala izq.", "Ala der.", "Delantera", "Trasera" }[ index ]]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
 				<Text>
 					<Id>1794061448398</Id>
 					<Name><![CDATA[resultadosText]]></Name>
@@ -15446,50 +15669,50 @@ activos.add( ped );]]></Code>
 				<Area>
 					<Id>1794060800871</Id>
 					<Name><![CDATA[vaLogica]]></Name>
-					<X>20</X><Y>-1400</Y>
+					<X>20</X><Y>-1436</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
 					<Width>1230</Width>
-					<Height>610</Height>
+					<Height>646</Height>
 				</Area>
 				<Area>
 					<Id>1794060908001</Id>
 					<Name><![CDATA[va2D]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>0</X><Y>-108</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
+					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
 					<Width>1000</Width>
-					<Height>1740</Height>
+					<Height>1848</Height>
 				</Area>
 				<Area>
 					<Id>1794060930012</Id>
 					<Name><![CDATA[va3D]]></Name>
-					<X>4000</X><Y>-700</Y>
+					<X>4000</X><Y>-764</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
+					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
 					<Width>1000</Width>
-					<Height>660</Height>
+					<Height>724</Height>
 				</Area>
 				<Area>
 					<Id>1794061065850</Id>
 					<Name><![CDATA[vaResultados]]></Name>
-					<X>-2200</X><Y>-640</Y>
+					<X>-2200</X><Y>-676</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
 					<Width>1000</Width>
-					<Height>600</Height>
+					<Height>636</Height>
 				</Area>
 			</Areas>
 
@@ -16507,19 +16730,308 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 			<Id>1787743493630</Id>
 			<Name><![CDATA[Simulation]]></Name>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<InitialSetupCode><![CDATA[actualizarVisibles( escSel );]]></InitialSetupCode>
 			<MaximumMemory>512</MaximumMemory>
 			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<BeforeSimulationRunCode><![CDATA[getEngine().setStopTime( parada );
+getEngine().setRealTimeScale( new double[]{ 1, 2, 5, 10, 50 }[ velIdx ] );]]></BeforeSimulationRunCode>
 			<SeedValue>10001</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
 			<VmArgs><![CDATA[]]></VmArgs>
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1794063760037</Id>
+					<Name><![CDATA[escSel]]></Name>
+					<X>-200</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760038</Id>
+					<Name><![CDATA[nBloq]]></Name>
+					<X>-200</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760039</Id>
+					<Name><![CDATA[ilum]]></Name>
+					<X>-200</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.80]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760040</Id>
+					<Name><![CDATA[congestion]]></Name>
+					<X>-200</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[15]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760041</Id>
+					<Name><![CDATA[valijas]]></Name>
+					<X>-200</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760042</Id>
+					<Name><![CDATA[abre1L]]></Name>
+					<X>-200</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760043</Id>
+					<Name><![CDATA[abre1R]]></Name>
+					<X>-200</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760044</Id>
+					<Name><![CDATA[abreAlaFwdL]]></Name>
+					<X>-200</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760045</Id>
+					<Name><![CDATA[abreAlaFwdR]]></Name>
+					<X>-200</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760046</Id>
+					<Name><![CDATA[abreAlaAftL]]></Name>
+					<X>-200</X><Y>370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760047</Id>
+					<Name><![CDATA[abreAlaAftR]]></Name>
+					<X>-200</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760048</Id>
+					<Name><![CDATA[velIdx]]></Name>
+					<X>-200</X><Y>430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760049</Id>
+					<Name><![CDATA[parada]]></Name>
+					<X>-200</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[600]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1794063760050</Id>
+					<Name><![CDATA[vista]]></Name>
+					<X>-200</X><Y>490</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+			</Variables>
+			<Functions>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1794063760034</Id>
+					<Name><![CDATA[mascaraSalidas]]></Name>
+					<X>-200</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// bit i = salida i abierta, en el orden de Main.salidas (1L, 1R, AlaFwdL, AlaFwdR, AlaAftL, AlaAftR)
+boolean[] a = { abre1L, abre1R, abreAlaFwdL, abreAlaFwdR, abreAlaAftL, abreAlaAftR };
+int m = 0;
+for ( int i = 0; i < 6; i++ ) if ( a[ i ] ) m |= 1 << i;
+return m;]]></Body>
+				</Function>
+
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1794063760035</Id>
+					<Name><![CDATA[actualizarVisibles]]></Name>
+					<X>-200</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[esc]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[// escenario 5 (indice 4): cantidad al azar; escenario 6 (indice 5): salidas elegidas a mano
+boolean azar = esc == 4, perso = esc == 5;
+tBloq.setVisible( azar );
+editBloq.setVisible( azar );
+tSalidas.setVisible( perso );
+tAviso.setVisible( perso );
+check_abre1L.setVisible( perso );
+check_abre1R.setVisible( perso );
+check_abreAlaFwdL.setVisible( perso );
+check_abreAlaFwdR.setVisible( perso );
+check_abreAlaAftL.setVisible( perso );
+check_abreAlaAftR.setVisible( perso );]]></Body>
+				</Function>
+				<Function AccessType="public" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1794063760036</Id>
+					<Name><![CDATA[predeterminados]]></Name>
+					<X>-200</X><Y>-80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// valores por defecto de Main y del experimento: corrida sin cambios
+escSel = 0;       radioEscenario.setValue( 0 );
+nBloq = 0;        editBloq.setText( "0" );
+ilum = 0.80;      sliderIlum.setValue( 0.80 );
+congestion = 15;  sliderCong.setValue( 15 );
+valijas = true;   checkValijas.setSelected( true );
+abre1L = abre1R = abreAlaFwdL = abreAlaFwdR = abreAlaAftL = abreAlaAftR = true;
+check_abre1L.setSelected( true );
+check_abre1R.setSelected( true );
+check_abreAlaFwdL.setSelected( true );
+check_abreAlaFwdR.setSelected( true );
+check_abreAlaAftL.setSelected( true );
+check_abreAlaAftR.setSelected( true );
+velIdx = 0;       radioVel.setValue( 0 );
+parada = 600;     editParada.setText( "600" );
+vista = 0;        radioVista.setValue( 0 );
+actualizarVisibles( 0 );]]></Body>
+				</Function>
+			</Functions>
 
 			<Presentation>
 				<Text>
-					<Id>1787743493632</Id>
+					<Id>1794063760003</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>50</X><Y>30</Y>
+					<X>40</X><Y>35</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16529,11 +17041,688 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[DitchingBoeing737-800]]></Text>
+					<Text><![CDATA[Amaraje Boeing 737-800 · configuración de la corrida]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>24</Size>
+						<Size>22</Size>
 						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063760004</Id>
+					<Name><![CDATA[tEscenario]]></Name>
+					<X>40</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Escenario]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760005</Id>
+					<Name><![CDATA[radioEscenario]]></Name>
+					<X>40</X><Y>92</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="560" Height="170">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[actualizarVisibles( value );]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[1 · Baseline: las 6 salidas abiertas]]></Button>
+						<Button><![CDATA[2 · 50% alternado: 1L, AlaFwdR, AlaAftL]]></Button>
+						<Button><![CDATA[3 · 50% centro libre: AlaFwdL, AlaFwdR, AlaAftL]]></Button>
+						<Button><![CDATA[4 · Asimétrico: solo lado izquierdo (1L, AlaFwdL, AlaAftL)]]></Button>
+						<Button><![CDATA[5 · Bloqueo al azar: elegís cuántas salidas se bloquean]]></Button>
+						<Button><![CDATA[6 · Personalizado: elegís qué salidas quedan abiertas]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>escSel</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760006</Id>
+					<Name><![CDATA[tBloq]]></Name>
+					<X>40</X><Y>292</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[¿Cuántas salidas se bloquean? (0 a 5, se eligen al azar)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760007</Id>
+					<Name><![CDATA[editBloq]]></Name>
+					<X>470</X><Y>276</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="60" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[5]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>nBloq</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760008</Id>
+					<Name><![CDATA[tSalidas]]></Name>
+					<X>640</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Salidas que quedan abiertas]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760009</Id>
+					<Name><![CDATA[check_abre1L]]></Name>
+					<X>640</X><Y>92</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<LabelText><![CDATA[1L · puerta delantera izquierda]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>abre1L</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760010</Id>
+					<Name><![CDATA[check_abre1R]]></Name>
+					<X>640</X><Y>120</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<LabelText><![CDATA[1R · puerta delantera derecha]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>abre1R</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760011</Id>
+					<Name><![CDATA[check_abreAlaFwdL]]></Name>
+					<X>640</X><Y>148</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<LabelText><![CDATA[AlaFwdL · ala delantera izquierda]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>abreAlaFwdL</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760012</Id>
+					<Name><![CDATA[check_abreAlaFwdR]]></Name>
+					<X>640</X><Y>176</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<LabelText><![CDATA[AlaFwdR · ala delantera derecha]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>abreAlaFwdR</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760013</Id>
+					<Name><![CDATA[check_abreAlaAftL]]></Name>
+					<X>640</X><Y>204</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<LabelText><![CDATA[AlaAftL · ala trasera izquierda]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>abreAlaAftL</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760014</Id>
+					<Name><![CDATA[check_abreAlaAftR]]></Name>
+					<X>640</X><Y>232</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="340" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<LabelText><![CDATA[AlaAftR · ala trasera derecha]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>abreAlaAftR</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760015</Id>
+					<Name><![CDATA[tAviso]]></Name>
+					<X>640</X><Y>292</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-3407872</Color>
+					<Text><![CDATA[]]></Text>
+					<TextCode><![CDATA[mascaraSalidas() == 0 ? "Abrí al menos una salida" : ""]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063760016</Id>
+					<Name><![CDATA[tVariables]]></Name>
+					<X>40</X><Y>345</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Variables del modelo]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063760017</Id>
+					<Name><![CDATA[tIlum]]></Name>
+					<X>40</X><Y>385</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Iluminación]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760018</Id>
+					<Name><![CDATA[sliderIlum]]></Name>
+					<X>200</X><Y>367</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="200" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[0.8]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0.5]]></MinValue>
+						<MaxValue><![CDATA[1.0]]></MaxValue>
+						<Step><![CDATA[0.05]]></Step>
+						<LinkTo>true</LinkTo>
+						<Link>ilum</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760019</Id>
+					<Name><![CDATA[tIlumVal]]></Name>
+					<X>410</X><Y>385</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[]]></Text>
+					<TextCode><![CDATA[String.format( "%.2f (%s)", ilum, ilum >= 1.0 ? "plena luz" : "emergencia" )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063760020</Id>
+					<Name><![CDATA[tCong]]></Name>
+					<X>40</X><Y>425</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Peso de congestión]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="Slider">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760021</Id>
+					<Name><![CDATA[sliderCong]]></Name>
+					<X>200</X><Y>407</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="200" Height="30">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<DefaultValueCode><![CDATA[15]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[50]]></MaxValue>
+						<Step><![CDATA[1]]></Step>
+						<LinkTo>true</LinkTo>
+						<Link>congestion</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760022</Id>
+					<Name><![CDATA[tCongVal]]></Name>
+					<X>410</X><Y>425</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[]]></Text>
+					<TextCode><![CDATA[String.format( "%.0f", congestion )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760023</Id>
+					<Name><![CDATA[checkValijas]]></Name>
+					<X>40</X><Y>445</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="440" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<LabelText><![CDATA[Las valijas frenan el paso]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>valijas</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760024</Id>
+					<Name><![CDATA[tEjecucion]]></Name>
+					<X>640</X><Y>345</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Ejecución]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1794063760025</Id>
+					<Name><![CDATA[tVel]]></Name>
+					<X>640</X><Y>385</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Velocidad]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760026</Id>
+					<Name><![CDATA[radioVel]]></Name>
+					<X>750</X><Y>368</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="330" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<Button><![CDATA[x1]]></Button>
+						<Button><![CDATA[x2]]></Button>
+						<Button><![CDATA[x5]]></Button>
+						<Button><![CDATA[x10]]></Button>
+						<Button><![CDATA[x50]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>velIdx</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760027</Id>
+					<Name><![CDATA[tParada]]></Name>
+					<X>640</X><Y>425</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Parada (s)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760028</Id>
+					<Name><![CDATA[editParada]]></Name>
+					<X>750</X><Y>409</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="90" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<MinValue><![CDATA[60]]></MinValue>
+						<LinkTo>true</LinkTo>
+						<Link>parada</Link>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760029</Id>
+					<Name><![CDATA[tVista]]></Name>
+					<X>640</X><Y>465</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Vista inicial]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>13</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760030</Id>
+					<Name><![CDATA[radioVista]]></Name>
+					<X>750</X><Y>448</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="160" Height="25">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="13" Style="0"/>
+						<DefaultValueCode><![CDATA[0]]></DefaultValueCode>
+						<Orientation>HORIZONTAL</Orientation>
+						<Button><![CDATA[2D]]></Button>
+						<Button><![CDATA[3D]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>vista</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760031</Id>
+					<Name><![CDATA[botonIniciar]]></Name>
+					<X>40</X><Y>510</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="240" Height="40">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[if ( escSel == 5 && mascaraSalidas() == 0 ) return;   // personalizado sin salidas: el aviso ya esta en pantalla
+if ( getState() == IDLE )
+	run();
+getEngine().getExperimentHost().setPresentable( getEngine().getRoot() );
+Main m = (Main) getEngine().getRoot();
+if ( vista == 1 ) m.va3D.navigateTo();
+else              m.va2D.navigateTo();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="14" Style="1"/>
+						<LabelText><![CDATA[▶  Iniciar simulación]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>
+					<Id>1794063760032</Id>
+					<Name><![CDATA[botonPredeterminados]]></Name>
+					<X>300</X><Y>510</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<BasicProperties Width="240" Height="40">
+                        <EmbeddedIcon>false</EmbeddedIcon>	
+						<TextColor>-16777216</TextColor>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[predeterminados();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="14" Style="1"/>
+						<LabelText><![CDATA[↺  Valores predeterminados]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Text>
+					<Id>1794063760033</Id>
+					<Name><![CDATA[tSemilla]]></Name>
+					<X>40</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-8355712</Color>
+					<Text><![CDATA[Semilla fija 10001: misma configuración, misma corrida.]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>11</Size>
+						<Style>2</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -16541,27 +17730,42 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 
 			<Parameters>
 				<Parameter>
-					<ParameterName><![CDATA[pesoCongestion]]></ParameterName>
-				</Parameter>
-				<Parameter>
 					<ParameterName><![CDATA[totalPax]]></ParameterName>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[escenario]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[3]]></Code>
+						<Code><![CDATA[escSel + 1]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[factorIluminacion]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[ilum]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[pesoCongestion]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[congestion]]></Code>
+					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[hayObstaculo]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[valijas]]></Code>
+					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[nBloqueadas]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[5]]></Code>
+						<Code><![CDATA[nBloq]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[salidasPersonalizadas]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[mascaraSalidas()]]></Code>
 					</ParameterValue>
 				</Parameter>
 			</Parameters>
@@ -16580,7 +17784,7 @@ rol == RolPax.TRIPULANTE_TRASERO   ? new java.awt.Color( 255, 140,   0 ) :
 				<FinalDate><![CDATA[1787703000000]]></FinalDate>
 				<FinalTime><![CDATA[600.0]]></FinalTime>
 			</ModelTimeProperties>
-			<BypassInitialScreen>true</BypassInitialScreen>
+			<BypassInitialScreen>false</BypassInitialScreen>
 		</SimulationExperiment>
 		<!--   =========  Parameter Variation Experiment   ========  -->
 		<ParamVariationExperiment ActiveObjectClassId="1787743493622">
@@ -17356,6 +18560,9 @@ cerrar();]]></AfterExperimentCode>
 			<FreeformParamValue>	
 				<Id>1788300000005</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1794063760001</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1788009756465</Id>
 				<Type>FIXED</Type>
@@ -17387,6 +18594,10 @@ cerrar();]]></AfterExperimentCode>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1788300000005</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1794063760001</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
@@ -17762,6 +18973,9 @@ cerrar();]]></AfterExperimentCode>
 			<FreeformParamValue>	
 				<Id>1788300000005</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1794063760001</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1788009756465</Id>
 				<Type>FIXED</Type>
@@ -17797,6 +19011,10 @@ cerrar();]]></AfterExperimentCode>
 				<Step Class="CodeValue">
 					<Code><![CDATA[1]]></Code>
 				</Step>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1794063760001</Id>
+				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
